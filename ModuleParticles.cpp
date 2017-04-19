@@ -23,48 +23,67 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	laser.anim.PushBack({221, 138, 3, 3});
-	laser.anim.PushBack({226, 138, 3, 3});
-	laser.anim.PushBack({231, 138, 3, 3 });
-	laser.anim.PushBack({236, 138, 3, 3 });
-	laser.anim.PushBack({241, 138, 3, 3 });
-	laser.anim.PushBack({246, 138, 3, 3 });
-	laser.anim.PushBack({251, 138, 3, 3 });
-	laser.anim.PushBack({256, 138, 3, 3 });
-	laser.anim.speed = 0.4f;
-	laser.speed.y = -5;
-	laser.life = 3000;
+	laser.anim.PushBack({221, 131, 2, 5 });
+	laser.anim.PushBack({339, 131, 5, 6 });
+	laser.anim.PushBack({361, 129, 11, 10});
+	laser.anim.speed = 0.0f;
+	laser.speed.y = -4;
+	laser.life = SHOT_LIFE;
 
-	shot_l.anim.PushBack({ 221, 138, 3, 3 });
-	shot_l.anim.PushBack({ 226, 138, 3, 3 });
-	shot_l.anim.PushBack({ 231, 138, 3, 3 });
-	shot_l.anim.PushBack({ 236, 138, 3, 3 });
-	shot_l.anim.PushBack({ 241, 138, 3, 3 });
-	shot_l.anim.PushBack({ 246, 138, 3, 3 });
-	shot_l.anim.PushBack({ 251, 138, 3, 3 });
-	shot_l.anim.PushBack({ 256, 138, 3, 3 });
-	shot_l.anim.speed = 0.4f;
-	shot_l.speed.y = -5;
-	shot_l.speed.x = -5;
-	shot_l.life = 3000;
+	//fixed up this point
+	shot_l.anim.PushBack({ 263, 132, 4, 4 });
+	shot_l.anim.PushBack({ 339, 131, 5, 6 });
+	shot_l.anim.PushBack({ 361, 129, 11, 10 });
+	shot_l.anim.speed = 0.0f;
+	shot_l.speed.y = -3;
+	shot_l.speed.x = -3;
+	shot_l.life = SHOT_LIFE;
 
-	shot_r.anim.PushBack({ 221, 138, 3, 3 });
-	shot_r.anim.PushBack({ 226, 138, 3, 3 });
-	shot_r.anim.PushBack({ 231, 138, 3, 3 });
-	shot_r.anim.PushBack({ 236, 138, 3, 3 });
-	shot_r.anim.PushBack({ 241, 138, 3, 3 });
-	shot_r.anim.PushBack({ 246, 138, 3, 3 });
-	shot_r.anim.PushBack({ 251, 138, 3, 3 });
-	shot_r.anim.PushBack({ 256, 138, 3, 3 });
-	shot_r.anim.speed = 0.4f;
-	shot_r.speed.y = -5;
-	shot_r.speed.x = +5;
-	shot_r.life = 3000;
+	shot_l_up.anim.PushBack({ 239, 131, 3, 5 });
+	shot_l_up.anim.PushBack({ 339, 131, 5, 6 });
+	shot_l_up.anim.PushBack({ 361, 129, 11, 10 });
+	shot_l_up.anim.speed = 0.0f;
+	shot_l_up.speed.y = -4;
+	shot_l_up.speed.x = -2;
+	shot_l_up.life = SHOT_LIFE;
+
+	shot_l_down.anim.PushBack({ 285, 132, 5, 4 });
+	shot_l_down.anim.PushBack({ 339, 131, 5, 6 });
+	shot_l_down.anim.PushBack({ 361, 129, 11, 10 });
+	shot_l_down.anim.speed = 0.0f;
+	shot_l_down.speed.y = -3;
+	shot_l_down.speed.x = -3;
+	shot_l_down.life = SHOT_LIFE;
+
+	shot_r.anim.PushBack({ 268, 132, 4, 4 });
+	shot_r.anim.PushBack({ 339, 131, 5, 6 });
+	shot_r.anim.PushBack({ 361, 129, 11, 10 });
+
+	shot_r.anim.speed = 0.0f;
+	shot_r.speed.y = -3;
+	shot_r.speed.x = +3;
+	shot_r.life = SHOT_LIFE;
+
+	shot_r_down.anim.PushBack({ 291, 132, 5, 4 });
+	shot_r_down.anim.PushBack({ 339, 131, 5, 6 });
+	shot_r_down.anim.PushBack({ 361, 129, 11, 10 });
+	shot_r_down.anim.speed = 0.0f;
+	shot_r_down.speed.y = -3;
+	shot_r_down.speed.x = 3;
+	shot_r_down.life = SHOT_LIFE;
+
+	shot_r_up.anim.PushBack({ 244, 131, 3, 5 });
+	shot_r_up.anim.PushBack({ 339, 131, 5, 6 });
+	shot_r_up.anim.PushBack({ 361, 129, 11, 10 });
+	shot_r_up.anim.speed = 0.0f;
+	shot_r_up.speed.y = -4;
+	shot_r_up.speed.x = 2;
+	shot_r_up.life = SHOT_LIFE;
 
 	shot_g.anim.PushBack({ 316, 12, 10, 10 });
-	shot_g.anim.speed = 0.4f;
+	shot_g.anim.speed = 0.0f;
 	shot_g.speed.y = +5;
-	shot_g.life = 3000;    
+	shot_g.life = SHOT_LIFE;    
 }
 
 ModuleParticles::~ModuleParticles()

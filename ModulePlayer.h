@@ -29,6 +29,10 @@ public:
 	iPoint position;
 	Collider* col;
 	bool destroyed = false;
+	int time_z;
+	int time_x;
+	int time_c;
+	int cooldown = 0;//of the shots
 };
 
 #endif

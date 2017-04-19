@@ -32,4 +32,7 @@ typedef unsigned int uint;
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
 
+#define COOLDOWN 15
+#define SHOT_LIFE 450// 60x sec 7.5 sec = 7500
+
 #endif // __GLOBALS_H__

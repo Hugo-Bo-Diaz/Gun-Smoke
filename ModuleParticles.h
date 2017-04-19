@@ -55,6 +55,12 @@ public:
 	Particle shot_l;
 	Particle shot_r;
 	Particle shot_g;
+
+	Particle shot_r_up;
+	Particle shot_r_down;
+
+	Particle shot_l_up;
+	Particle shot_l_down;
 };
 
 #endif // __MODULEPARTICLES_H__

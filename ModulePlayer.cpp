@@ -7,6 +7,7 @@
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "SDL/include/SDL_timer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -104,29 +105,123 @@ update_status ModulePlayer::Update()
 			current_animation = &left;
 		}
 	}
+	/*
 
-	if(App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+	  z x c
+	z n d l    0 1 2 3 4 5
+	x X n d
+	c X X n
+
+	*/
+
+	bool press_z = false;
+	bool press_x = false;
+	bool press_c = false;
+	if (cooldown > 0)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		cooldown -= 1;
 	}
 
+
 	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_DOWN)
+	{time_z= 5;}
+
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+	{time_x = 5;}
+
+	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
+	{time_c = 5;}
+
+
+	if (time_z > 0)
+	{
+		time_z -= 1;
+	}
+
+	if (time_z == 0)
+	{press_z = false;}
+	else { press_z = true; }
+
+
+
+	if (time_x > 0)
+	{
+		time_x -= 1;
+	}
+
+	if (time_x == 0)
+	{press_x = false;}
+	else { press_x = true; }
+
+
+
+	if (time_c > 0)
+	{
+		time_c -= 1;
+	}
+
+	if (time_c == 0)
+	{press_c = false;}
+	else { press_c = true; }
+
+	//combined shots
+	if (press_z && press_x&& cooldown < 6)
+	{
+		App->particles->AddParticle(App->particles->shot_l_up, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_l_down, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		time_z = 0; time_x = 0;
+		cooldown = COOLDOWN;
+	}
+
+	if (press_x && press_c&& cooldown < 6)
+	{
+		App->particles->AddParticle(App->particles->shot_r_up, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_r_down, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		time_z = 0; time_x = 0;
+		cooldown = COOLDOWN;
+	}
+
+	if (press_z && press_c&& cooldown < 6)
+	{
+		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		time_z = 0; time_x = 0;
+		cooldown = COOLDOWN;
+	}
+
+	//simple shots
+	if (press_z && time_z !=0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_J])
 	{
 		App->particles->AddParticle(App->particles->shot_l, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y + 10, COLLIDER_PLAYER_SHOT);
-	}
+		cooldown = COOLDOWN;
 
-	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
+	}
+	if (press_x && time_x != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_K])
+	{
+		App->particles->AddParticle(App->particles->laser, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		cooldown = COOLDOWN;
+
+
+	}
+	if (press_c && time_c != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_L])
 	{
 		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y + 10, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_r, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		cooldown = COOLDOWN;
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-	   && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+	{
 		current_animation = &idle;
-
+	}
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	{
+		current_animation = &idle;
+	}
 	col->SetPos(position.x, position.y);
 
 	// Draw everything --------------------------------------
