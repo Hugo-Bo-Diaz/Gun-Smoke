@@ -7,8 +7,10 @@
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleFonts.h"
 #include "SDL/include/SDL_timer.h"
 
+#include<stdio.h>
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
@@ -51,6 +53,8 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	position.x = 150;
 	position.y = 120;
+
+	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	col = App->collision->AddCollider({position.x, position.y, 19, 28}, COLLIDER_PLAYER, this);
 
@@ -227,6 +231,8 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	if(destroyed == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	
+	App->fonts->BlitText(100, 100, font_score, "1234567");
 
 	return UPDATE_CONTINUE;
 }
