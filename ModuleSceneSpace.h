@@ -16,7 +16,7 @@ public:
 	bool CleanUp();
 
 public:
-	
+	int font_score;
 	SDL_Texture* background = nullptr;
 	SDL_Texture* stars = nullptr;
 };

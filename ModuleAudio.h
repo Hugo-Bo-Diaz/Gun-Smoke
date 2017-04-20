@@ -20,6 +20,7 @@ public:
 
 	// Play a music file
 	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
+	void StopMusic();//needs music to be playing
 
 	// Load a WAV in memory
 	uint LoadFx(const char* path);
@@ -33,6 +34,7 @@ private:
 	Mix_Music*	music = nullptr;
 	Mix_Chunk*	fx[MAX_FX];
 	uint			last_fx = 1;
+	int channel=0;
 };
 
 #endif // __ModuleAudio_H__

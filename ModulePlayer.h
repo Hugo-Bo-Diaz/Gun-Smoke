@@ -34,6 +34,7 @@ public:
 	int time_c;
 	int cooldown = 0;//of the shots
 	int font_score = -1;
+	uint audio_shot;
 };
 
 #endif

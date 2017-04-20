@@ -61,6 +61,7 @@ public:
 
 	Particle shot_l_up;
 	Particle shot_l_down;
+	Particle end_of_bullet;
 };
 
 #endif // __MODULEPARTICLES_H__

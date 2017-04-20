@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleFonts.h"
+#include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
 
 #include<stdio.h>
@@ -54,8 +55,10 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 120;
 
-	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
 
+	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
 	col = App->collision->AddCollider({position.x, position.y, 19, 28}, COLLIDER_PLAYER, this);
 
 	return true;
@@ -65,7 +68,7 @@ bool ModulePlayer::Start()
 bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
-
+	App->audio->UnLoadFx(audio_shot);
 	App->textures->Unload(graphics);
 	if (col != nullptr)
 		col->to_delete = true;
@@ -169,28 +172,31 @@ update_status ModulePlayer::Update()
 	else { press_c = true; }
 
 	//combined shots
-	if (press_z && press_x&& cooldown < 6)
+	if (press_z && press_x&& cooldown < 5)
 	{
 		App->particles->AddParticle(App->particles->shot_l_up, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_l_down, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
 		time_z = 0; time_x = 0;
 		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
 	}
 
-	if (press_x && press_c&& cooldown < 6)
+	if (press_x && press_c&& cooldown < 5)
 	{
 		App->particles->AddParticle(App->particles->shot_r_up, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_r_down, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		time_z = 0; time_x = 0;
 		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
 	}
 
-	if (press_z && press_c&& cooldown < 6)
+	if (press_z && press_c&& cooldown < 5)
 	{
 		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
 		time_z = 0; time_x = 0;
 		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
 	}
 
 	//simple shots
@@ -199,6 +205,7 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->shot_l, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y + 10, COLLIDER_PLAYER_SHOT);
 		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
 
 	}
 	if (press_x && time_x != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_K])
@@ -206,6 +213,7 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->laser, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->laser, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
 		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
 
 
 	}
@@ -214,6 +222,7 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y + 10, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_r, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
 		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
@@ -232,7 +241,7 @@ update_status ModulePlayer::Update()
 	if(destroyed == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	
-	App->fonts->BlitText(100, 100, font_score, "1234567");
+
 
 	return UPDATE_CONTINUE;
 }

@@ -160,9 +160,17 @@ bool ModuleAudio::PlayFx(uint id, int repeat)
 	
 	if(fx[id] != nullptr)
 	{
-		Mix_PlayChannel(-1, fx[id], repeat);
+		Mix_PlayChannel(channel, fx[id], repeat);
 		ret = true;
 	}
-
+	channel++;
+	if (channel > 5)
+	{
+		channel = 0;
+	}
 	return ret;
+}
+void ModuleAudio::StopMusic()
+{
+	Mix_HaltMusic();
 }

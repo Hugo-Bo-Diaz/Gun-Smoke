@@ -8,7 +8,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneSpace.h"
-
+#include "ModuleFonts.h"
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneSpace::ModuleSceneSpace()
@@ -22,7 +22,10 @@ bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
 	
+	App->audio->PlayMusic("gunsmoke/Gunsmoke_06.ogg");
+
 	background = App->textures->Load("gunsmoke/map1.png");
+	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
 
 	App->player->Enable();
 	App->particles->Enable();
@@ -67,7 +70,7 @@ bool ModuleSceneSpace::Start()
 bool ModuleSceneSpace::CleanUp()
 {
 	LOG("Unloading space scene");
-
+	App->audio->StopMusic();
  	App->textures->Unload(background);
 
 	App->enemies->Disable();
@@ -86,6 +89,10 @@ update_status ModuleSceneSpace::Update()
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -2814, NULL);
-	
+
+	App->fonts->BlitText(10, 0, font_score, "gunman-1");
+	App->fonts->BlitText(80, 0, font_score, "hi-score");
+
+
 	return UPDATE_CONTINUE;
 }

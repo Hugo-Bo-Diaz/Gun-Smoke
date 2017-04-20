@@ -12,6 +12,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleFonts.h"
+#include "ModuleAudio.h"
 
 Application::Application()
 {
@@ -28,6 +29,7 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = fonts = new ModuleFonts();
+	modules[i++] = audio = new ModuleAudio();
 }	
 
 Application::~Application()

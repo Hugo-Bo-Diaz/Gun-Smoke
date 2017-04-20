@@ -84,6 +84,12 @@ ModuleParticles::ModuleParticles()
 	shot_g.anim.speed = 0.0f;
 	shot_g.speed.y = +5;
 	shot_g.life = SHOT_LIFE;    
+
+	end_of_bullet.anim.PushBack({ 339, 131, 5, 6 });
+	end_of_bullet.anim.PushBack({ 361, 129, 11, 10 });
+	end_of_bullet.anim.loop = false;
+	end_of_bullet.life = 200;
+	end_of_bullet.anim.speed = 0.1f;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -197,6 +203,7 @@ fx(p.fx), born(p.born), life(p.life)
 
 Particle::~Particle()
 {
+
 	if (collider != nullptr)
 		collider->to_delete = true;
 }
@@ -207,13 +214,19 @@ bool Particle::Update()
 
 	if(life > 0)
 	{
-		if((SDL_GetTicks() - born) > life)
+		if ((SDL_GetTicks() - born) > life)
+		{
+			if (collider->type == COLLIDER_PLAYER_SHOT)
+			{
+				App->particles->AddParticle(App->particles->end_of_bullet, position.x-4, position.y-4, COLLIDER_PARTICLE, 0);
+			}
+
 			ret = false;
+		}
 	}
 	else
 		if(anim.Finished())
 			ret = false;
-
 	position.x += speed.x;
 	position.y += speed.y;
 
