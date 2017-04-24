@@ -42,7 +42,6 @@ bool ModuleSceneSpace::Start()
 
 	//App->collision->AddCollider({ 160, -668, 68, 627 }, COLLIDER_DESTINY); //
 
-
 	// Enemies GunMen ---
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 102, -157);
@@ -130,7 +129,10 @@ bool ModuleSceneSpace::CleanUp()
 update_status ModuleSceneSpace::Update()
 {
 	// Move camera forward -----------------------------
-	App->render->camera.y -= 1 * SCREEN_SIZE;
+	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
+		App->render->camera.y -= 0 * SCREEN_SIZE;
+
+	else App->render->camera.y -= 1 * SCREEN_SIZE;
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -2814, NULL);

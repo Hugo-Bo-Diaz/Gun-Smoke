@@ -80,21 +80,28 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	position.y -= 1; // Automatic movement
+
+	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
+		position.y;
+
+	else position.y -= 1, camera_y -= 1; // Automatic movement
+
+
 
 	int speed = 1;
 
-	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
 	{
 		position.y -= speed;
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && camera_y + SCREEN_HEIGHT - 5 > position.y + 32)
 	{
 		position.y += speed;
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&
+		App->render->camera.x + SCREEN_WIDTH > position.x + 19)
 	{
 		position.x += speed;
 		if(current_animation != &right)
@@ -104,7 +111,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->render->camera.x < position.x)
 	{
 		position.x -= speed;
 		if(current_animation != &left)
@@ -261,10 +268,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		/*else if ((c1->rect.y + c1->rect.h) - c2->rect.y < abs(2))
 			position.y = (c2->rect.y - c1->rect.h);*/
 
-		else if ((c2->rect.y + c2->rect.h) - c1->rect.y < abs(3))
+		else if ((c2->rect.y + c2->rect.h) - c1->rect.y < abs(5))
 			position.y = (c2->rect.y + c2->rect.h);
-		
-		//App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
 
 	}
 

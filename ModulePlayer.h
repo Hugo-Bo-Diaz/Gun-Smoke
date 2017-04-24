@@ -32,6 +32,7 @@ public:
 	int time_z;
 	int time_x;
 	int time_c;
+	int camera_y = 0;
 	int cooldown = 0;//of the shots
 	int font_score = -1;
 	uint audio_shot;
