@@ -76,6 +76,7 @@
     <ClInclude Include="Enemy_BrownCookie.h" />
     <ClInclude Include="Enemy_Mech.h" />
     <ClInclude Include="Enemy_RedBird.h" />
+    <ClInclude Include="Enemy_Rifle.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleFonts.h" />
@@ -101,6 +102,7 @@
     <ClCompile Include="Enemy_BrownCookie.cpp" />
     <ClCompile Include="Enemy_Mech.cpp" />
     <ClCompile Include="Enemy_RedBird.cpp" />
+    <ClCompile Include="Enemy_Rifle.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />

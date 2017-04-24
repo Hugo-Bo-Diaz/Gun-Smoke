@@ -60,6 +60,7 @@ bool ModulePlayer::Start()
 	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
 	col = App->collision->AddCollider({position.x, position.y, 19, 28}, COLLIDER_PLAYER, this);
+	//App->collision->AddCollider({ position.x, position.y -100, 20, 32 }, COLLIDER_DESTINY);
 
 	return true;
 }

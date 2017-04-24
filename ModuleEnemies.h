@@ -18,6 +18,8 @@ enum ENEMY_TYPES
 	NO_TYPE,
 	REDBIRD,
 	BROWNCOOKIE,
+	MECH,
+	RIFLE,
 };
 
 class Enemy;

@@ -1,27 +1,20 @@
 #include "Application.h"
 #include "Enemy_RedBird.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({0,0,18,27});
-/*	fly.PushBack({38, 6, 24, 24});
-	fly.PushBack({71, 6, 24, 24});
-	fly.PushBack({104, 6, 24, 24});
-	fly.PushBack({137, 6, 24, 24});
-	fly.PushBack({170, 6, 24, 24});
-	fly.PushBack({203, 6, 24, 24});
-	fly.PushBack({236, 6, 24, 24});*/
-	fly.speed = 0.2f;
+	fly.PushBack({216,553,16,9});
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({0, 0, 18, 27}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({0, 0, 16, 9}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 }
 
-void Enemy_RedBird::Move()
+void Enemy_RedBird::Shoot()
 {
 	/*if(going_up)
 	{
@@ -38,8 +31,19 @@ void Enemy_RedBird::Move()
 			wave -= 0.05f;
 	}*/
 
-	position.y;
+	//position.y;
 
 	//position.y = original_y + (25.0f * sinf(wave));
 	//position.x -= 1;
+	int i = 5;
+
+	for (;;) {
+		if (i = 0)
+		{
+			App->particles->AddParticle(App->particles->shot_g, position.x + 12, position.y, COLLIDER_ENEMY_SHOT);
+			int i = 5;
+		}
+
+		else i -= 1;
+	}
 }
