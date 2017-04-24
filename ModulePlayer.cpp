@@ -52,8 +52,9 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("gunsmoke/player.png");
 
 	destroyed = false;
-	position.x = 150;
-	position.y = 120;
+	position.x = 120;
+	position.y = 200;
+	camera_y = 0;
 
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
 

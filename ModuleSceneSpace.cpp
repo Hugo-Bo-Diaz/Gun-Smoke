@@ -34,13 +34,64 @@ bool ModuleSceneSpace::Start()
 	
 	// Colliders ---
 	//App->collision->AddCollider({ -10, 260, 20, -2820 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 117, 105, 23, 21 }, COLLIDER_WALL); // POZO Nº1
-	App->collision->AddCollider({ 0, -152, 44, 363 }, COLLIDER_WALL); //EDIFICIO A
+	App->collision->AddCollider({ 117, 105, 23, 21 }, COLLIDER_WALL); // POZOS
+
+	App->collision->AddCollider({ 98, -927, 28, 27 }, COLLIDER_WALL); 
+
+	App->collision->AddCollider({ 117, -2008, 22, 20 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 0, -152, 44, 363 }, COLLIDER_WALL); //EDIFICIOS IZQ
 	App->collision->AddCollider({ 44, -124, 20, 347 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 64, -98, 15, 19 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 160, -668, 68, 627 }, COLLIDER_WALL); // EDIFICIO B
+	App->collision->AddCollider({ 59, 0, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 61, 63, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 61, 159, 15, 19 }, COLLIDER_WALL);
 
-	//App->collision->AddCollider({ 160, -668, 68, 627 }, COLLIDER_DESTINY); //
+	App->collision->AddCollider({ 0, -1980, 64, 1018 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -2009, 44, 29 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1026, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1218, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1314, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1410, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1472, 12, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1570, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1666, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1858, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -1954, 15, 19 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 0, -2320, 80, 35 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -2405, 100, 85 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -2445, 75, 40 }, COLLIDER_WALL);
+	
+	App->collision->AddCollider({ 0, -2814, 64, 122 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -2692, 37, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -2754, 15, 19 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 180, -698, 44, 30 }, COLLIDER_WALL); // EDIFICIOS DCH
+	App->collision->AddCollider({ 160, -668, 64, 626 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -643, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -547, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 148, -449, 12, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -387, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 146, -291, 14, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -195, 15, 19 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 160, -1340, 64, 346 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 180, -1368, 44, 28 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 187, -994, 37, 17 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -1058, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 148, -1120, 12, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -1218, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -1314, 15, 19 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 160, -2813, 64, 732 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -2146, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -2338, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 148, -2434, 12, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -2530, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 146, -2626, 14, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -2722, 15, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145, -2814, 15, 15 }, COLLIDER_WALL);
 
 	// Enemies GunMen ---
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
