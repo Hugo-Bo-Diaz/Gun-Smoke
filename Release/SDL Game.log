@@ -1,8 +1,62 @@
-﻿  ModulePlayer.cpp
-  Generating code
-  1 of 164 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Release\SDL8 Handout.exe
-  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Release\SDL8 Handout.pdb (Full PDB)
+﻿Build started 26/04/2017 0:38:35.
+     1>Project "C:\Users\Familia\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Application.cpp Enemy.cpp Enemy_BrownCookie.cpp Enemy_Mech.cpp Enemy_RedBird.cpp Enemy_Rifle.cpp Globals.cpp Main.cpp ModuleAudio.cpp ModuleCollision.cpp ModuleEnemies.cpp ModuleFadeToBlack.cpp ModuleInput.cpp ModuleParticles.cpp ModulePlayer.cpp ModuleRender.cpp ModuleSceneIntro.cpp ModuleSceneSpace.cpp ModuleTextures.cpp ModuleWindow.cpp ModuleFonts.cpp
+         Application.cpp
+         Enemy.cpp
+         Enemy_BrownCookie.cpp
+     1>Enemy_BrownCookie.cpp(55): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>Enemy_BrownCookie.cpp(142): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>Enemy_BrownCookie.cpp(143): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Enemy_BrownCookie.cpp(160): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+         Enemy_Mech.cpp
+         Enemy_RedBird.cpp
+         Enemy_Rifle.cpp
+         Globals.cpp
+         Main.cpp
+         ModuleAudio.cpp
+         ModuleCollision.cpp
+         ModuleEnemies.cpp
+         ModuleFadeToBlack.cpp
+         ModuleInput.cpp
+         ModuleParticles.cpp
+         ModulePlayer.cpp
+         ModuleRender.cpp
+         ModuleSceneIntro.cpp
+         ModuleSceneSpace.cpp
+         ModuleTextures.cpp
+         ModuleWindow.cpp
+         Compiling...
+         ModuleFonts.cpp
+     1>ModuleFonts.cpp(59): warning C4018: '<' : signed/unsigned mismatch
+     1>ModuleFonts.cpp(102): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Familia\Documents\GitHub\Gun-Smoke\Release\SDL8 Handout.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Familia\Documents\GitHub\Gun-Smoke\Release\SDL8 Handout.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Familia\Documents\GitHub\Gun-Smoke\Release\SDL8 Handout.lib" /MACHINE:X86 /SAFESEH Release\Application.obj
+         Release\Enemy.obj
+         Release\Enemy_BrownCookie.obj
+         Release\Enemy_Mech.obj
+         Release\Enemy_RedBird.obj
+         Release\Enemy_Rifle.obj
+         Release\Globals.obj
+         Release\Main.obj
+         Release\ModuleAudio.obj
+         Release\ModuleCollision.obj
+         Release\ModuleEnemies.obj
+         Release\ModuleFadeToBlack.obj
+         Release\ModuleInput.obj
+         Release\ModuleParticles.obj
+         Release\ModulePlayer.obj
+         Release\ModuleRender.obj
+         Release\ModuleSceneIntro.obj
+         Release\ModuleSceneSpace.obj
+         Release\ModuleTextures.obj
+         Release\ModuleWindow.obj
+         Release\ModuleFonts.obj
+         Generating code
+         Finished generating code
+         SDL Game.vcxproj -> C:\Users\Familia\Documents\GitHub\Gun-Smoke\Release\SDL8 Handout.exe
+     1>Done Building Project "C:\Users\Familia\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.21

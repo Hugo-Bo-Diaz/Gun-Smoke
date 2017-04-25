@@ -90,6 +90,10 @@ ModuleParticles::ModuleParticles()
 	end_of_bullet.anim.loop = false;
 	end_of_bullet.life = 200;
 	end_of_bullet.anim.speed = 0.1f;
+
+	enemy_bullet.anim.PushBack({315,11,6,6});
+	enemy_bullet.anim.loop = false;
+	enemy_bullet.life = 750;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -154,7 +158,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, int xspeed, int yspeed)
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -164,6 +168,14 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
 			p->position.y = y;
+			if (xspeed != 100)
+			{			
+				p->speed.x = xspeed;
+			}
+			if (yspeed != 100)
+			{
+				p->speed.y = yspeed;
+			}
 			if(collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -216,7 +228,7 @@ bool Particle::Update()
 	{
 		if ((SDL_GetTicks() - born) > life)
 		{
-			if (collider->type == COLLIDER_PLAYER_SHOT)
+			if (collider != nullptr && collider->type == COLLIDER_PLAYER_SHOT)
 			{
 				App->particles->AddParticle(App->particles->end_of_bullet, position.x-4, position.y-4, COLLIDER_PARTICLE, 0);
 			}
@@ -227,6 +239,7 @@ bool Particle::Update()
 	else
 		if(anim.Finished())
 			ret = false;
+
 	position.x += speed.x;
 	position.y += speed.y;
 

@@ -133,7 +133,7 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 100, -2620);
 	
 	// Enemies Sniper ---
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, - 132);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, - 132);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -420);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -600);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -1090);
@@ -153,7 +153,7 @@ bool ModuleSceneSpace::Start()
 	// Enemies Rifle ---
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 130, -1810);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 190, -1810);
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 50, -2140);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 50, -2140);*/
 
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 120, -80);
@@ -183,7 +183,33 @@ update_status ModuleSceneSpace::Update()
 	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
 		App->render->camera.y -= 0 * SCREEN_SIZE;
 
-	else App->render->camera.y -= 1 * SCREEN_SIZE;
+
+	else if(itstime)
+	{
+		App->render->camera.y -= 1 * SCREEN_SIZE;
+		itstime = false;
+	}
+
+	if (timer < 1)
+	{
+		timer++;
+	}
+	else
+	{
+		timer = 0;
+	}
+	
+	if (timer == 1)
+	{
+		itstime = true;
+	}
+	else
+	{
+		itstime = false;
+	}
+
+	
+
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -2814, NULL);

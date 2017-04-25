@@ -158,4 +158,7 @@
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Downloads\player.png" />
+  </ItemGroup>
 </Project>

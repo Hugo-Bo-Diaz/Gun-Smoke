@@ -41,7 +41,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, int xspeed = 100, int yspeed = 100);
 
 private:
 
@@ -62,6 +62,8 @@ public:
 	Particle shot_l_up;
 	Particle shot_l_down;
 	Particle end_of_bullet;
+
+	Particle enemy_bullet;
 };
 
 #endif // __MODULEPARTICLES_H__

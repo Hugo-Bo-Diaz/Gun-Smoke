@@ -55,13 +55,13 @@ bool ModulePlayer::Start()
 	position.x = 120;
 	position.y = 200;
 	camera_y = 0;
-
+	
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
 
 	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
 	col = App->collision->AddCollider({position.x, position.y, 19, 28}, COLLIDER_PLAYER, this);
-	//App->collision->AddCollider({ position.x, position.y -100, 20, 32 }, COLLIDER_DESTINY);
+	col_base= App->collision->AddCollider({ position.x, position.y+18, 17, 9 }, COLLIDER_PLAYER_BASE,this);
 
 	return true;
 }
@@ -78,14 +78,43 @@ bool ModulePlayer::CleanUp()
 	return true;
 }
 
+update_status ModulePlayer::PreUpdate()
+{
+	previous = position;
+	return UPDATE_CONTINUE;
+}
+
 // Update: draw background
 update_status ModulePlayer::Update()
 {
 
 	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
-		position.y;
+		position.y;// Automatic movement
 
-	else position.y -= 1, camera_y -= 1; // Automatic movement
+	else if (itstime)
+	{
+		position.y -= 1;
+		camera_y -= 1;
+		itstime = false;
+	}
+
+	if (timer < 1)
+	{
+		timer++;
+	}
+	else
+	{
+		timer = 0;
+	}
+
+	if (timer == 1)
+	{
+		itstime = true;
+	}
+	else
+	{
+		itstime = false;
+	}
 
 
 
@@ -244,13 +273,15 @@ update_status ModulePlayer::Update()
 	{
 		current_animation = &idle;
 	}
+
 	col->SetPos(position.x, position.y);
+	col_base->SetPos(position.x+1, position.y+18);
 
 	// Draw everything --------------------------------------
 	if(destroyed == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-	
-
+	sprintf_s(scores, 8, "%7d", score);
+	App->fonts->BlitText(8,8,font_score,scores);
 
 	return UPDATE_CONTINUE;
 }
@@ -258,23 +289,43 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if(c1 == col && c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL && destroyed == false && App->fade->IsFading() == false)
+	if(c1 == col_base && c1->type == COLLIDER_PLAYER_BASE && c2->type == COLLIDER_WALL && destroyed == false && App->fade->IsFading() == false)
 	{
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x < abs(2))
+		/*if ((c1->rect.x + c1->rect.w) - c2->rect.x < abs(2))
 			position.x = (c2->rect.x - c1->rect.w);
 
 		else if ((c2->rect.x + c2->rect.w) - c1->rect.x < abs(2))
 			position.x = (c2->rect.x + c2->rect.w);
 
-		/*else if ((c1->rect.y + c1->rect.h) - c2->rect.y < abs(2))
-			position.y = (c2->rect.y - c1->rect.h);*/
+		else if ((c1->rect.y - c1->rect.h) - c2->rect.y > abs(2))
+			position.y = (c2->rect.y + c1->rect.h);
 
-		else if ((c2->rect.y + c2->rect.h) - c1->rect.y < abs(5))
-			position.y = (c2->rect.y + c2->rect.h);
+		else if ((c2->rect.y - c2->rect.h) - c1->rect.y > abs(2))
+			position.y = (c2->rect.y - c2->rect.h);*/
 
+		int horiz, vert;
+		if (c1->rect.x < c2->rect.x)
+			horiz = c1->rect.x + c1->rect.w - c2->rect.x;
+		else 
+			horiz = c2->rect.x + c2->rect.w - c1->rect.x;
+		if (c1->rect.y < c2->rect.y)
+			vert =c1->rect.y + c1->rect.h - c2->rect.y;
+		else 
+			vert = c2->rect.y + c2->rect.h - c1->rect.y;
+		if (horiz < vert)
+			position.x = previous.x;
+		else 
+			position.y = previous.y;
 	}
 
-	if (c1 == col && (c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_ENEMY_SHOT)
+	if (c1 == col && c2->type == COLLIDER_ENEMY_SHOT
+		&& destroyed == false && App->fade->IsFading() == false)
+	{
+		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+
+		destroyed = true;
+	}
+	if (c1 == col_base && c2->type == COLLIDER_ENEMY_BASE 
 		&& destroyed == false && App->fade->IsFading() == false)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);

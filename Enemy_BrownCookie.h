@@ -11,9 +11,16 @@ private:
 	iPoint original_pos;
 	Animation fly;
 	Path path;
+
 public:
 	Enemy_BrownCookie(int x, int y);
 	void Move();
-	void Shoot();
+	int value_between(int,int);
+	iPoint path_dest;
+	iPoint path_from;
+	uint path_start;
+	uint next_shot=0;
+	//anim
+	Animation animations[8];
 };
 #endif

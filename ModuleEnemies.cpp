@@ -54,7 +54,11 @@ update_status ModuleEnemies::PreUpdate()
 update_status ModuleEnemies::Update()
 {
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr) enemies[i]->Move();
+		if (enemies[i] != nullptr) 
+		{ 
+			enemies[i]->previous = enemies[i]->position;
+			enemies[i]->Move();
+		};
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		if(enemies[i] != nullptr) enemies[i]->Draw(sprites);
@@ -153,11 +157,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		if ((enemies[i] != nullptr) && ((enemies[i]->GetCollider() == c1) || (enemies[i]->GetCol() == c1)))
 		{
-			enemies[i]->OnCollision(c2);
-			delete enemies[i];
-			enemies[i] = nullptr;
+			enemies[i]->OnCollision(c1, c2);
+			if (c2->type == COLLIDER_PLAYER_SHOT)
+			{
+				delete enemies[i];
+				enemies[i] = nullptr;
+			}
 			break;
 		}
 	}

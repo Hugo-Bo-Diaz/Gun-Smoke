@@ -14,7 +14,8 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-
+	int timer=0;
+	bool itstime;
 public:
 	int font_score;
 	SDL_Texture* background = nullptr;
