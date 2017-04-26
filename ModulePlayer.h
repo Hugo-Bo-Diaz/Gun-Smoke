@@ -43,6 +43,8 @@ public:
 	uint audio_shot;
 	int score;
 	char scores[8];
+
+	int lifes = 3;
 };
 
 #endif

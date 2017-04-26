@@ -58,7 +58,6 @@ bool ModulePlayer::Start()
 	
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
 
-	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
 	col = App->collision->AddCollider({position.x, position.y, 19, 28}, COLLIDER_PLAYER, this);
 	col_base= App->collision->AddCollider({ position.x, position.y+18, 17, 9 }, COLLIDER_PLAYER_BASE,this);
@@ -72,6 +71,7 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 	App->audio->UnLoadFx(audio_shot);
 	App->textures->Unload(graphics);
+	App->fonts->UnLoad(font_score);
 	if (col != nullptr)
 		col->to_delete = true;
 
@@ -278,10 +278,10 @@ update_status ModulePlayer::Update()
 	col_base->SetPos(position.x+1, position.y+18);
 
 	// Draw everything --------------------------------------
-	if(destroyed == false)
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	sprintf_s(scores, 8, "%7d", score);
 	App->fonts->BlitText(8,8,font_score,scores);
+	if(destroyed == false)
+		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }
@@ -304,31 +304,65 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			position.y = (c2->rect.y - c2->rect.h);*/
 
 		int horiz, vert;
+
 		if (c1->rect.x < c2->rect.x)
 			horiz = c1->rect.x + c1->rect.w - c2->rect.x;
-		else 
+		else
 			horiz = c2->rect.x + c2->rect.w - c1->rect.x;
 		if (c1->rect.y < c2->rect.y)
-			vert =c1->rect.y + c1->rect.h - c2->rect.y;
-		else 
+			vert = c1->rect.y + c1->rect.h - c2->rect.y;
+		else
 			vert = c2->rect.y + c2->rect.h - c1->rect.y;
+
 		if (horiz < vert)
 			position.x = previous.x;
-		else 
+		else
+		{
 			position.y = previous.y;
+
+			if (c2->rect.x >= SCREEN_WIDTH / 2 && camera_y + SCREEN_HEIGHT - 5 < position.y + 32)
+				position.x = (c2->rect.x - c1->rect.w);
+
+			else if (c2->rect.x < SCREEN_WIDTH / 2 && camera_y + SCREEN_HEIGHT - 5 < position.y + 32)
+				position.x = (c2->rect.x + c2->rect.w);
+		}
 	}
 
 	if (c1 == col && c2->type == COLLIDER_ENEMY_SHOT
 		&& destroyed == false && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+		lifes -= 1;
+		if (lifes != 0)
+		{
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+		}
+		else
+		{
+			lifes = 3;
+			LOG("OUT OF LIFES");
+
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+
+		}
 
 		destroyed = true;
 	}
 	if (c1 == col_base && c2->type == COLLIDER_ENEMY_BASE 
 		&& destroyed == false && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+		lifes -= 1;
+		if (lifes != 0)
+		{
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+		}
+		else
+		{
+			lifes = 3;
+			LOG("OUT OF LIFES");
+
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+
+		}
 
 		destroyed = true;
 	}

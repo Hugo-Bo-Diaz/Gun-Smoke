@@ -201,6 +201,11 @@ void Enemy_BrownCookie::Move()
 	{
 		animation = &left;
 	}*/
-
-	
+}
+Enemy_BrownCookie::~Enemy_BrownCookie()
+{
+	if (App->player->destroyed== false)
+	{
+		App->player->score += 500;
+	}
 }

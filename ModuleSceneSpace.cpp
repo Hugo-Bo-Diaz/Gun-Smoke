@@ -94,8 +94,11 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 145, -2814, 15, 15 }, COLLIDER_WALL);
 
 	// Enemies GunMen ---
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 102, -157);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 68, -73);
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 102, -157);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 1, -222);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 24, -280);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 24, -362);
@@ -143,13 +146,13 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2175);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2365);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2560);
-
+	*/
 	// Enemies BomberMen ---
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 31, -733);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 120, -770);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 95, -2280);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 50, -2535);
-
+	/*
 	// Enemies Rifle ---
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 130, -1810);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 190, -1810);
@@ -167,6 +170,7 @@ bool ModuleSceneSpace::CleanUp()
 	LOG("Unloading space scene");
 	App->audio->StopMusic();
  	App->textures->Unload(background);
+	App->fonts->UnLoad(font_score);
 
 	App->enemies->Disable();
 	App->collision->Disable();
