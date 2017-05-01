@@ -9,8 +9,9 @@
 #include "ModuleParticles.h"
 
 #define PATH_DURATION 500
-#define BULLET_INT_MIN 700
-#define BULLET_INT_MAX 1000
+#define BULLET_INT_MIN 2000
+#define BULLET_INT_MAX 2500
+#define BOMB_DELAY 12000
 
 
 Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
@@ -71,10 +72,12 @@ void Enemy_Mech::Move()
 	//shoot next mine
 	if (SDL_GetTicks() > next_shot)
 	{
-		float bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
-		//App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 2 * cos(bullet_angle), 2 * sin(bullet_angle));
+		bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
+		App->particles->AddParticle(App->particles->tnt, position.x, position.y, COLLIDER_NONE, 2, 0, 2 * sin(bullet_angle));
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y + 70, COLLIDER_ENEMY_BASE, 800, 0, 0);
 		next_shot = SDL_GetTicks() + value_between(BULLET_INT_MIN, BULLET_INT_MAX);
 	}
+
 
 	//check destination
 	uint elapsed = SDL_GetTicks() - path_start;
@@ -93,4 +96,14 @@ void Enemy_Mech::Move()
 	//move collider
 	col->SetPos(position.x, position.y + 20);
 
+}
+
+Enemy_Mech::~Enemy_Mech()
+{
+	if (App->player->destroyed == false)
+	{
+		App->player->score += 300;
+	}
+
+	App->particles->AddParticle(App->particles->mechdeath, position.x, position.y, COLLIDER_NONE);
 }

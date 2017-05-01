@@ -26,9 +26,15 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
+
 	Animation idle;
 	Animation left;
 	Animation right;
+
+	Animation left_shot;
+	Animation idle_shot;
+	Animation right_shot;
+
 	iPoint position;
 	iPoint previous;
 	Collider* col;
@@ -39,6 +45,10 @@ public:
 	int time_c;
 	int camera_y = 0;
 	int cooldown = 0;//of the shots
+
+	int setanim = 60;
+	int lastkey=0;
+
 	int font_score = -1;
 	uint audio_shot;
 	int score;

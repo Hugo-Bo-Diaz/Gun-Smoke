@@ -64,6 +64,12 @@ public:
 	Particle end_of_bullet;
 
 	Particle enemy_bullet;
+	Particle enemy_bullet_2;
+
+	Particle tnt;
+
+	Particle mechdeath;
+	Particle cookiedeath;
 };
 
 #endif // __MODULEPARTICLES_H__

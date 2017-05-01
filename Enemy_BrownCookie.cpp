@@ -206,6 +206,8 @@ Enemy_BrownCookie::~Enemy_BrownCookie()
 {
 	if (App->player->destroyed== false)
 	{
-		App->player->score += 500;
+		App->player->score += 200;
 	}
+
+	App->particles->AddParticle(App->particles->cookiedeath, position.x, position.y, COLLIDER_NONE);
 }

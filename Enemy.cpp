@@ -58,7 +58,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1 == collider)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	}
 }
 

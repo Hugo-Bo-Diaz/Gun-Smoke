@@ -1,34 +1,3 @@
-﻿Build started 26/04/2017 16:26:23.
-     1>Project "F:\Gun-Smoke-master\SDL Game.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Enemy_Mech.cpp
-         Enemy_Mech.cpp
-     1>f:\gun-smoke-master\enemy_mech.cpp(74): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Gun-Smoke-master\Debug\SDL8 Handout.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\Gun-Smoke-master\Debug\SDL8 Handout.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Gun-Smoke-master\Debug\SDL8 Handout.lib" /MACHINE:X86 Debug\Application.obj
-         Debug\Enemy.obj
-         Debug\Enemy_BrownCookie.obj
-         Debug\Enemy_Mech.obj
-         Debug\Enemy_RedBird.obj
-         Debug\Enemy_Rifle.obj
-         Debug\Globals.obj
-         Debug\Main.obj
-         Debug\ModuleAudio.obj
-         Debug\ModuleCollision.obj
-         Debug\ModuleEnemies.obj
-         Debug\ModuleFadeToBlack.obj
-         Debug\ModuleInput.obj
-         Debug\ModuleParticles.obj
-         Debug\ModulePlayer.obj
-         Debug\ModuleRender.obj
-         Debug\ModuleSceneIntro.obj
-         Debug\ModuleSceneSpace.obj
-         Debug\ModuleTextures.obj
-         Debug\ModuleWindow.obj
-         Debug\ModuleFonts.obj
-         SDL Game.vcxproj -> F:\Gun-Smoke-master\Debug\SDL8 Handout.exe
-     1>Done Building Project "F:\Gun-Smoke-master\SDL Game.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:02.02
+﻿  ModuleGameOver.cpp
+  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Gun-Smoke\Debug\SDL8 Handout.exe
+  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Gun-Smoke\Debug\SDL8 Handout.pdb (Full PDB)

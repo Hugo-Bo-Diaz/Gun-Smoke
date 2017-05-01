@@ -39,6 +39,31 @@ ModulePlayer::ModulePlayer()
 	right.PushBack({ 145, 56, 22, 32 });
 	right.PushBack({ 185, 56, 22, 32 });
 	right.speed = 0.2f;
+
+	// idle animation (just the ship)
+	idle_shot.PushBack({ 223, 15, 20, 32 });
+	idle_shot.PushBack({ 262, 16, 20, 32 });
+	idle_shot.PushBack({ 303, 15, 20, 32 });
+	idle_shot.PushBack({ 341, 15, 20, 32 });
+	idle_shot.PushBack({ 382, 15, 20, 32 });
+	idle_shot.speed = 0.2f;
+
+	// move left
+	left_shot.PushBack({ 223, 95, 22, 32 });
+	left_shot.PushBack({ 262, 95, 22, 32 });
+	left_shot.PushBack({ 303, 95, 22, 32 });
+	left_shot.PushBack({ 341, 95, 22, 32 });
+	left_shot.PushBack({ 382, 95, 22, 32 });
+	left_shot.speed = 0.2f;
+
+	// Move right
+	right_shot.PushBack({ 223, 56, 22, 32 });
+	right_shot.PushBack({ 262, 56, 22, 32 });
+	right_shot.PushBack({ 303, 56, 22, 32 });
+	right_shot.PushBack({ 341, 56, 22, 32 });
+	right_shot.PushBack({ 382, 56, 22, 32 });
+	right_shot.speed = 0.2f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -120,147 +145,37 @@ update_status ModulePlayer::Update()
 
 	int speed = 1;
 
-	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
 	{
 		position.y -= speed;
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && camera_y + SCREEN_HEIGHT - 5 > position.y + 32)
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && camera_y + SCREEN_HEIGHT - 5 > position.y + 32)
 	{
 		position.y += speed;
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&
 		App->render->camera.x + SCREEN_WIDTH > position.x + 19)
 	{
 		position.x += speed;
-		if(current_animation != &right)
+		if (current_animation != &right)
 		{
 			right.Reset();
 			current_animation = &right;
 		}
+
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->render->camera.x < position.x)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->render->camera.x < position.x)
 	{
 		position.x -= speed;
-		if(current_animation != &left)
+		if (current_animation != &left)
 		{
 			left.Reset();
 			current_animation = &left;
 		}
-	}
-	/*
 
-	  z x c
-	z n d l    0 1 2 3 4 5
-	x X n d
-	c X X n
-
-	*/
-
-	bool press_z = false;
-	bool press_x = false;
-	bool press_c = false;
-	if (cooldown > 0)
-	{
-		cooldown -= 1;
-	}
-
-
-	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_DOWN)
-	{time_z= 5;}
-
-	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
-	{time_x = 5;}
-
-	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
-	{time_c = 5;}
-
-
-	if (time_z > 0)
-	{
-		time_z -= 1;
-	}
-
-	if (time_z == 0)
-	{press_z = false;}
-	else { press_z = true; }
-
-
-
-	if (time_x > 0)
-	{
-		time_x -= 1;
-	}
-
-	if (time_x == 0)
-	{press_x = false;}
-	else { press_x = true; }
-
-
-
-	if (time_c > 0)
-	{
-		time_c -= 1;
-	}
-
-	if (time_c == 0)
-	{press_c = false;}
-	else { press_c = true; }
-
-	//combined shots
-	if (press_z && press_x&& cooldown < 5)
-	{
-		App->particles->AddParticle(App->particles->shot_l_up, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->shot_l_down, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
-		time_z = 0; time_x = 0;
-		cooldown = COOLDOWN;
-		App->audio->PlayFx(audio_shot);
-	}
-
-	if (press_x && press_c&& cooldown < 5)
-	{
-		App->particles->AddParticle(App->particles->shot_r_up, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->shot_r_down, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
-		time_z = 0; time_x = 0;
-		cooldown = COOLDOWN;
-		App->audio->PlayFx(audio_shot);
-	}
-
-	if (press_z && press_c&& cooldown < 5)
-	{
-		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
-		time_z = 0; time_x = 0;
-		cooldown = COOLDOWN;
-		App->audio->PlayFx(audio_shot);
-	}
-
-	//simple shots
-	if (press_z && time_z !=0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_J])
-	{
-		App->particles->AddParticle(App->particles->shot_l, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y + 10, COLLIDER_PLAYER_SHOT);
-		cooldown = COOLDOWN;
-		App->audio->PlayFx(audio_shot);
-
-	}
-	if (press_x && time_x != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_K])
-	{
-		App->particles->AddParticle(App->particles->laser, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
-		cooldown = COOLDOWN;
-		App->audio->PlayFx(audio_shot);
-
-
-	}
-	if (press_c && time_c != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_L])
-	{
-		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y + 10, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->shot_r, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
-		cooldown = COOLDOWN;
-		App->audio->PlayFx(audio_shot);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
@@ -274,12 +189,178 @@ update_status ModulePlayer::Update()
 		current_animation = &idle;
 	}
 
+
+	/*
+
+	  z x c
+	  z n d l    0 1 2 3 4 5
+	  x X n d
+	  c X X n
+
+	  */
+
+	bool press_z = false;
+	bool press_x = false;
+	bool press_c = false;
+	if (cooldown > 0)
+	{
+		cooldown -= 1;
+	}
+
+
+	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_DOWN)
+	{
+		time_z = 5;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+	{
+		time_x = 5;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
+	{
+		time_c = 5;
+	}
+
+
+	if (time_z > 0)
+	{
+		time_z -= 1;
+		current_animation = &left_shot;
+	}
+
+	if (time_z == 0)
+	{
+		press_z = false;
+	}
+	else { press_z = true; }
+
+
+
+	if (time_x > 0)
+	{
+		time_x -= 1;
+		current_animation = &idle_shot;
+	}
+
+	if (time_x == 0)
+	{
+		press_x = false;
+	}
+	else { press_x = true; }
+
+
+
+	if (time_c > 0)
+	{
+		time_c -= 1;
+		current_animation = &right_shot;
+	}
+
+	if (time_c == 0)
+	{
+		press_c = false;
+	}
+	else { press_c = true; }
+
+	//combined shots
+	if (press_z && press_x&& cooldown < 5)
+	{
+		App->particles->AddParticle(App->particles->shot_l_up, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_l_down, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		time_z = 0; time_x = 0;
+		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
+		setanim = 30;
+		lastkey = 0;
+
+	}
+
+	if (press_x && press_c&& cooldown < 5)
+	{
+		App->particles->AddParticle(App->particles->shot_r_up, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_r_down, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		time_z = 0; time_x = 0;
+		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
+		setanim = 30;
+		lastkey = 2;
+	}
+
+	if (press_z && press_c&& cooldown < 5)
+	{
+		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		time_z = 0; time_x = 0;
+		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
+		setanim = 30;
+		lastkey = 1;
+	}
+
+	//simple shots
+	if (press_z && time_z != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_J])
+	{
+		App->particles->AddParticle(App->particles->shot_l, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y + 10, COLLIDER_PLAYER_SHOT);
+		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
+		setanim = 30;
+		lastkey = 0;
+	}
+	if (press_x && time_x != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_K])
+	{
+		App->particles->AddParticle(App->particles->laser, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
+		setanim = 30;
+		lastkey = 1;
+	}
+	if (press_c && time_c != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_L])
+	{
+		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot_r, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
+		cooldown = COOLDOWN;
+		App->audio->PlayFx(audio_shot);
+		setanim = 30;
+		lastkey = 2;
+
+	}
+	if (setanim > 0)
+	{
+		setanim -= 1;
+	}
+
+	if (setanim != 0)//means the player has shot in X time so the sprites will be the walking ones
+	{
+
+		if (lastkey == 2)
+		{
+			current_animation = &left_shot;
+		}
+
+		if (lastkey == 1)
+		{
+			current_animation = &idle_shot;
+		}
+
+		if (lastkey == 0)
+		{
+			current_animation = &right_shot;
+		}
+
+	}
+	
 	col->SetPos(position.x, position.y);
 	col_base->SetPos(position.x+1, position.y+18);
 
 	// Draw everything --------------------------------------
+	
 	sprintf_s(scores, 8, "%7d", score);
 	App->fonts->BlitText(8,8,font_score,scores);
+
 	if(destroyed == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
@@ -341,7 +422,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			lifes = 3;
 			LOG("OUT OF LIFES");
 
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 
 		}
 
@@ -360,7 +441,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			lifes = 3;
 			LOG("OUT OF LIFES");
 
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 
 		}
 

@@ -13,6 +13,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleFonts.h"
 #include "ModuleAudio.h"
+#include "ModuleGameOver.h"
 
 Application::Application()
 {
@@ -24,6 +25,7 @@ Application::Application()
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = scene_intro = new ModuleSceneIntro();
 	modules[i++] = scene_space = new ModuleSceneSpace();
+	modules[i++] = scene_gameover = new ModuleGameOver();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
@@ -44,6 +46,7 @@ bool Application::Init()
 
 	// Deactivate modules here ----
 	scene_space->Disable();
+	scene_gameover->Disable();
 	player->Disable();
 	collision->Disable();
 	enemies->Disable();

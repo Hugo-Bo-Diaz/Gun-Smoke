@@ -14,14 +14,17 @@ ModuleParticles::ModuleParticles()
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
+	explosion.anim.PushBack({ 22, 167, 19, 10 });
+	explosion.anim.PushBack({ 54, 164, 21, 13 });
+	explosion.anim.PushBack({ 92, 159, 25, 18 });
+	explosion.anim.PushBack({ 130, 154, 29, 23 });
+	explosion.anim.PushBack({ 171, 156, 28, 21 });
+	explosion.anim.PushBack({ 211, 160, 24, 17 });
+	explosion.anim.PushBack({ 248, 157, 32, 21 });
+	explosion.anim.PushBack({ 328, 147, 31, 31 });
+	explosion.anim.PushBack({ 369, 148, 26, 29 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	explosion.anim.speed = 0.15f;
 
 	laser.anim.PushBack({221, 131, 2, 5 });
 	laser.anim.PushBack({339, 131, 5, 6 });
@@ -94,6 +97,36 @@ ModuleParticles::ModuleParticles()
 	enemy_bullet.anim.PushBack({315,11,6,6});
 	enemy_bullet.anim.loop = false;
 	enemy_bullet.life = 750;
+
+	enemy_bullet_2.anim.PushBack({ 315, 11, 6, 6 });
+	enemy_bullet_2.anim.loop = false;
+	enemy_bullet_2.life = 1500;
+
+	tnt.anim.PushBack({ 458, 83, 8, 6 });
+	tnt.anim.PushBack({ 432, 81, 10, 9 });
+	tnt.anim.PushBack({ 406, 78, 13, 13 });
+	tnt.anim.PushBack({ 432, 81, 10, 9 });
+	tnt.anim.PushBack({ 458, 83, 8, 6 });
+	tnt.anim.PushBack({ 483, 87, 7, 3 });
+	tnt.anim.loop = false;
+	tnt.anim.speed = 0.15f;
+
+	mechdeath.anim.PushBack({ 16, 194, 30, 30 });
+	mechdeath.anim.PushBack({ 56, 194, 29, 28 });
+	mechdeath.anim.PushBack({ 96, 194, 29, 27 });
+	mechdeath.anim.PushBack({ 135, 206, 32, 19 });
+	
+	mechdeath.anim.loop = false;
+	mechdeath.anim.speed = 0.1f;
+
+	cookiedeath.anim.PushBack({ 183, 195, 24, 24 });
+	cookiedeath.anim.PushBack({ 222, 194, 26, 26 });
+	cookiedeath.anim.PushBack({ 262, 200, 27, 18 });
+	cookiedeath.anim.PushBack({ 302, 201, 28, 20 });
+
+	cookiedeath.anim.loop = false;
+	cookiedeath.anim.speed = 0.1f;
+
 }
 
 ModuleParticles::~ModuleParticles()

@@ -94,11 +94,9 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 145, -2814, 15, 15 }, COLLIDER_WALL);
 
 	// Enemies GunMen ---
-	//App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
+	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 68, -73);
-
-	//App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 102, -157);
+	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 102, -157);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 1, -222);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 24, -280);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 24, -362);
@@ -136,9 +134,9 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 100, -2620);
 	
 	// Enemies Sniper ---
-	/*App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, - 132);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, - 132);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -420);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -600);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -580);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -1090);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, -1250);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, -1440);
@@ -146,17 +144,18 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2175);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2365);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2560);
-	*/
+	
 	// Enemies BomberMen ---
+	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 100, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 31, -733);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 120, -770);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 95, -2280);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 50, -2535);
-	/*
+	
 	// Enemies Rifle ---
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 130, -1810);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 190, -1810);
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 50, -2140);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 50, -2140);
 
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 120, -80);
@@ -218,8 +217,8 @@ update_status ModuleSceneSpace::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -2814, NULL);
 
-	App->fonts->BlitText(10, 0, font_score, "gunman-1");
-	App->fonts->BlitText(80, 0, font_score, "hi-score");
+	App->fonts->BlitText(10, 0, font_score, "gunman1");
+	App->fonts->BlitText(80, 0, font_score, "hiscore");
 
 
 	return UPDATE_CONTINUE;

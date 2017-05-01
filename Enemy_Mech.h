@@ -14,11 +14,13 @@ private:
 	Path path;
 public:
 	Enemy_Mech(int x, int y);
+	~Enemy_Mech();
 	void Move();
 	int value_between(int, int);
 	iPoint path_dest;
 	iPoint path_from;
 	uint path_start;
 	uint next_shot = 0;
+	float bullet_angle = 0;
 };
 #endif
