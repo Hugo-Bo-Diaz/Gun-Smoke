@@ -7,26 +7,31 @@
 struct SDL_Texture;
 struct Collider;
 
+enum POWERUP_TYPE
+{
+	POWERUP_BOOTS,
+	POWERUP_RIFLE,
+	POWERUP_BULLETS,
+	POWERUP_MAX
+};
+
 class Powerup
 {
-private:
-
-	Collider* collider = nullptr;
-	Collider* col = nullptr;
-
 public:
-	Powerup(int x, int y);
+
+	Powerup() {};
 	~Powerup();
+	Collider* collider = nullptr;
 
 	iPoint position;
 	SDL_Rect section;
-	SDL_Texture* texture;
+
+	POWERUP_TYPE type;
 
 	const Collider* GetCollider() const;
-	const Collider* GetCol() const;
 
-	virtual void Draw(SDL_Texture* sprites);
-	virtual void OnCollision(Collider* c1, Collider* c2) {};
+	virtual SDL_Rect Draw() {};
+	virtual void OnCollision() {};
 };
 
 
