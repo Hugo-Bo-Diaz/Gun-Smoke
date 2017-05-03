@@ -1,3 +1,4 @@
-﻿  ModuleGameOver.cpp
-  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Gun-Smoke\Debug\SDL8 Handout.exe
-  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Gun-Smoke\Debug\SDL8 Handout.pdb (Full PDB)
+﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  powerup.cpp
+  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
+  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.pdb (Full PDB)

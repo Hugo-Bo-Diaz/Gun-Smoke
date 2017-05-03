@@ -55,6 +55,7 @@ bool ModuleGameOver::CleanUp()
 {
 	LOG("Unloading space scene");
 
+	 App->fonts->UnLoad(font_score);
 	App->textures->Unload(background);
 
 	return true;

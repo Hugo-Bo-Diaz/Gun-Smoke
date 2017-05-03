@@ -15,6 +15,9 @@
     <Filter Include="Modules\Enemies">
       <UniqueIdentifier>{80c7d80e-c1d5-40e4-99f0-3e65a0ee8834}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Powerups">
+      <UniqueIdentifier>{c81a5ed1-7bbf-4ac6-bf77-ab8de9f2531f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -95,6 +98,9 @@
     <ClInclude Include="ModuleGameOver.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="powerup.h">
+      <Filter>Modules\Powerups</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -162,6 +168,9 @@
     </ClCompile>
     <ClCompile Include="ModuleGameOver.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="powerup.cpp">
+      <Filter>Modules\Powerups</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
