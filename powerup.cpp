@@ -17,7 +17,3 @@ const Collider* Powerup::GetCollider() const
 	return collider;
 }
 
-const Collider* Powerup::GetCol() const
-{
-	return col;
-}

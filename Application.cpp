@@ -14,6 +14,7 @@
 #include "ModuleFonts.h"
 #include "ModuleAudio.h"
 #include "ModuleGameOver.h"
+#include "ModulePowerup.h"
 
 Application::Application()
 {
@@ -27,6 +28,7 @@ Application::Application()
 	modules[i++] = scene_space = new ModuleSceneSpace();
 	modules[i++] = scene_gameover = new ModuleGameOver();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = powerup = new ModulePowerup();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();

@@ -16,7 +16,7 @@ Powerup_Boots::Powerup_Boots(int x, int y)
 	section.w = 18;
 
 	type = POWERUP_BOOTS;
-	collider = App->collision->AddCollider(section, COLLIDER_POWER_UP,);
+	collider = App->collision->AddCollider(section, COLLIDER_POWER_UP,(Module*)App->powerup);
 
 }
 

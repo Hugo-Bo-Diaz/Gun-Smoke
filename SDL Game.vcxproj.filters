@@ -107,6 +107,12 @@
     <ClInclude Include="ModulePowerup.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Barrel.h">
+      <Filter>Modules\Powerups</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleBarrel.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -183,6 +189,12 @@
     </ClCompile>
     <ClCompile Include="ModulePowerup.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Barrel.cpp">
+      <Filter>Modules\Powerups</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleBarrel.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

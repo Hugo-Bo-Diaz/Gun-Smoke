@@ -83,19 +83,23 @@ bool ModulePowerup::AddPowerup(int x, int y, POWERUP_TYPE type)
 			{
 			case POWERUP_TYPE::POWERUP_BOOTS:
 				powerups[i] = new Powerup_Boots(x, y);
+				ret = true;
 				break;
 
 			case POWERUP_TYPE::POWERUP_RIFLE:
                 //powerups[i] = new Powerup_Rifle(x, y);
+				ret = true;
 				break;
 
 			case POWERUP_TYPE::POWERUP_BULLETS:
 				//powerups[i] = new Powerup_Bullets(x, y);
+				ret = true;
 				break;
 
 			}
 		}
 	}
+	return ret;
 }
 
 void ModulePowerup::OnCollision(Collider* c1, Collider* c2)

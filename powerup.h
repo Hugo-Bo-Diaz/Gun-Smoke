@@ -9,6 +9,7 @@ struct Collider;
 
 enum POWERUP_TYPE
 {
+	POWERUP_NULL,
 	POWERUP_BOOTS,
 	POWERUP_RIFLE,
 	POWERUP_BULLETS,
@@ -30,7 +31,7 @@ public:
 
 	const Collider* GetCollider() const;
 
-	virtual SDL_Rect Draw() {};
+	virtual SDL_Rect Draw() {return section;};
 	virtual void OnCollision() {};
 };
 
