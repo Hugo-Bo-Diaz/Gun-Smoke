@@ -24,6 +24,10 @@ bool ModuleGameOver::Start()
 	LOG("Loading Game Over Scene");
 
 	background = App->textures->Load("gunsmoke/start.png");
+	for (int i = 0; i < 5; i++)
+	{
+		highscores[i] = 0;
+	}
 
 	App->render->camera.x = App->render->camera.y = 0;
 

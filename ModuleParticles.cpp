@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -166,6 +167,19 @@ bool ModuleParticles::CleanUp()
 // Update: draw background
 update_status ModuleParticles::Update()
 {
+	if (powerup_activated == true)
+	{
+		shot_l.life = SHOT_LIFE + App->player->powerup[1] * 45;
+		shot_l_down.life = SHOT_LIFE + App->player->powerup[1] * 45;
+		shot_l_up.life = SHOT_LIFE + App->player->powerup[1] * 45;
+		shot_r.life = SHOT_LIFE + App->player->powerup[1] * 45;
+		shot_r_down.life = SHOT_LIFE + App->player->powerup[1] * 45;
+		shot_r_up.life = SHOT_LIFE + App->player->powerup[1] * 45;
+		laser.life = SHOT_LIFE + App->player->powerup[1] * 45;
+
+		powerup_activated = false;
+	}
+
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		Particle* p = active[i];

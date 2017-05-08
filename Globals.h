@@ -33,6 +33,6 @@ typedef unsigned int uint;
 #define REN_VSYNC 1
 
 #define COOLDOWN 15
-#define SHOT_LIFE 450// 60x sec 7.5 sec = 7500
+#define SHOT_LIFE 675// 60x sec 7.5 sec = 7500 //// 450 min 675-  45*x
 
 #endif // __GLOBALS_H__

@@ -9,6 +9,8 @@
 
 Powerup::~Powerup()
 {
+	if (collider != nullptr)
+		collider->to_delete = true;
 }
 
 

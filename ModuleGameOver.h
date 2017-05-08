@@ -20,7 +20,7 @@ public:
 	int auxiliar;
 	int auxiliar2;
 
-	int highscores[5] = { 0, 0, 0, 0, 0 };
+	int highscores[5];
 
 
 public:

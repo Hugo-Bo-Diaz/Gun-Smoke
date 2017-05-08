@@ -103,9 +103,9 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_POWER_UP][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_PARTICLE] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_ENEMY_BASE] = false;
-	matrix[COLLIDER_POWER_UP][COLLIDER_PLAYER_BASE] = true;
 	matrix[COLLIDER_POWER_UP][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_BARREL] = false;
+	matrix[COLLIDER_POWER_UP][COLLIDER_PLAYER_BASE] = true;
 
 	matrix[COLLIDER_BARREL][COLLIDER_WALL] = false;
 	matrix[COLLIDER_BARREL][COLLIDER_PLAYER] = false;
@@ -221,6 +221,8 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_BARREL: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
+			case COLLIDER_POWER_UP: // magenta
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 
 
 		}

@@ -50,6 +50,8 @@ private:
 
 public:
 
+	bool powerup_activated = false;
+
 	Particle explosion;
 	Particle laser;
 	Particle shot_l;

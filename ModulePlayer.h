@@ -14,6 +14,14 @@ public:
 	ModulePlayer();
 	~ModulePlayer();
 
+	//POWERUPS
+	/*
+	0-> boots
+	1-> rifle
+	2-> bullets
+	*/
+	int powerup[3];
+
 	int timer = 0;
 	bool itstime;
 	bool Start();
@@ -35,8 +43,8 @@ public:
 	Animation idle_shot;
 	Animation right_shot;
 
-	iPoint position;
-	iPoint previous;
+	fPoint position;
+	fPoint previous;
 	Collider* col;
 	Collider* col_base;
 	bool destroyed = false;

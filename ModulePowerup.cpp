@@ -111,6 +111,8 @@ void ModulePowerup::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == COLLIDER_PLAYER_BASE)
 			{
 				powerups[i]->OnCollision();
+				delete powerups[i];
+				powerups[i] = nullptr;
 			}
 			break;
 		}

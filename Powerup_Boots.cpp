@@ -4,14 +4,16 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "Powerup.h"
+#include "ModulePlayer.h"
+#include "ModuleParticles.h"
 
 Powerup_Boots::Powerup_Boots(int x, int y)
 {
 	position.x = x;
 	position.y = y;
 
-	section.x = 24;
-	section.y = 5 ;
+	section.x = position.x;
+	section.y = position.y ;
 	section.h = 18;
 	section.w = 18;
 
@@ -29,9 +31,11 @@ Powerup_Boots::~Powerup_Boots()
 void Powerup_Boots::OnCollision() 
 {
 	//INCREASE PLAYER POWERS
+	App->player->powerup[0]+=5;
+	App->particles->powerup_activated = true;
 }
 
 SDL_Rect Powerup_Boots::Draw()
 {
-	return section;
+	return{24,0,18,18};
 }

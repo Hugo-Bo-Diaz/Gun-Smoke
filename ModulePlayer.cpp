@@ -81,6 +81,8 @@ bool ModulePlayer::Start()
 	position.y = 200;
 	camera_y = 0;
 	
+	powerup[1] = 0;
+
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
 
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
@@ -143,7 +145,7 @@ update_status ModulePlayer::Update()
 
 
 
-	int speed = 1;
+	int speed = 1 + powerup[0]*0.25;
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
 	{
@@ -362,7 +364,7 @@ update_status ModulePlayer::Update()
 	App->fonts->BlitText(8,8,font_score,scores);
 
 	if(destroyed == false)
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		App->render->Blit(graphics, (int)position.x, (int)position.y, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }
