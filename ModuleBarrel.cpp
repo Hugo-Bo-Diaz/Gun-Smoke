@@ -26,12 +26,6 @@ bool ModuleBarrel::Start()
 	return true;
 }
 
-update_status ModuleBarrel::PreUpdate()
-{
-	// check camera position to decide what to spawn
-	return UPDATE_CONTINUE;
-}
-
 // Called before render is available
 update_status ModuleBarrel::Update()
 {
@@ -44,11 +38,6 @@ update_status ModuleBarrel::Update()
 	return UPDATE_CONTINUE;
 }
 
-update_status ModuleBarrel::PostUpdate()
-{
-	// check camera position to decide what to spawn
-	return UPDATE_CONTINUE;
-}
 
 // Called before quitting
 bool ModuleBarrel::CleanUp()
@@ -75,9 +64,10 @@ void ModuleBarrel::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (barrels[i] != nullptr && barrels[i]->GetCollider() == c1)
 		{
-			if (c2->type == COLLIDER_PLAYER_BASE)
+			if (c2->type == COLLIDER_PLAYER_SHOT)
 			{
 				barrels[i]->OnCollision();
+				delete barrels[i];
 			}
 			break;
 		}

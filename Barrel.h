@@ -24,6 +24,7 @@ public:
 
 	void Draw();
 	void OnCollision();
+	SDL_Rect section;
 };
 
 

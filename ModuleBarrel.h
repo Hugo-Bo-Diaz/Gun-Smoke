@@ -16,20 +16,18 @@ public:
 	~ModuleBarrel();
 
 	bool Start();
-	update_status PreUpdate();
+
 	update_status Update();
-	update_status PostUpdate();
+
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
-
-private:
-
+	SDL_Texture* sprites;
 	void AddBarrel(int x, int y, POWERUP_TYPE type);
 
 private:
 
 	Barrel* barrels[MAX_BARRELS];
-	SDL_Texture* sprites;
+
 };
 
 #endif // __ModuleEnemies_H__

@@ -9,6 +9,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleSceneSpace.h"
 #include "ModuleFonts.h"
+#include "ModuleBarrel.h"
+#include "ModulePowerup.h"
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneSpace::ModuleSceneSpace()
@@ -159,7 +161,10 @@ bool ModuleSceneSpace::Start()
 
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 120, -80);
-	
+	App->barrel->AddBarrel(100,100,POWERUP_BOOTS);
+	App->barrel->AddBarrel(200, 100, POWERUP_NULL);
+
+
 	return true;
 }
 

@@ -15,6 +15,7 @@
 #include "ModuleAudio.h"
 #include "ModuleGameOver.h"
 #include "ModulePowerup.h"
+#include "ModuleBarrel.h"
 
 Application::Application()
 {
@@ -28,6 +29,7 @@ Application::Application()
 	modules[i++] = scene_space = new ModuleSceneSpace();
 	modules[i++] = scene_gameover = new ModuleGameOver();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = barrel = new ModuleBarrel();
 	modules[i++] = powerup = new ModulePowerup();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();

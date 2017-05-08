@@ -194,7 +194,7 @@
       <Filter>Modules\Powerups</Filter>
     </ClCompile>
     <ClCompile Include="ModuleBarrel.cpp">
-      <Filter>Core</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
