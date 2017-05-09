@@ -54,6 +54,8 @@ bool Application::Init()
 	player->Disable();
 	collision->Disable();
 	enemies->Disable();
+	barrel->Disable();
+	powerup->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

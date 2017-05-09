@@ -42,7 +42,7 @@ update_status ModuleBarrel::Update()
 // Called before quitting
 bool ModuleBarrel::CleanUp()
 {
-	LOG("Freeing all enemies");
+	LOG("Freeing all barrels");
 
 	App->textures->Unload(sprites);
 
@@ -66,8 +66,17 @@ void ModuleBarrel::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c2->type == COLLIDER_PLAYER_SHOT)
 			{
+				if (barrels[i]->hp > 0)
+				{
+					barrels[i]->hp -= 1;
+				}
+				else
+				{
 				barrels[i]->OnCollision();
 				delete barrels[i];
+				barrels[i] = nullptr;
+				}
+
 			}
 			break;
 		}

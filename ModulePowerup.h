@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Powerup_Boots.h"
+#include "Powerup_Rifle.h"
 
 #define MAX_POWERUPS 20
 

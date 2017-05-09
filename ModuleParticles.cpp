@@ -169,13 +169,13 @@ update_status ModuleParticles::Update()
 {
 	if (powerup_activated == true)
 	{
-		shot_l.life = SHOT_LIFE + App->player->powerup[1] * 45;
-		shot_l_down.life = SHOT_LIFE + App->player->powerup[1] * 45;
-		shot_l_up.life = SHOT_LIFE + App->player->powerup[1] * 45;
-		shot_r.life = SHOT_LIFE + App->player->powerup[1] * 45;
-		shot_r_down.life = SHOT_LIFE + App->player->powerup[1] * 45;
-		shot_r_up.life = SHOT_LIFE + App->player->powerup[1] * 45;
-		laser.life = SHOT_LIFE + App->player->powerup[1] * 45;
+		shot_l.life =		SHOT_LIFE + App->player->powerup[1] * 16;
+		shot_l_down.life =	SHOT_LIFE + App->player->powerup[1] * 16;
+		shot_l_up.life =	SHOT_LIFE + App->player->powerup[1] * 16;
+		shot_r.life =		SHOT_LIFE + App->player->powerup[1] * 16;
+		shot_r_down.life =	SHOT_LIFE + App->player->powerup[1] * 16;
+		shot_r_up.life =	SHOT_LIFE + App->player->powerup[1] * 16;
+		laser.life =		SHOT_LIFE + App->player->powerup[1] * 16;
 
 		powerup_activated = false;
 	}
@@ -190,6 +190,7 @@ update_status ModuleParticles::Update()
 		if(p->Update() == false)
 		{
 			delete p;
+			p = nullptr;    //WE CHANGED THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			active[i] = nullptr;
 		}
 		else if(SDL_GetTicks() >= p->born)

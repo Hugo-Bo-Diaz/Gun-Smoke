@@ -23,9 +23,14 @@ Barrel::Barrel(int x, int y, POWERUP_TYPE ptype)
 
 Barrel::~Barrel()
 {
-	App->powerup->AddPowerup(position.x, position.y, type);
+	if (hp == 0)
+	{
+		App->powerup->AddPowerup(position.x, position.y, type);
+	}
 	if (collider != nullptr)
+	{
 		collider->to_delete = true;
+	}
 }
 
 
@@ -41,9 +46,11 @@ void Barrel::Draw()
 
 void Barrel::OnCollision()
 {
+
 	if (type != POWERUP_NULL)
 	{
 		App->powerup->AddPowerup(position.x,position.y,type);
 	}
+
 //END MY SUFFERING
 }

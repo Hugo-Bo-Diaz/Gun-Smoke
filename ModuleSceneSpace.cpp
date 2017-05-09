@@ -33,7 +33,10 @@ bool ModuleSceneSpace::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
-	
+
+	App->barrel->Enable();
+	App->powerup->Enable();
+
 	// Colliders ---
 	//App->collision->AddCollider({ -10, 260, 20, -2820 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 117, 105, 23, 21 }, COLLIDER_WALL); // POZOS
@@ -162,7 +165,7 @@ bool ModuleSceneSpace::Start()
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 120, -80);
 	App->barrel->AddBarrel(100,100,POWERUP_BOOTS);
-	App->barrel->AddBarrel(200, 100, POWERUP_NULL);
+	App->barrel->AddBarrel(200, 100, POWERUP_RIFLE);
 
 
 	return true;
@@ -176,10 +179,14 @@ bool ModuleSceneSpace::CleanUp()
  	App->textures->Unload(background);
 	App->fonts->UnLoad(font_score);
 
+	App->powerup->Disable();
+	App->barrel->Disable();
+
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
 	App->player->Disable();
+
 
 	return true;
 }

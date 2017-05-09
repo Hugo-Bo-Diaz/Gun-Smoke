@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -101,6 +101,7 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="powerup.h" />
     <ClInclude Include="Powerup_Boots.h" />
+    <ClInclude Include="Powerup_Rifle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -130,6 +131,7 @@
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="powerup.cpp" />
     <ClCompile Include="Powerup_Boots.cpp" />
+    <ClCompile Include="Powerup_Rifle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Downloads\player.png" />

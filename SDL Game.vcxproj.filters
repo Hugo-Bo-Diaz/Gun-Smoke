@@ -113,6 +113,9 @@
     <ClInclude Include="ModuleBarrel.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Powerup_Rifle.h">
+      <Filter>Modules\Powerups</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -195,6 +198,9 @@
     </ClCompile>
     <ClCompile Include="ModuleBarrel.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Powerup_Rifle.cpp">
+      <Filter>Modules\Powerups</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Powerup.h"
 #include "Powerup_Boots.h"
+#include "Powerup_Rifle.h"
 
 
 ModulePowerup::ModulePowerup()
@@ -40,7 +41,7 @@ update_status ModulePowerup::Update()
 		if (powerups[i] != nullptr)
 		{
 			SDL_Rect section = powerups[i]->Draw();
-			App->render->Blit(sprites, powerups[i]->position.x, powerups[i]->position.x, &section);
+			App->render->Blit(sprites, powerups[i]->position.x, powerups[i]->position.y, &section);
 		}
 
 	return UPDATE_CONTINUE;
@@ -87,7 +88,7 @@ bool ModulePowerup::AddPowerup(int x, int y, POWERUP_TYPE type)
 				break;
 
 			case POWERUP_TYPE::POWERUP_RIFLE:
-                //powerups[i] = new Powerup_Rifle(x, y);
+                powerups[i] = new Powerup_Rifle(x, y);
 				ret = true;
 				break;
 

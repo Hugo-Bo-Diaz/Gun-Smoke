@@ -81,13 +81,16 @@ bool ModulePlayer::Start()
 	position.y = 200;
 	camera_y = 0;
 	
+	powerup[0] = 0;	
 	powerup[1] = 0;
+	powerup[2] = 0;
+	App->particles->powerup_activated = true;
 
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
 
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
-	col = App->collision->AddCollider({position.x, position.y, 19, 28}, COLLIDER_PLAYER, this);
-	col_base= App->collision->AddCollider({ position.x, position.y+18, 17, 9 }, COLLIDER_PLAYER_BASE,this);
+	col = App->collision->AddCollider({(int)position.x, (int)position.y, 19, 28}, COLLIDER_PLAYER, this);
+	col_base= App->collision->AddCollider({ (int)position.x, (int)position.y+18, 17, 9 }, COLLIDER_PLAYER_BASE,this);
 
 	return true;
 }
@@ -145,7 +148,7 @@ update_status ModulePlayer::Update()
 
 
 
-	int speed = 1 + powerup[0]*0.25;
+	int speed = 1 + powerup[0]*0.15;
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
 	{

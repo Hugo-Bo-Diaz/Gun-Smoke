@@ -17,6 +17,7 @@ public:
 	Collider* collider = nullptr;
 
 	iPoint position;
+	int hp = 6;
 
 	POWERUP_TYPE type;
 
