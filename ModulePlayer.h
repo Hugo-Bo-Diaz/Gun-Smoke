@@ -33,6 +33,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* sprites = nullptr;
 	Animation* current_animation = nullptr;
 
 	Animation idle;

@@ -4,6 +4,7 @@
 #include "ModulePowerup.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModulePlayer.h"
 #include "Powerup.h"
 #include "Powerup_Boots.h"
 #include "Powerup_Rifle.h"

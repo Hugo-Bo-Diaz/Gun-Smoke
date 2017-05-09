@@ -75,6 +75,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 
 	graphics = App->textures->Load("gunsmoke/player.png");
+	sprites = App->textures->Load("gunsmoke/powerups.png");
 
 	destroyed = false;
 	position.x = 120;
@@ -148,7 +149,7 @@ update_status ModulePlayer::Update()
 
 
 
-	int speed = 1 + powerup[0]*0.15;
+	int speed = 1 + powerup[0]*0.30;
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
 	{
@@ -368,6 +369,26 @@ update_status ModulePlayer::Update()
 
 	if(destroyed == false)
 		App->render->Blit(graphics, (int)position.x, (int)position.y, &(current_animation->GetCurrentFrame()));
+
+	//Draw HUD(lifes / powerups)---------------------------------
+
+	for (uint i = 0; i < lifes; i++)
+	{
+		SDL_Rect rect = { 150, 11, 8, 8 };
+		App->render->Blit(sprites, i * 8, 256-8 +camera_y, &rect);
+	}
+
+	for (uint i = 0; i < powerup[0]; i++)
+	{
+		SDL_Rect rect = { 150, 36, 8, 8 };
+		App->render->Blit(sprites, i * 8+ 8*6, 256 - 8 + camera_y, &rect);
+	}
+
+	for (uint i = 0; i < powerup[1]; i++)
+	{
+		SDL_Rect rect = { 150, 36, 8, 8 };
+		App->render->Blit(sprites, i * 8 + 8 * 12, 256 - 8 + camera_y, &rect);
+	}
 
 	return UPDATE_CONTINUE;
 }

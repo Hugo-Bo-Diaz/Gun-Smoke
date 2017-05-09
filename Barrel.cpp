@@ -47,10 +47,10 @@ void Barrel::Draw()
 void Barrel::OnCollision()
 {
 
-	if (type != POWERUP_NULL)
+	/*if (type != POWERUP_NULL)
 	{
 		App->powerup->AddPowerup(position.x,position.y,type);
-	}
+	}*/
 
 //END MY SUFFERING
 }

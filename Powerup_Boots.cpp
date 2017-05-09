@@ -31,8 +31,7 @@ Powerup_Boots::~Powerup_Boots()
 void Powerup_Boots::OnCollision() 
 {
 	//INCREASE PLAYER POWERS
-	App->player->powerup[0]+=5;
-	App->particles->powerup_activated = true;
+	App->player->powerup[0] += 5;
 }
 
 SDL_Rect Powerup_Boots::Draw()
