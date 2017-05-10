@@ -74,56 +74,67 @@ int Enemy_Boss::value_between(int min, int max)
 
 void Enemy_Boss::Move()
 {
-	if (state == BOSS_MOVING)
+	switch (state)
 	{
-		if (moving == false)
+	case BOSS_MOVING:
 		{
-			bool path_valid = false;
-			//select new path
-			while (!path_valid)
+			if (moving == false)
 			{
-				path_dest.x = value_between(position.x - 25, position.x + 25);
-				path_dest.y = value_between(position.y - 25, position.y + 25);
-
-				if	(	(path_dest.x < 160 && path_dest.x > 70)
-					||	(path_dest.y < 160 && path_dest.y > 70)) // not out of zone
+				bool path_valid = false;
+				//select new path
+				while (!path_valid)
 				{
-					path_valid = true;
+					path_dest.x = value_between(position.x - 25, position.x + 25);
+					path_dest.y = value_between(position.y - 25, position.y + 25);
+
+					if	(	(path_dest.x < 160 && path_dest.x > 70)
+						||	(path_dest.y < 160 && path_dest.y > 70)) // not out of zone
+					{
+						path_valid = true;
+					}
 				}
+				path_from = position;
+				moving = true;
+				path_start = SDL_GetTicks();
 			}
-			path_from = position;
-			moving = true;
-			path_start = SDL_GetTicks();
-		}
 
-		//shoot next bullet
-		if (SDL_GetTicks() > next_shot)
+			//shoot next bullet
+			if (SDL_GetTicks() > next_shot)
+			{
+				float bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
+				App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 2 * cos(bullet_angle), 2 * sin(bullet_angle));
+			}
+
+			//check destination
+			uint elapsed = SDL_GetTicks() - path_start;
+			if (elapsed > PATH_DURATION)
+			{
+				elapsed = PATH_DURATION;
+				moving = false;
+			}
+
+			//move towards path
+			position.x = path_from.x + (path_dest.x - path_from.x) * (int)elapsed / PATH_DURATION;
+			position.y = path_from.y + (path_dest.y - path_from.y) * (int)elapsed / PATH_DURATION;
+
+			//look to player
+			int pangle = 3 + trunc((M_PI / 8) + atan2(position.y - App->player->position.y, position.x - App->player->position.x) / (M_PI / 4));
+			animation = &animations[pangle];
+		}
+		break;
+		case BOSS_SHOOTING:
 		{
-			float bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
-			App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 2 * cos(bullet_angle), 2 * sin(bullet_angle));
-		}
 
-		//check destination
-		uint elapsed = SDL_GetTicks() - path_start;
-		if (elapsed > PATH_DURATION)
+		}
+		break;
+		case BOSS_CROUCHED:
 		{
-			elapsed = PATH_DURATION;
-			moving = false;
+			if (SDL_GetTicks() > timer_crouch)// crouching is over
+			{
+				state = BOSS_MOVING;
+			}
+
 		}
-
-		//move towards path
-		position.x = path_from.x + (path_dest.x - path_from.x) * (int)elapsed / PATH_DURATION;
-		position.y = path_from.y + (path_dest.y - path_from.y) * (int)elapsed / PATH_DURATION;
-
-		//look to player
-		int pangle = 3 + trunc((M_PI / 8) + atan2(position.y - App->player->position.y, position.x - App->player->position.x) / (M_PI / 4));
-		animation = &animations[pangle];
-	}
-	if (state == BOSS_SHOOTING)
-	{
-	}
-	if (state == BOSS_CROUCHED)
-	{
 	}
 	//move collider
 	col->SetPos(position.x, position.y + 17);

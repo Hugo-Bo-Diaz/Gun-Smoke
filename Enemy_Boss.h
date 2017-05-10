@@ -4,7 +4,7 @@
 #include "Enemy.h"
 #include "Path.h"
 
-enum BOSS_STATE
+enum boss_state
 {
 	BOSS_CROUCHED,
 	BOSS_SHOOTING,
@@ -20,9 +20,10 @@ private:
 	Animation fly;
 	Path path;
 	//timers
-	BOSS_STATE state = BOSS_CROUCHED;
-	int timer_crouch = value_between(2000, 4000); //2-4 sec after spawn
+	boss_state state = BOSS_CROUCHED;
+	int timer_crouch = value_between(2000, 4000) + SDL_GetTicks(); //2-4 sec after spawn
 	int timer_shots;
+	bool crouched= true;
 public:
 	Enemy_Boss(int x, int y);
 	~Enemy_Boss();
