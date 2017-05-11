@@ -8,8 +8,8 @@
 #include "SDL/include/SDL_timer.h"
 #include "ModuleParticles.h"
 
-#define PATH_DURATION 500
-#define BULLET_IINTERVAL 300
+#define PATH_DURATION 1000
+#define BULLET_INTERVAL 300
 
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
@@ -65,6 +65,7 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 	path_dest.y = position.y;
 	path_dest.x = position.x;
 
+	hp = 12;
 }
 
 int Enemy_Boss::value_between(int min, int max)
@@ -84,11 +85,11 @@ void Enemy_Boss::Move()
 				//select new path
 				while (!path_valid)
 				{
-					path_dest.x = value_between(position.x - 25, position.x + 25);
-					path_dest.y = value_between(position.y - 25, position.y + 25);
+					path_dest.x = value_between(position.x - 50, position.x + 50);
+					path_dest.y = value_between(position.y - 50, position.y + 50);
 
-					if	(	(path_dest.x < 160 && path_dest.x > 70)
-						||	(path_dest.y < 160 && path_dest.y > 70)) // not out of zone
+					if	(	(path_dest.x < 160		  && path_dest.x > 70   )
+						&&	(path_dest.y < 160 - 2976 && path_dest.y > -2976)) // not out of zone -2976 -> final 
 					{
 						path_valid = true;
 					}
@@ -99,32 +100,51 @@ void Enemy_Boss::Move()
 			}
 
 			//shoot next bullet
-			if (SDL_GetTicks() > next_shot)
-			{
-				float bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
-				App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 2 * cos(bullet_angle), 2 * sin(bullet_angle));
-			}
 
 			//check destination
 			uint elapsed = SDL_GetTicks() - path_start;
-			if (elapsed > PATH_DURATION)
+			if (elapsed > PATH_DURATION)//if he got there
 			{
 				elapsed = PATH_DURATION;
 				moving = false;
+				if (value_between(0, 1) == 1)//roll a 2-sided dice
+				{
+					state = BOSS_SHOOTING;
+					shots_fired = value_between(3, 6);
+					timer_shots = 0;
+				}
 			}
 
 			//move towards path
 			position.x = path_from.x + (path_dest.x - path_from.x) * (int)elapsed / PATH_DURATION;
 			position.y = path_from.y + (path_dest.y - path_from.y) * (int)elapsed / PATH_DURATION;
 
-			//look to player
-			int pangle = 3 + trunc((M_PI / 8) + atan2(position.y - App->player->position.y, position.x - App->player->position.x) / (M_PI / 4));
-			animation = &animations[pangle];
 		}
 		break;
 		case BOSS_SHOOTING:
 		{
-
+			if (SDL_GetTicks() > next_shot && shots_fired > 0 )
+			{
+				float bullet_angle = atan2(App->player->position.y - position.y, App->player->position.x - position.x)*180/M_PI +180;
+				if (bullet_angle < 240 )
+				{
+					App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0,0,1);
+				}
+				if (bullet_angle >= 240 && bullet_angle < 300)
+				{
+					App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 0, 1);
+				}
+				if (bullet_angle > 360)
+				{
+					App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 0, 1);
+				}
+				shots_fired -= 1;
+				next_shot = SDL_GetTicks() + BULLET_INTERVAL;
+			}
+			if (shots_fired == 0)
+			{
+				state = BOSS_MOVING;
+			}
 		}
 		break;
 		case BOSS_CROUCHED:
@@ -135,6 +155,8 @@ void Enemy_Boss::Move()
 			}
 
 		}
+		break;
+
 	}
 	//move collider
 	col->SetPos(position.x, position.y + 17);
@@ -146,6 +168,5 @@ Enemy_Boss::~Enemy_Boss()
 	{
 		App->player->score += 200;
 	}
-
 	App->particles->AddParticle(App->particles->cookiedeath, position.x, position.y, COLLIDER_NONE);
 }

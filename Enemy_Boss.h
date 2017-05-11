@@ -3,6 +3,7 @@
 
 #include "Enemy.h"
 #include "Path.h"
+#include "SDL/include/SDL_timer.h"
 
 enum boss_state
 {
@@ -21,9 +22,11 @@ private:
 	Path path;
 	//timers
 	boss_state state = BOSS_CROUCHED;
-	int timer_crouch = value_between(2000, 4000); //+ SDL_GetTicks(); //2-4 sec after spawn
+	int timer_crouch = value_between(2000, 4000) + SDL_GetTicks(); //2-4 sec after spawn
 	int timer_shots;
 	bool crouched= true;
+	int shots_fired;
+
 public:
 	Enemy_Boss(int x, int y);
 	~Enemy_Boss();
