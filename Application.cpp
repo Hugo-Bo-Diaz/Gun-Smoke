@@ -16,6 +16,7 @@
 #include "ModuleGameOver.h"
 #include "ModulePowerup.h"
 #include "ModuleBarrel.h"
+#include "ModuleSceneTransition.h"
 
 Application::Application()
 {
@@ -28,6 +29,7 @@ Application::Application()
 	modules[i++] = scene_intro = new ModuleSceneIntro();
 	modules[i++] = scene_space = new ModuleSceneSpace();
 	modules[i++] = scene_gameover = new ModuleGameOver();
+	modules[i++] = scene_transit = new ModuleSceneTransition();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = barrel = new ModuleBarrel();
 	modules[i++] = powerup = new ModulePowerup();
@@ -51,6 +53,7 @@ bool Application::Init()
 	// Deactivate modules here ----
 	scene_space->Disable();
 	scene_gameover->Disable();
+	scene_transit->Disable();
 	player->Disable();
 	collision->Disable();
 	enemies->Disable();

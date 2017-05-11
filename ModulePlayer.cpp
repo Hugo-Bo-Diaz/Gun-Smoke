@@ -9,6 +9,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFonts.h"
 #include "ModuleAudio.h"
+#include "ModuleSceneSpace.h"
 #include "SDL/include/SDL_timer.h"
 
 #include<stdio.h>
@@ -16,6 +17,10 @@
 
 ModulePlayer::ModulePlayer()
 {
+	powerup[0] = 0;
+	powerup[1] = 0;
+	powerup[2] = 0;
+
 	// idle animation (just the ship)
 	idle.PushBack({ 23, 15, 20, 32 });
 	idle.PushBack({ 63, 15, 20, 32 });
@@ -78,13 +83,42 @@ bool ModulePlayer::Start()
 	sprites = App->textures->Load("gunsmoke/powerups.png");
 
 	destroyed = false;
-	position.x = 120;
-	position.y = 200;
-	camera_y = 0;
-	
-	powerup[0] = 0;	
-	powerup[1] = 0;
-	powerup[2] = 0;
+	switch (checkpoint)
+	{
+	case 0:
+		{
+			position.x = 120;
+			position.y = 200;
+			camera_y = 0;
+			App->render->camera.y = 0 * SCREEN_SIZE;
+		}
+		break;
+	case 1:
+		{
+			position.x = 120;
+			position.y = -1000;
+			camera_y = -1000;
+			App->render->camera.y = -1000*SCREEN_SIZE;
+		} break;
+	default:
+		{
+			position.x = 120;
+			position.y = 200;
+			camera_y = 0;
+			App->render->camera.y = 0 * SCREEN_SIZE;
+		}
+		break;
+	}
+
+
+
+	if (powerup[0]>0)
+	{powerup[0] -= 1;}
+	if (powerup[1] > 0)
+	{powerup[1] -= 1;}
+	if (powerup[2] > 0)
+	{powerup[2] -= 1;}
+
 	App->particles->powerup_activated = true;
 
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
@@ -119,6 +153,11 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 
+	if (position.y*SCREEN_SIZE < -1000)
+	{
+		checkpoint = 1;
+	}
+
 	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
 		position.y;// Automatic movement
 
@@ -146,8 +185,6 @@ update_status ModulePlayer::Update()
 	{
 		itstime = false;
 	}
-
-
 
 	int speed = 1 + powerup[0]*0.30;
 
@@ -359,7 +396,7 @@ update_status ModulePlayer::Update()
 
 	}
 	
-	col->SetPos(position.x , position.y);
+	col->SetPos(position.x, position.y);
 	col_base->SetPos(position.x+1 , position.y+18);
 
 	// Draw everything --------------------------------------
@@ -441,7 +478,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		lifes -= 1;
 		if (lifes != 0)
 		{
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit,0.3f);
 		}
 		else
 		{
@@ -449,10 +486,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			LOG("OUT OF LIFES");
 
 			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
-
 		}
+			destroyed = true;
 
-		destroyed = true;
 	}
 	if (c1 == col_base && c2->type == COLLIDER_ENEMY_BASE 
 		&& destroyed == false && App->fade->IsFading() == false)
@@ -460,7 +496,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		lifes -= 1;
 		if (lifes != 0)
 		{
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit,0.3f);
+
+
 		}
 		else
 		{
@@ -470,8 +508,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 
 		}
+			destroyed = true;
 
-		destroyed = true;
 	}
 
 

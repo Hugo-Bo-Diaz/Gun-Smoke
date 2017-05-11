@@ -20,7 +20,10 @@ public:
 	1-> rifle
 	2-> bullets
 	*/
+
 	int powerup[3];
+
+	int checkpoint = 0;
 
 	int timer = 0;
 	bool itstime;

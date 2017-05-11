@@ -20,6 +20,7 @@ public:
 	int font_score;
 	SDL_Texture* background = nullptr;
 	SDL_Texture* stars = nullptr;
+	void restart_level();
 };
 
 #endif // __MODULESCENESPACE_H__

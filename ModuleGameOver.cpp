@@ -28,6 +28,12 @@ bool ModuleGameOver::Start()
 {
 	LOG("Loading Game Over Scene");
 
+	App->player->checkpoint = 0;
+
+	App->player->powerup[0] = 0;
+	App->player->powerup[1] = 0;
+	App->player->powerup[2] = 0;
+
 	background = App->textures->Load("gunsmoke/start.png");
 
 	App->render->camera.x = App->render->camera.y = 0;

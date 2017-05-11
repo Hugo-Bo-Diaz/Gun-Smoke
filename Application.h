@@ -3,7 +3,9 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 16
+#define NUM_MODULES 17
+
+
 
 class ModuleWindow;
 class ModuleInput;
@@ -21,6 +23,7 @@ class ModuleFonts;
 class ModuleAudio;
 class ModulePowerup;
 class ModuleBarrel;
+class ModuleSceneTransition;
 class Module;
 
 class Application
@@ -44,6 +47,7 @@ public:
 	ModuleAudio* audio;
 	ModulePowerup * powerup;
 	ModuleBarrel* barrel;
+	ModuleSceneTransition* scene_transit;
 
 public:
 

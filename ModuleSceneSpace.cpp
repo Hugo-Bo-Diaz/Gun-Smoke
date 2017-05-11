@@ -162,6 +162,8 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 190, -1810);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 50, -2140);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 100, -2800);
+
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 120, -80);
 	App->barrel->AddBarrel(100,100,POWERUP_BOOTS);
@@ -186,7 +188,6 @@ bool ModuleSceneSpace::CleanUp()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->player->Disable();
-
 
 	return true;
 }
@@ -223,9 +224,6 @@ update_status ModuleSceneSpace::Update()
 		itstime = false;
 	}
 
-	
-
-
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -2814, NULL);
 
@@ -234,4 +232,10 @@ update_status ModuleSceneSpace::Update()
 
 
 	return UPDATE_CONTINUE;
+}
+
+void ModuleSceneSpace::restart_level()
+{
+	CleanUp();
+	Start();
 }
