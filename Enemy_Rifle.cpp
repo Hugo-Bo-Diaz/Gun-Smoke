@@ -27,6 +27,8 @@ Enemy_Rifle::Enemy_Rifle(int x, int y) : Enemy(x, y)
 	timer = SDL_GetTicks();
 	original_pos.x = x;
 	original_pos.y = y;
+
+	hp = 2;
 }
 
 void Enemy_Rifle::Move()

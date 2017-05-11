@@ -20,6 +20,7 @@ enum ENEMY_TYPES
 	BROWNCOOKIE,
 	MECH,
 	RIFLE,
+	BOSS
 };
 
 class Enemy;

@@ -9,6 +9,7 @@
 #include "Enemy_BrownCookie.h"
 #include "Enemy_Mech.h"
 #include "Enemy_Rifle.h"
+#include "Enemy_Boss.h"
 
 #define SPAWN_MARGIN 650
 
@@ -68,7 +69,7 @@ update_status ModuleEnemies::Update()
 
 update_status ModuleEnemies::PostUpdate()
 {
-	// check camera position to decide what to spawn
+	// check camera position to decide what to de-spawn
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if(enemies[i] != nullptr)
@@ -149,6 +150,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_Rifle(info.x, info.y);
 				break;
 
+			case ENEMY_TYPES::BOSS:
+				enemies[i] = new Enemy_Boss(info.x, info.y);
+				break;
+
+
 		}
 	}
 }
@@ -162,8 +168,12 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c1, c2);
 			if (c2->type == COLLIDER_PLAYER_SHOT)
 			{
-				delete enemies[i];
-				enemies[i] = nullptr;
+				enemies[i]->hp -= 1;
+				if (enemies[i]->hp == 0)
+				{
+					delete enemies[i];
+					enemies[i] = nullptr;
+				}
 			}
 			break;
 		}

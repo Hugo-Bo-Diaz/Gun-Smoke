@@ -1,2 +1,34 @@
-﻿  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
+﻿  ModuleEnemies.cpp
+  Enemy_Rifle.cpp
+c:\users\hugobd\documents\github\gun-smoke\enemy_rifle.cpp(45): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_rifle.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\cmath(65): warning C4577: 'noexcept' used with no exception handling mode specified; termination on exception is not guaranteed. Specify /EHsc
+  Enemy_RedBird.cpp
+c:\users\hugobd\documents\github\gun-smoke\enemy_redbird.cpp(42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_redbird.cpp(43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\cmath(65): warning C4577: 'noexcept' used with no exception handling mode specified; termination on exception is not guaranteed. Specify /EHsc
+  Enemy_Mech.cpp
+c:\users\hugobd\documents\github\gun-smoke\enemy_mech.cpp(76): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_mech.cpp(77): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\cmath(30): warning C4577: 'noexcept' used with no exception handling mode specified; termination on exception is not guaranteed. Specify /EHsc
+  Enemy_BrownCookie.cpp
+c:\users\hugobd\documents\github\gun-smoke\enemy_browncookie.cpp(60): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_browncookie.cpp(148): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_browncookie.cpp(149): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_browncookie.cpp(166): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\cmath(30): warning C4577: 'noexcept' used with no exception handling mode specified; termination on exception is not guaranteed. Specify /EHsc
+  Generating Code...
+  Compiling...
+  ModuleSceneSpace.cpp
+  Enemy_Boss.cpp
+c:\users\hugobd\documents\github\gun-smoke\enemy_boss.cpp(59): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_boss.cpp(104): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_boss.cpp(105): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_boss.cpp(121): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\hugobd\documents\github\gun-smoke\enemy_boss.cpp(132): warning C4018: '>': signed/unsigned mismatch
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\cmath(65): warning C4577: 'noexcept' used with no exception handling mode specified; termination on exception is not guaranteed. Specify /EHsc
+  Enemy.cpp
+  Application.cpp
+  Generating Code...
+  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
   SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.pdb (Full PDB)

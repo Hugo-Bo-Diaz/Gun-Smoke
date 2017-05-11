@@ -35,6 +35,7 @@ Enemy_Mech::Enemy_Mech(int x, int y) : Enemy(x, y)
 	path_dest.y = position.y;
 	path_dest.x = position.x;
 
+	hp = 1;
 }
 
 int Enemy_Mech::value_between(int min, int max)

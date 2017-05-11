@@ -31,6 +31,8 @@ Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({0, 0, 16, 9}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+	
+	hp = 1;
 }
 
 void Enemy_RedBird::Move()
