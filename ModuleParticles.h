@@ -64,6 +64,7 @@ public:
 	Particle shot_l_up;
 	Particle shot_l_down;
 	Particle end_of_bullet;
+	Particle hitmarker;
 
 	Particle enemy_bullet;
 	Particle enemy_bullet_2;

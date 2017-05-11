@@ -12,6 +12,7 @@ private:
 	Animation walk;
 	Animation thrw;
 	Path path;
+	uint bombdelay;
 public:
 	Enemy_Mech(int x, int y);
 	~Enemy_Mech();

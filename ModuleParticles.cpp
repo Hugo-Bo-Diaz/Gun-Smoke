@@ -15,15 +15,16 @@ ModuleParticles::ModuleParticles()
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-	explosion.anim.PushBack({ 22, 167, 19, 10 });
-	explosion.anim.PushBack({ 54, 164, 21, 13 });
-	explosion.anim.PushBack({ 92, 159, 25, 18 });
-	explosion.anim.PushBack({ 130, 154, 29, 23 });
-	explosion.anim.PushBack({ 171, 156, 28, 21 });
-	explosion.anim.PushBack({ 211, 160, 24, 17 });
-	explosion.anim.PushBack({ 248, 157, 32, 21 });
+	explosion.anim.PushBack({ 19, 146, 31, 31 });
+	explosion.anim.PushBack({ 52, 146, 31, 31 });
+	explosion.anim.PushBack({ 91, 146, 31, 31 });
+	explosion.anim.PushBack({ 131, 146, 31, 31 });
+	explosion.anim.PushBack({ 172, 146, 31, 31 });
+	explosion.anim.PushBack({ 211, 145, 31, 31 });
+	explosion.anim.PushBack({ 251, 146, 31, 31 });
+	explosion.anim.PushBack({ 294, 146, 31, 31 });
 	explosion.anim.PushBack({ 328, 147, 31, 31 });
-	explosion.anim.PushBack({ 369, 148, 26, 29 });
+	explosion.anim.PushBack({ 370, 146, 31, 31 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.15f;
 
@@ -94,6 +95,13 @@ ModuleParticles::ModuleParticles()
 	end_of_bullet.anim.loop = false;
 	end_of_bullet.life = 200;
 	end_of_bullet.anim.speed = 0.1f;
+
+	hitmarker.anim.PushBack({ 390, 36, 2, 2 });
+	hitmarker.anim.PushBack({ 412, 34, 6, 6 });
+	hitmarker.anim.PushBack({ 436, 33, 8, 8 });
+	hitmarker.anim.loop = false;
+	hitmarker.life = 200;
+	hitmarker.anim.speed = 0.1f;
 
 	enemy_bullet.anim.PushBack({315,11,6,6});
 	enemy_bullet.anim.loop = false;
@@ -239,7 +247,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
-			App->particles->AddParticle(App->particles->end_of_bullet, active[i]->position.x - 4, active[i]->position.y, COLLIDER_PARTICLE, 0);
+			App->particles->AddParticle(App->particles->hitmarker, active[i]->position.x - 4, active[i]->position.y-4, COLLIDER_PARTICLE, 0);
 			delete active[i];
 			active[i] = nullptr;
 			break;

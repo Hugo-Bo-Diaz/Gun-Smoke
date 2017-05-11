@@ -75,9 +75,18 @@ void Enemy_Mech::Move()
 	{
 		bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
 		App->particles->AddParticle(App->particles->tnt, position.x, position.y, COLLIDER_NONE, 2, 0, 2 * sin(bullet_angle));
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y + 70, COLLIDER_ENEMY_BASE, 800, 0, 0);
+		bombdelay = SDL_GetTicks() + 800;
+
 		next_shot = SDL_GetTicks() + value_between(BULLET_INT_MIN, BULLET_INT_MAX);
 	}
+
+
+	if (SDL_GetTicks() > bombdelay) {
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y + 70, COLLIDER_ENEMY_BASE, 0, 0, 0);
+		bombdelay += 100000;
+
+	}
+
 
 
 	//check destination
