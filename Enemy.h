@@ -18,6 +18,7 @@ public:
 	iPoint position;
 	iPoint previous;
 	bool moving;
+	int hp;
 
 public:
 	Enemy(int x, int y);

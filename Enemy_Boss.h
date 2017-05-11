@@ -21,7 +21,7 @@ private:
 	Path path;
 	//timers
 	boss_state state = BOSS_CROUCHED;
-	int timer_crouch = value_between(2000, 4000) + SDL_GetTicks(); //2-4 sec after spawn
+	int timer_crouch = value_between(2000, 4000); //+ SDL_GetTicks(); //2-4 sec after spawn
 	int timer_shots;
 	bool crouched= true;
 public:
