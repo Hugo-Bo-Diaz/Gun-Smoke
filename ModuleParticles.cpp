@@ -177,13 +177,13 @@ update_status ModuleParticles::Update()
 {
 	if (powerup_activated == true)
 	{
-		shot_l.life =		SHOT_LIFE + App->player->powerup[1] * 16;
-		shot_l_down.life =	SHOT_LIFE + App->player->powerup[1] * 16;
-		shot_l_up.life =	SHOT_LIFE + App->player->powerup[1] * 16;
-		shot_r.life =		SHOT_LIFE + App->player->powerup[1] * 16;
-		shot_r_down.life =	SHOT_LIFE + App->player->powerup[1] * 16;
-		shot_r_up.life =	SHOT_LIFE + App->player->powerup[1] * 16;
-		laser.life =		SHOT_LIFE + App->player->powerup[1] * 16;
+		shot_l.life =		SHOT_LIFE + App->player->powerup[1] * 32;
+		shot_l_down.life =	SHOT_LIFE + App->player->powerup[1] * 32;
+		shot_l_up.life =	SHOT_LIFE + App->player->powerup[1] * 32;
+		shot_r.life =		SHOT_LIFE + App->player->powerup[1] * 32;
+		shot_r_down.life =	SHOT_LIFE + App->player->powerup[1] * 32;
+		shot_r_up.life =	SHOT_LIFE + App->player->powerup[1] * 32;
+		laser.life =		SHOT_LIFE + App->player->powerup[1] * 32;
 
 		powerup_activated = false;
 	}
