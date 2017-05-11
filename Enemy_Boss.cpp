@@ -89,7 +89,7 @@ void Enemy_Boss::Move()
 					path_dest.y = value_between(position.y - 50, position.y + 50);
 
 					if	(	(path_dest.x < 160		  && path_dest.x > 70   )
-						&&	(path_dest.y < 160 - 2976 && path_dest.y > -2976)) // not out of zone -2976 -> final 
+						&&	(path_dest.y < 160 - 2776 && path_dest.y > -2776)) // not out of zone -2976 -> final 
 					{
 						path_valid = true;
 					}
@@ -159,6 +159,7 @@ void Enemy_Boss::Move()
 
 	}
 	//move collider
+	collider->SetPos(position.x, position.y);
 	col->SetPos(position.x, position.y + 17);
 
 }

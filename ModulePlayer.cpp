@@ -96,16 +96,16 @@ bool ModulePlayer::Start()
 	case 1:
 		{
 			position.x = 120;
-			position.y = -1084;
-			camera_y = -1200;
-			App->render->camera.y = -1200*SCREEN_SIZE;
+			position.y = -984;
+			camera_y = -1100;
+			App->render->camera.y = -1100*SCREEN_SIZE;
 		} break;
 	case 2:
 		{
 			position.x = 120;
-			position.y = -2714;
-			camera_y = -2844;
-			App->render->camera.y = -2844 * SCREEN_SIZE;
+			position.y = -1976;
+			camera_y = -2176;
+			App->render->camera.y = -2176 * SCREEN_SIZE;
 		} break;
 	default:
 		{
@@ -160,13 +160,13 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 
-	if (position.y*SCREEN_SIZE < -1084)
-	{
-		checkpoint = 1;
-	}
-	else if (position.y*SCREEN_SIZE < -2844)
+	if (position.y*SCREEN_SIZE < -2176)
 	{
 		checkpoint = 2;
+	}
+	else if (position.y*SCREEN_SIZE < -1084)
+	{
+		checkpoint = 1;
 	}
 	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
 		position.y;// Automatic movement

@@ -23,7 +23,7 @@ ModuleSceneSpace::~ModuleSceneSpace()
 bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
-	
+
 	App->audio->PlayMusic("gunsmoke/Gunsmoke_06.ogg");
 
 	background = App->textures->Load("gunsmoke/map1.png");
@@ -41,7 +41,7 @@ bool ModuleSceneSpace::Start()
 	//App->collision->AddCollider({ -10, 260, 20, -2820 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 117, 105, 23, 21 }, COLLIDER_WALL); // POZOS
 
-	App->collision->AddCollider({ 98, -927, 28, 27 }, COLLIDER_WALL); 
+	App->collision->AddCollider({ 98, -927, 28, 27 }, COLLIDER_WALL);
 
 	App->collision->AddCollider({ 117, -2008, 22, 20 }, COLLIDER_WALL);
 
@@ -67,7 +67,7 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 0, -2320, 80, 35 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0, -2405, 100, 85 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0, -2445, 75, 40 }, COLLIDER_WALL);
-	
+
 	App->collision->AddCollider({ 0, -2814, 64, 122 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0, -2692, 37, 19 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 64, -2754, 15, 19 }, COLLIDER_WALL);
@@ -99,6 +99,8 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 145, -2814, 15, 15 }, COLLIDER_WALL);
 
 	// Enemies GunMen ---
+	if (App->player->checkpoint < 1)
+	{
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 102, -157);
@@ -119,9 +121,10 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 75, -905);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 6, -950);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 100, -995);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1085); 
+	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1085);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1150);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1240);
+}
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1335);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1365);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1345);
