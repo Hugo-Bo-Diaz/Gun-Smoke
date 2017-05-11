@@ -168,6 +168,8 @@ void Enemy_BrownCookie::Move()
 
 	//move collider
 	col->SetPos(position.x, position.y + 17);
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 	/*int angle = atan2(App->player->position.y-position.y,App->player->position.x -position.x ) * 180 / M_PI;
 	if (angle > -22.5 && angle < 22.5)
 	{

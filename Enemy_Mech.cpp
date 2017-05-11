@@ -104,7 +104,9 @@ void Enemy_Mech::Move()
 	animation = &walk;
 
 	//move collider
-	col->SetPos(position.x, position.y + 20);
+	col->SetPos(position.x, position.y + 20); 
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 
 }
 

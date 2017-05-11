@@ -43,6 +43,8 @@ void Enemy_RedBird::Move()
 		App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 2 * cos(bullet_angle), 2 * sin(bullet_angle));
 		next_shot = SDL_GetTicks() + value_between(BULLET_INT_MIN, BULLET_INT_MAX);
 	}
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 }
 Enemy_RedBird::~Enemy_RedBird()
 {

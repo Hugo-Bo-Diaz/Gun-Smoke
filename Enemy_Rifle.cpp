@@ -58,6 +58,8 @@ void Enemy_Rifle::Move()
 	{
 		// this means he dead
 	}
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 }
 Enemy_Rifle::~Enemy_Rifle()
 {
