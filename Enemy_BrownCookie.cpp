@@ -65,6 +65,7 @@ Enemy_BrownCookie::Enemy_BrownCookie(int x, int y) : Enemy(x, y)
 	original_pos.y = y;
 	path_dest.y = position.y;
 	path_dest.x = position.x;
+	hp = 1;
 	
 }
 
