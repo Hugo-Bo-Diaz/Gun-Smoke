@@ -102,6 +102,17 @@ bool ModuleEnemies::CleanUp()
 		}
 	}
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
+		{
+			{
+				queue[i].type = ENEMY_TYPES::NO_TYPE;
+			}
+		}
+	}
+
+
 	return true;
 }
 

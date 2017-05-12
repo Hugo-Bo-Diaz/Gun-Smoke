@@ -73,6 +73,12 @@ public:
 
 	Particle mechdeath;
 	Particle cookiedeath;
+
+	Particle boss_shot_l;
+	Particle boss_shot_dl;
+	Particle boss_shot_d;
+	Particle boss_shot_dr;
+	Particle boss_shot_r;
 };
 
 #endif // __MODULEPARTICLES_H__

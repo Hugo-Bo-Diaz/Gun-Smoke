@@ -136,6 +136,36 @@ ModuleParticles::ModuleParticles()
 	cookiedeath.anim.loop = false;
 	cookiedeath.anim.speed = 0.1f;
 
+	boss_shot_d.anim.PushBack({411,154,8,8});
+	boss_shot_d.life = 1000;
+	boss_shot_d.speed.y = 5;
+	boss_shot_d.anim.loop = false;
+
+	boss_shot_dl.anim.PushBack({ 411,154,8,8 });
+	boss_shot_dl.life = 1000;
+	boss_shot_dl.speed.y = 4;
+	boss_shot_dl.speed.x = -1;
+	boss_shot_dl.anim.loop = false;
+
+	boss_shot_dr.anim.PushBack({ 411,154,8,8 });
+	boss_shot_dr.life = 1000;
+	boss_shot_dr.speed.y = 4;
+	boss_shot_dr.speed.x = 1;
+	boss_shot_dr.anim.loop = false;
+
+	boss_shot_l.anim.PushBack({ 411,154,8,8 });
+	boss_shot_l.life = 1000;
+	boss_shot_l.speed.y = 3;
+	boss_shot_l.speed.x = -3;
+	boss_shot_l.anim.loop = false;
+
+	boss_shot_r.anim.PushBack({ 411,154,8,8 });
+	boss_shot_r.life = 1000;
+	boss_shot_r.speed.y = 3;
+	boss_shot_r.speed.x = 3;
+	boss_shot_r.anim.loop = false;
+
+
 }
 
 ModuleParticles::~ModuleParticles()

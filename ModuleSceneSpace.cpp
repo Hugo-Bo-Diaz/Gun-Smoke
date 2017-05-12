@@ -102,7 +102,6 @@ bool ModuleSceneSpace::Start()
 	if (App->player->checkpoint < 1)
 	{
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 68, -73);
-
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 102, -157);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 1, -222);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 24, -280);
@@ -124,17 +123,20 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1085);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1150);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1240);
-}
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1335);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1365);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1345);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 77, -1490);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 160, -1595);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 130, -1690); 
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 200, -1910);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 85, -2010);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 5, -2140);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 75, -2140);
+	}
+	if (App->player->checkpoint < 2)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1335);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1365);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1345);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 77, -1490);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 160, -1595);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 130, -1690);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 200, -1910);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 85, -2010);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 5, -2140);
+		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 75, -2140);
+	}
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 130, -2180);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 183, -2341);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 75, -2450);
@@ -160,11 +162,16 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 95, -2280);
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 50, -2535);
 	
-	// Enemies Rifle ---
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 130, -1810);
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 190, -1810);
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 50, -2140);
+	// Enemies Rifle --- 
 
+	if (App->player->checkpoint < 2)
+	{	
+		App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 130, -1810);
+		App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 190, -1810);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 50, -2140);
+	}
+	//SPAWN THE BOSS
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 100, -2800);
 
 

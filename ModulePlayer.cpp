@@ -160,13 +160,16 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 
-	if (position.y*SCREEN_SIZE < -2176)
+	if (position.y*SCREEN_SIZE < -2576 && checkpoint == 1)
 	{
 		checkpoint = 2;
+		LOG("------------SECOND CHECKPOINT REACHED------------")
 	}
-	else if (position.y*SCREEN_SIZE < -1084)
+	if (position.y*SCREEN_SIZE < -1284 && checkpoint == 0)
 	{
 		checkpoint = 1;
+		LOG("------------FIRST CHECKPOINT REACHED------------")
+
 	}
 	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
 		position.y;// Automatic movement
