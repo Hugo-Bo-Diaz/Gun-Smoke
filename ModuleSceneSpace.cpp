@@ -126,8 +126,8 @@ bool ModuleSceneSpace::Start()
 	}
 	if (App->player->checkpoint < 2)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1335);
-		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 8, -1365);
+		App->enemies->AddEnemy(ENEMY_TYPES::COOKIENINJA, 8, -1335);
+		App->enemies->AddEnemy(ENEMY_TYPES::COOKIENINJA, 8, -1365);
 		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 105, -1345);
 		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 77, -1490);
 		App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 160, -1595);

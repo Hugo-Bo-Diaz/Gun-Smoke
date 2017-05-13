@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownCookie.h"
+#include "Enemy_CookieNinja.h"
 #include "Enemy_Mech.h"
 #include "Enemy_Rifle.h"
 #include "Enemy_Boss.h"
@@ -152,6 +153,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_TYPES::BROWNCOOKIE:
 			enemies[i] = new Enemy_BrownCookie(info.x, info.y);
 			break;
+
+			case ENEMY_TYPES::COOKIENINJA:
+				enemies[i] = new Enemy_CookieNinja(info.x, info.y);
+				break;
 
 			case ENEMY_TYPES::MECH:
 			enemies[i] = new Enemy_Mech(info.x, info.y);
