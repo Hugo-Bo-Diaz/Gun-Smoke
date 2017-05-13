@@ -31,10 +31,10 @@ Powerup_Boots::~Powerup_Boots()
 void Powerup_Boots::OnCollision() 
 {
 	//INCREASE PLAYER POWERS
-	App->player->powerup[0] += 5;
+	App->player->powerup[0] += 1;
 }
 
 SDL_Rect Powerup_Boots::Draw()
 {
-	return{24,0,18,18};
+	return{24,6,18,18};
 }

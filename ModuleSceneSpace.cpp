@@ -176,9 +176,19 @@ bool ModuleSceneSpace::Start()
 
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 120, -80);
-	App->barrel->AddBarrel(100,100,POWERUP_BOOTS);
-	App->barrel->AddBarrel(200, 100, POWERUP_RIFLE);
-
+	App->barrel->AddBarrel(155, 537 - 2815, POWERUP_BOOTS);
+	App->barrel->AddBarrel(155, 681 - 2815, POWERUP_NULL); //Aquí está el caballo (sus coordenadas son x = 416, y =1856 , w =16 , h =16 )
+	App->barrel->AddBarrel(155, 713 - 2815, POWERUP_RIFLE);
+	App->barrel->AddBarrel(52, 904 - 2815, POWERUP_NULL);  //Aquí hay una botella que te da +1000 puntos al pillarlo (Las coordenadas de la botella son x = 322, y =1882 , w =12 , h =13 )
+	App->barrel->AddBarrel(52, 1057 - 2815, POWERUP_NULL); //Aquí hay una botella que te da +1000 puntos al pillarlo (Las coordenadas de la botella son x = 322, y =1882 , w =12 , h =13 )
+	App->barrel->AddBarrel(52, 1073 - 2815, POWERUP_NULL); //Aquí hay una botella que te da +1000 puntos al pillarlo (Las coordenadas de la botella son x = 322, y =1882 , w =12 , h =13 )
+	App->barrel->AddBarrel(52, 1089 - 2815, POWERUP_NULL); //Aquí hay un saco que te da +1000 puntos al pillarlo (Las coordenadas del saco son x = 297, y =1883 , w =14 , h =14 )
+	App->barrel->AddBarrel(52, 1353 - 2815, POWERUP_RIFLE);
+	App->barrel->AddBarrel(48, 1632 - 2815, POWERUP_BOOTS);
+	App->barrel->AddBarrel(172, 1820 - 2815, POWERUP_NULL); //Aquí hay una botella que te da +1000 puntos al pillarlo (Las coordenadas de la botella son x = 347, y =1883 , w =11 , h =13 )
+	App->barrel->AddBarrel(172, 1836 - 2815, POWERUP_NULL);
+	App->barrel->AddBarrel(155, 2424 - 2815, POWERUP_BOOTS);
+	App->barrel->AddBarrel(155, 2752 -2815, POWERUP_BOOTS);
 
 	return true;
 }

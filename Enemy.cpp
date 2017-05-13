@@ -8,6 +8,8 @@
 Enemy::Enemy(int x, int y) : position(x, y)
 {
 	moving = false;
+	boss = false;
+	squares = 0;
 }
 
 Enemy::~Enemy()

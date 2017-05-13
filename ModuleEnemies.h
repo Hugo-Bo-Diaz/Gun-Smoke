@@ -19,6 +19,8 @@ enum ENEMY_TYPES
 	REDBIRD,
 	BROWNCOOKIE,
 	COOKIENINJA,
+	COOKIEBOSS,
+	MECHBOSS,
 	MECH,
 	RIFLE,
 	BOSS
@@ -49,6 +51,11 @@ public:
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 
 	int OnScreenEnemies();
+	bool boss_alive = false;
+
+	SDL_Rect section;
+
+
 
 private:
 

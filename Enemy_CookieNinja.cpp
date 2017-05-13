@@ -164,7 +164,7 @@ void Enemy_CookieNinja::Move()
 }
 Enemy_CookieNinja::~Enemy_CookieNinja()
 {
-	if (App->player->destroyed == false)
+	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 200;
 	}

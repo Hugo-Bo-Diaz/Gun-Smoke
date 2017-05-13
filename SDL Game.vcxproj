@@ -74,9 +74,12 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Barrel.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_CookieBoss.h" />
     <ClInclude Include="Enemy_Boss.h" />
     <ClInclude Include="Enemy_BrownCookie.h" />
+    <ClInclude Include="Enemy_CookieNinja.h" />
     <ClInclude Include="Enemy_Mech.h" />
+    <ClInclude Include="Enemy_MechBoss.h" />
     <ClInclude Include="Enemy_RedBird.h" />
     <ClInclude Include="Enemy_Rifle.h" />
     <ClInclude Include="Globals.h" />
@@ -109,9 +112,12 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Barrel.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_CookieBoss.cpp" />
     <ClCompile Include="Enemy_Boss.cpp" />
     <ClCompile Include="Enemy_BrownCookie.cpp" />
+    <ClCompile Include="Enemy_CookieNinja.cpp" />
     <ClCompile Include="Enemy_Mech.cpp" />
+    <ClCompile Include="Enemy_MechBoss.cpp" />
     <ClCompile Include="Enemy_RedBird.cpp" />
     <ClCompile Include="Enemy_Rifle.cpp" />
     <ClCompile Include="Globals.cpp" />

@@ -13,7 +13,7 @@
 
 #define PATH_DURATION 1000
 #define BULLET_INTERVAL 500
-
+#define SPAWN_INTERVAL 2000
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 {
@@ -54,14 +54,16 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 
 	hp_bar = App->textures->Load("gunsmoke/boss_hp_bar.png");
 
-	section.x = 0;
-	section.h = 8;
-	section.w = 22;
-	section.y = 0;
+
 
 	original_pos.y = y;
 	path_dest.y = position.y;
 	path_dest.x = position.x;
+
+	boss = true;
+	squares = 4;
+
+	App->enemies->boss_alive = true;
 
 	hp = 12;
 }
@@ -91,6 +93,7 @@ void Enemy_Boss::Move()
 		state = BOSS_CROUCHED;
 		timer_crouch = SDL_GetTicks() + value_between(3000, 6000);
 	}
+
 	if (App->enemies->OnScreenEnemies() < 10)
 	{
 		int pos_x;
@@ -101,22 +104,32 @@ void Enemy_Boss::Move()
 		if (random_loc == 0)
 		{
 			pos_x = -10;
-			pos_y = 160 - 2776;
+			pos_y = 140 - 2776;
 		}
 		else if (random_loc == 1)
 		{
 			pos_x = 100;
-			pos_y = -3000;
+			pos_y = -2850;
 		}
 		if (random_enemy == 0)
 		{
-			type = BROWNCOOKIE;
+			if (random_loc == 1)
+			{type = COOKIEBOSS;}
+			else
+			{type = BROWNCOOKIE;}
 		}
 		else if (random_enemy == 1)
 		{
-			type = MECH;
+			if (random_loc == 1)
+			{type = MECHBOSS;}
+			else
+			{type = MECH;}
 		}
-		App->enemies->AddEnemy(type, pos_x,pos_y);
+		if (SDL_GetTicks() > timer_spawn)
+		{
+			App->enemies->AddEnemy(type, pos_x, pos_y);
+			timer_spawn = SDL_GetTicks() + SPAWN_INTERVAL;
+		}
 	}
 
 	switch (state)
@@ -134,7 +147,7 @@ void Enemy_Boss::Move()
 					path_dest.y = value_between(position.y - 50, position.y + 50);
 
 					if	(	(path_dest.x < 160		  && path_dest.x > 70   )
-						&&	(path_dest.y < 140 - 2776 && path_dest.y > -2776)) // not out of zone -2976 -> final 
+						&&	(path_dest.y < 120 - 2776 && path_dest.y > -2776)) // not out of zone -2976 -> final 
 					{
 						path_valid = true;
 					}
@@ -214,6 +227,40 @@ void Enemy_Boss::Move()
 			{
 				state = BOSS_MOVING;
 			}
+			if (moving == false)
+			{
+				bool path_valid = false;
+				//select new path
+				while (!path_valid)
+				{
+					path_dest.x = value_between(position.x - 25, position.x + 25);
+					path_dest.y = value_between(position.y - 25, position.y + 25);
+
+					if ((path_dest.x < 160 && path_dest.x > 70)
+						&& (path_dest.y < 120 - 2776 && path_dest.y > -2776)) // not out of zone -2976 -> final 
+					{
+						path_valid = true;
+					}
+				}
+				path_from = position;
+				moving = true;
+				path_start = SDL_GetTicks();
+			}
+
+			//shoot next bullet
+
+			//check destination
+			uint elapsed = SDL_GetTicks() - path_start;
+			if (elapsed > PATH_DURATION)//if he got there
+			{
+				elapsed = PATH_DURATION;
+				moving = false;
+			}
+
+			//move towards path
+			position.x = path_from.x + (path_dest.x - path_from.x) * (int)elapsed / PATH_DURATION;
+			position.y = path_from.y + (path_dest.y - path_from.y) * (int)elapsed / PATH_DURATION;
+
 			collider->SetPos(position.x, position.y+1000);
 			col->SetPos(position.x, position.y + 17 +1000);
 
@@ -221,10 +268,6 @@ void Enemy_Boss::Move()
 		break;
 	}
 	//move collider
-		for (int i = 0; i < squares; ++i)
-		{
-			App->render->Blit(hp_bar,25*i, 100, &section);
-		}
 
 }
 Enemy_Boss::~Enemy_Boss()

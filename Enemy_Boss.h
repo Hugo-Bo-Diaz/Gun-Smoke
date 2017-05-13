@@ -26,9 +26,10 @@ private:
 	int timer_shots;
 	bool crouched= true;
 	int shots_fired;
-	int squares= 4;
 	SDL_Texture* hp_bar = nullptr;
-	SDL_Rect section; 
+	SDL_Rect section;
+	uint timer_spawn= 0 ;
+
 public:
 	Enemy_Boss(int x, int y);
 	~Enemy_Boss();

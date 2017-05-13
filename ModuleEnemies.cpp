@@ -8,6 +8,8 @@
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownCookie.h"
 #include "Enemy_CookieNinja.h"
+#include "Enemy_CookieBoss.h"
+#include "Enemy_MechBoss.h"
 #include "Enemy_Mech.h"
 #include "Enemy_Rifle.h"
 #include "Enemy_Boss.h"
@@ -16,6 +18,11 @@
 
 ModuleEnemies::ModuleEnemies()
 {
+	section.x = 0;
+	section.h = 8;
+	section.w = 22;
+	section.y = 0;
+
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }
@@ -29,6 +36,11 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("gunsmoke/enemies.png");
+	boss_alive = false;
+	section.x = 425;
+	section.y = 2032;
+	section.w = 22;
+	section.h = 8;
 
 	return true;
 }
@@ -64,6 +76,21 @@ update_status ModuleEnemies::Update()
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		if(enemies[i] != nullptr) enemies[i]->Draw(sprites);
+	if (boss_alive)
+	{
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+		{
+			if (enemies[i] != nullptr && enemies[i]->boss == true)
+			{
+				int squares = enemies[i]->squares;
+				for (int i = 0; i < squares; ++i)
+				{
+					App->render->Blit(sprites, 5 + 25*i, -2795, &section);
+				}
+			}
+		}
+	}
+
 
 	return UPDATE_CONTINUE;
 }
@@ -75,7 +102,7 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if(enemies[i]->position.y * SCREEN_SIZE > (App->render->camera.y) + 650)
+			if(enemies[i]->position.y * SCREEN_SIZE > (App->render->camera.y) + 495)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
 				delete enemies[i];
@@ -155,20 +182,28 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 
 			case ENEMY_TYPES::COOKIENINJA:
-				enemies[i] = new Enemy_CookieNinja(info.x, info.y);
-				break;
+			enemies[i] = new Enemy_CookieNinja(info.x, info.y);
+			break;
 
 			case ENEMY_TYPES::MECH:
 			enemies[i] = new Enemy_Mech(info.x, info.y);
 			break;
 
 			case ENEMY_TYPES::RIFLE:
-				enemies[i] = new Enemy_Rifle(info.x, info.y);
-				break;
+			enemies[i] = new Enemy_Rifle(info.x, info.y);
+			break;
 
 			case ENEMY_TYPES::BOSS:
-				enemies[i] = new Enemy_Boss(info.x, info.y);
-				break;
+			enemies[i] = new Enemy_Boss(info.x, info.y);
+			break;
+
+			case ENEMY_TYPES::COOKIEBOSS:
+			enemies[i] = new Enemy_CookieBoss(info.x, info.y);
+			break;
+
+			case ENEMY_TYPES::MECHBOSS:
+			enemies[i] = new Enemy_MechBoss(info.x, info.y);
+			break;
 
 
 		}

@@ -21,6 +21,8 @@ public:
 	int hp;
 	bool ignore_walls = false;
 	bool hit = false;
+	bool boss;
+	int squares;
 
 public:
 	Enemy(int x, int y);

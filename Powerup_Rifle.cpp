@@ -31,7 +31,7 @@ Powerup_Rifle::~Powerup_Rifle()
 void Powerup_Rifle::OnCollision()
 {
 	//INCREASE PLAYER POWERS
-	App->player->powerup[1] += 5;
+	App->player->powerup[1] += 1;
 	App->particles->powerup_activated = true;
 }
 

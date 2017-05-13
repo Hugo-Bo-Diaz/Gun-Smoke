@@ -160,12 +160,12 @@ update_status ModulePlayer::PreUpdate()
 update_status ModulePlayer::Update()
 {
 
-	if (position.y*SCREEN_SIZE < -2576 && checkpoint == 1)
+	if (position.y*SCREEN_SIZE < -1976*SCREEN_SIZE && checkpoint == 1)
 	{
 		checkpoint = 2;
 		LOG("------------SECOND CHECKPOINT REACHED------------")
 	}
-	if (position.y*SCREEN_SIZE < -1284 && checkpoint == 0)
+	if (position.y*SCREEN_SIZE < -984*SCREEN_SIZE && checkpoint == 0)
 	{
 		checkpoint = 1;
 		LOG("------------FIRST CHECKPOINT REACHED------------")
@@ -199,7 +199,7 @@ update_status ModulePlayer::Update()
 		itstime = false;
 	}
 
-	int speed = 1 + powerup[0]*0.30;
+	int speed = 1 + powerup[0]*0.50;
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
 	{
@@ -409,8 +409,8 @@ update_status ModulePlayer::Update()
 
 	}
 	
-	col->SetPos(position.x+250, position.y);
-	col_base->SetPos(position.x+1+250, position.y+18);
+	col->SetPos(position.x, position.y);
+	col_base->SetPos(position.x+1, position.y+18);
 
 	// Draw everything --------------------------------------
 	
@@ -436,7 +436,7 @@ update_status ModulePlayer::Update()
 
 	for (uint i = 0; i < powerup[1]; i++)
 	{
-		SDL_Rect rect = { 150, 36, 8, 8 };
+		SDL_Rect rect = { 172, 35, 8, 8 };
 		App->render->Blit(sprites, i * 8 + 8 * 12, 256 - 8 + camera_y, &rect);
 	}
 

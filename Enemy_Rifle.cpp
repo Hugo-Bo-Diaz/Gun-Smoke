@@ -28,7 +28,7 @@ Enemy_Rifle::Enemy_Rifle(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	hp = 2;
+	hp = 3;
 }
 
 void Enemy_Rifle::Move()
