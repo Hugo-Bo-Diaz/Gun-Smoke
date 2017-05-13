@@ -85,7 +85,7 @@ void Enemy_CookieNinja::Move()
 {
 	if (SDL_GetTicks() > jump + PATH_3)
 	{
-
+		ignore_walls = false;
 		if (moving == false)
 		{
 			bool path_valid = false;
