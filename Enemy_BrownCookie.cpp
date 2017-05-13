@@ -86,8 +86,8 @@ void Enemy_BrownCookie::Move()
 			path_dest.x = value_between(position.x - 25, position.x + 25);
 			path_dest.y = value_between(position.y - 25, position.y + 25);
 
-			if (  ( abs(path_dest.x - App->player->position.x) > 20 )
-				|| ( abs(path_dest.y - App->player->position.y) > 20 ) ) // not near player
+			if (   ( abs(path_dest.x - App->player->position.x) > 20 )
+				|| ( abs(path_dest.y - App->player->position.y) > 20 )) // not near player
 			{
 				if (	path_dest.x > 0
 					&&	path_dest.x < SCREEN_WIDTH)// not out of screen(x)
@@ -207,7 +207,7 @@ void Enemy_BrownCookie::Move()
 }
 Enemy_BrownCookie::~Enemy_BrownCookie()
 {
-	if (App->player->destroyed== false)
+	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 200;
 	}

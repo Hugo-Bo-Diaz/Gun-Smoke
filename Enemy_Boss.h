@@ -26,7 +26,9 @@ private:
 	int timer_shots;
 	bool crouched= true;
 	int shots_fired;
-
+	int squares= 4;
+	SDL_Texture* hp_bar = nullptr;
+	SDL_Rect section; 
 public:
 	Enemy_Boss(int x, int y);
 	~Enemy_Boss();
@@ -38,12 +40,14 @@ public:
 	uint next_shot = 0;
 
 	//anim
-	Animation animations[8];
 
-	Animation walking;
 	Animation shooting_front;
 	Animation shooting_right;
 	Animation shooting_left;
+	Animation shooting_down_left;
+	Animation shooting_down_right;
+
+	Animation walking;
 	Animation to_crouch;
 	Animation crouch_moving;
 

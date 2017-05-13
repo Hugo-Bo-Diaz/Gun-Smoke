@@ -74,9 +74,9 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			if(enemies[i]->position.y * SCREEN_SIZE > (App->render->camera.y) + 650)
 			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}
@@ -180,6 +180,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == COLLIDER_PLAYER_SHOT)
 			{
 				enemies[i]->hp -= 1;
+				enemies[i]->hit = true;
 				if (enemies[i]->hp == 0)
 				{
 					delete enemies[i];
@@ -189,4 +190,17 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
+}
+
+int ModuleEnemies::OnScreenEnemies()
+{
+	int ret = 0;
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			ret++;
+		}
+	}
+	return ret;
 }

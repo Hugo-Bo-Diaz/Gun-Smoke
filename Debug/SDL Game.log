@@ -1,2 +1,45 @@
-﻿  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
-  SDL Game.vcxproj -> C:\Users\hugobd\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.pdb (Full PDB)
+﻿Build started 13/05/2017 1:54:13.
+     1>Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Enemy_Boss.cpp
+         Enemy_Boss.cpp
+     1>c:\users\hugo\documents\github\gun-smoke\enemy_boss.cpp(50): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\enemy_boss.cpp(176): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\enemy_boss.cpp(212): warning C4018: '>' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.lib" /MACHINE:X86 Debug\Application.obj
+         Debug\Barrel.obj
+         Debug\Enemy.obj
+         Debug\Enemy_Boss.obj
+         Debug\Enemy_BrownCookie.obj
+         Debug\Enemy_Mech.obj
+         Debug\Enemy_RedBird.obj
+         Debug\Enemy_Rifle.obj
+         Debug\Globals.obj
+         Debug\Main.obj
+         Debug\ModuleAudio.obj
+         Debug\ModuleBarrel.obj
+         Debug\ModuleCollision.obj
+         Debug\ModuleEnemies.obj
+         Debug\ModuleFadeToBlack.obj
+         Debug\ModuleGameOver.obj
+         Debug\ModuleInput.obj
+         Debug\ModuleParticles.obj
+         Debug\ModulePlayer.obj
+         Debug\ModulePowerup.obj
+         Debug\ModuleRender.obj
+         Debug\ModuleSceneIntro.obj
+         Debug\ModuleSceneSpace.obj
+         Debug\ModuleSceneTransition.obj
+         Debug\ModuleTextures.obj
+         Debug\ModuleWindow.obj
+         Debug\ModuleFonts.obj
+         Debug\powerup.obj
+         Debug\Powerup_Boots.obj
+         Debug\Powerup_Rifle.obj
+         SDL Game.vcxproj -> C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
+     1>Done Building Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.46

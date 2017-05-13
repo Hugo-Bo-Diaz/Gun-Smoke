@@ -48,7 +48,7 @@ void Enemy_RedBird::Move()
 }
 Enemy_RedBird::~Enemy_RedBird()
 {
-	if (App->player->destroyed == false)
+	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 500;
 	}

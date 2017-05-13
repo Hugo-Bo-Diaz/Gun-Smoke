@@ -409,8 +409,8 @@ update_status ModulePlayer::Update()
 
 	}
 	
-	col->SetPos(position.x, position.y);
-	col_base->SetPos(position.x+1, position.y+18);
+	col->SetPos(position.x+250, position.y);
+	col_base->SetPos(position.x+1+250, position.y+18);
 
 	// Draw everything --------------------------------------
 	

@@ -1,65 +1,63 @@
 #include "Application.h"
 #include "Enemy_Boss.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
+#include "ModuleTextures.h"
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
 #include "Moduleplayer.h"
 #include "SDL/include/SDL_timer.h"
 #include "ModuleParticles.h"
+#include "ModuleRender.h"
 
 #define PATH_DURATION 1000
-#define BULLET_INTERVAL 300
+#define BULLET_INTERVAL 500
 
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 {
+	walking.PushBack({ 14, 1011, 19, 28 });
+	walking.PushBack({ 54, 1010, 19, 29 });
+	walking.PushBack({ 94, 1011, 19, 29 });
+	walking.speed = 0.1f;
 
-	animations[4].PushBack({ 330, 467, 21, 26 });
-	animations[4].PushBack({ 10, 509, 22, 27 });
-	animations[4].PushBack({ 51, 507, 24, 27 });
-	animations[4].speed = 0.1f;
+	crouch_moving.PushBack({ 131, 1013, 23, 25 });
+	crouch_moving.PushBack({ 173, 1012, 21, 27 });
+	crouch_moving.PushBack({ 214, 1012, 20, 26 });
+	crouch_moving.speed = 0.1f;
 
-	animations[5].PushBack({ 214, 507, 17, 27 });
-	animations[5].PushBack({ 257, 509, 14, 27 });
-	animations[5].PushBack({ 297, 507, 14, 27 });
-	animations[5].speed = 0.1f;
+	to_crouch.PushBack({ 254, 1012, 18, 25 });
+	to_crouch.PushBack({ 293, 1019, 21, 20 });
+	to_crouch.speed = 0.1f;
 
-	animations[6].PushBack({ 135, 427, 20, 27 });
-	animations[6].PushBack({ 257, 427, 17, 27 });
-	animations[6].PushBack({ 296, 427, 19, 27 });
-	animations[6].speed = 0.1f;
+	shooting_front.PushBack({413, 1010, 20, 29});
+	shooting_front.loop = false;
 
-	animations[7].PushBack({ 135, 427, 20, 27 });
-	animations[7].PushBack({ 257, 427, 17, 27 });
-	animations[7].PushBack({ 296, 427, 19, 27 });
-	animations[7].speed = 0.1f;
+	shooting_left.PushBack({ 371, 1010, 21, 29 });
+	shooting_left.loop = false;
 
-	animations[0].PushBack({ 18, 468, 15, 25 });
-	animations[0].PushBack({ 175, 427, 16, 26 });
-	animations[0].PushBack({ 336, 428, 15, 26 });
-	animations[0].speed = 0.1f;
+	shooting_down_left.PushBack({ 333, 1010, 20, 29 });
+	shooting_down_left.loop = false;
+	 
+	shooting_down_right.PushBack({ 335, 1052, 18, 29});
+	shooting_down_right.loop = false;
 
-	animations[1].PushBack({ 93, 467, 19, 27 });
-	animations[1].PushBack({ 130, 468, 17, 26 });
-	animations[1].PushBack({ 175, 467, 17, 25 });
-	animations[1].speed = 0.1f;
+	shooting_right.PushBack({ 377, 1053, 20, 28 });
+	shooting_right.loop = false;
 
-	animations[2].PushBack({ 214, 467, 18, 26 });
-	animations[2].PushBack({ 255, 468, 18, 26 });
-	animations[2].PushBack({ 294, 467, 18, 26 });
-	animations[2].speed = 0.1f;
-
-	animations[3].PushBack({ 330, 467, 21, 26 });
-	animations[3].PushBack({ 10, 509, 22, 27 });
-	animations[3].PushBack({ 51, 507, 24, 27 });
-	animations[3].speed = 0.1f;
-
-	animation = &animations[6];
+	animation = &walking;
 	srand(time(NULL));
 
 	collider = App->collision->AddCollider({ 0, 0, 18, 27 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	col = App->collision->AddCollider({ 0, 0, 18, 10 }, COLLIDER_TYPE::COLLIDER_ENEMY_BASE, (Module*)App->enemies);
+
+	hp_bar = App->textures->Load("gunsmoke/boss_hp_bar.png");
+
+	section.x = 0;
+	section.h = 8;
+	section.w = 22;
+	section.y = 0;
 
 	original_pos.y = y;
 	path_dest.y = position.y;
@@ -75,10 +73,57 @@ int Enemy_Boss::value_between(int min, int max)
 
 void Enemy_Boss::Move()
 {
+	int prev_squares = squares;
+	if (hp <= 3)
+	{
+		squares = 1;
+	}
+	else if (hp <= 6)
+	{
+		squares = 2;
+	}
+	else if (hp <= 9)
+	{
+		squares = 3;
+	}
+	if (prev_squares != squares)
+	{
+		state = BOSS_CROUCHED;
+		timer_crouch = SDL_GetTicks() + value_between(3000, 6000);
+	}
+	if (App->enemies->OnScreenEnemies() < 10)
+	{
+		int pos_x;
+		int pos_y;
+		ENEMY_TYPES type;
+		int random_loc = value_between(0, 1);
+		int random_enemy = value_between(0,1);
+		if (random_loc == 0)
+		{
+			pos_x = -10;
+			pos_y = 160 - 2776;
+		}
+		else if (random_loc == 1)
+		{
+			pos_x = 100;
+			pos_y = -3000;
+		}
+		if (random_enemy == 0)
+		{
+			type = BROWNCOOKIE;
+		}
+		else if (random_enemy == 1)
+		{
+			type = MECH;
+		}
+		App->enemies->AddEnemy(type, pos_x,pos_y);
+	}
+
 	switch (state)
 	{
 	case BOSS_MOVING:
 		{
+			animation = &walking;
 			if (moving == false)
 			{
 				bool path_valid = false;
@@ -89,7 +134,7 @@ void Enemy_Boss::Move()
 					path_dest.y = value_between(position.y - 50, position.y + 50);
 
 					if	(	(path_dest.x < 160		  && path_dest.x > 70   )
-						&&	(path_dest.y < 160 - 2776 && path_dest.y > -2776)) // not out of zone -2976 -> final 
+						&&	(path_dest.y < 140 - 2776 && path_dest.y > -2776)) // not out of zone -2976 -> final 
 					{
 						path_valid = true;
 					}
@@ -119,6 +164,10 @@ void Enemy_Boss::Move()
 			position.x = path_from.x + (path_dest.x - path_from.x) * (int)elapsed / PATH_DURATION;
 			position.y = path_from.y + (path_dest.y - path_from.y) * (int)elapsed / PATH_DURATION;
 
+			collider->SetPos(position.x, position.y);
+			col->SetPos(position.x, position.y + 17);
+
+
 		}
 		break;
 		case BOSS_SHOOTING:
@@ -126,17 +175,25 @@ void Enemy_Boss::Move()
 			if (SDL_GetTicks() > next_shot && shots_fired > 0 )
 			{
 				float bullet_angle = atan2(App->player->position.y - position.y, App->player->position.x - position.x)*180/M_PI +180;
-				if (bullet_angle < 240 )
+				if (bullet_angle < 216 )
 				{
-					App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0,0,1);
+					App->particles->AddParticle(App->particles->boss_shot_r, position.x, position.y, COLLIDER_ENEMY_SHOT);
 				}
-				if (bullet_angle >= 240 && bullet_angle < 300)
+				else if (bullet_angle >= 216 && bullet_angle < 252)
 				{
-					App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 0, 1);
+					App->particles->AddParticle(App->particles->boss_shot_dr, position.x, position.y, COLLIDER_ENEMY_SHOT);
 				}
-				if (bullet_angle > 360)
+				else if (bullet_angle >= 252 && bullet_angle < 288)
 				{
-					App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 0, 1);
+					App->particles->AddParticle(App->particles->boss_shot_d, position.x, position.y, COLLIDER_ENEMY_SHOT);
+				}
+				else if (bullet_angle >= 288 && bullet_angle < 324)
+				{
+					App->particles->AddParticle(App->particles->boss_shot_dl, position.x, position.y, COLLIDER_ENEMY_SHOT);
+				}
+				else if (bullet_angle > 360)
+				{
+					App->particles->AddParticle(App->particles->boss_shot_l, position.x, position.y, COLLIDER_ENEMY_SHOT);
 				}
 				shots_fired -= 1;
 				next_shot = SDL_GetTicks() + BULLET_INTERVAL;
@@ -145,29 +202,36 @@ void Enemy_Boss::Move()
 			{
 				state = BOSS_MOVING;
 			}
+			collider->SetPos(position.x, position.y);
+			col->SetPos(position.x, position.y + 17);
+
 		}
 		break;
 		case BOSS_CROUCHED:
 		{
+			animation = &crouch_moving;
 			if (SDL_GetTicks() > timer_crouch)// crouching is over
 			{
 				state = BOSS_MOVING;
 			}
+			collider->SetPos(position.x, position.y+1000);
+			col->SetPos(position.x, position.y + 17 +1000);
 
 		}
 		break;
-
 	}
 	//move collider
-	collider->SetPos(position.x, position.y);
-	col->SetPos(position.x, position.y + 17);
+		for (int i = 0; i < squares; ++i)
+		{
+			App->render->Blit(hp_bar,25*i, 100, &section);
+		}
 
 }
 Enemy_Boss::~Enemy_Boss()
 {
 	if (App->player->destroyed == false)
 	{
-		App->player->score += 200;
+		App->player->score += App->player->lifes*10000;
 	}
 	App->particles->AddParticle(App->particles->cookiedeath, position.x, position.y, COLLIDER_NONE);
 }

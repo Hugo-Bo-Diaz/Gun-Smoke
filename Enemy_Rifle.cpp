@@ -39,7 +39,7 @@ void Enemy_Rifle::Move()
 	}
 	else if (SDL_GetTicks()>timer + PATH_2)
 	{
-		timer_2 =timer +  500 * shots_fired;
+		timer_2 =timer +  1000 * shots_fired;
 		if (SDL_GetTicks() > timer_2)
 		{
 			float bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
@@ -63,7 +63,7 @@ void Enemy_Rifle::Move()
 }
 Enemy_Rifle::~Enemy_Rifle()
 {
-	if (App->player->destroyed == false)
+	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 500;
 	}

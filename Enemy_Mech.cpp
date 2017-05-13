@@ -112,7 +112,7 @@ void Enemy_Mech::Move()
 
 Enemy_Mech::~Enemy_Mech()
 {
-	if (App->player->destroyed == false)
+	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 300;
 	}

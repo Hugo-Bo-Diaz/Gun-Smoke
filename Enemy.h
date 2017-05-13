@@ -19,6 +19,8 @@ public:
 	iPoint previous;
 	bool moving;
 	int hp;
+	bool ignore_walls = false;
+	bool hit = false;
 
 public:
 	Enemy(int x, int y);
