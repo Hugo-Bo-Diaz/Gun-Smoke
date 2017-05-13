@@ -10,6 +10,7 @@
 #include "SDL/include/SDL_timer.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleFadeToBlack.h"
 
 #define PATH_DURATION 1000
 #define BULLET_INTERVAL 500
@@ -125,7 +126,7 @@ void Enemy_Boss::Move()
 			else
 			{type = MECH;}
 		}
-		if (SDL_GetTicks() > timer_spawn)
+		if (SDL_GetTicks() > timer_spawn || App->enemies->OnScreenEnemies() < 5)
 		{
 			App->enemies->AddEnemy(type, pos_x, pos_y);
 			timer_spawn = SDL_GetTicks() + SPAWN_INTERVAL;
@@ -274,7 +275,8 @@ Enemy_Boss::~Enemy_Boss()
 {
 	if (App->player->destroyed == false)
 	{
-		App->player->score += App->player->lifes*10000;
+		App->player->score += App->player->lifes * 10000;
 	}
-	App->particles->AddParticle(App->particles->cookiedeath, position.x, position.y, COLLIDER_NONE);
+	App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 }
+
