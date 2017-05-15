@@ -1,4 +1,4 @@
-﻿Build started 15/05/2017 19:17:29.
+﻿Build started 15/05/2017 22:15:32.
      1>Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" on node 2 (Build target(s)).
      1>Link:
          SDL Game.vcxproj -> C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
@@ -6,4 +6,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.09
+Time Elapsed 00:00:00.08

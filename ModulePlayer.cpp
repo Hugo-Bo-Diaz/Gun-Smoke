@@ -208,7 +208,7 @@ update_status ModulePlayer::Update()
 	{
 		joystick_right = 1;
 	}
-	else if (App->input->controller_1.left_joystick.x < -0.25)
+	if (App->input->controller_1.left_joystick.x < -0.25)
 	{
 		joystick_left = 1;
 	}
@@ -220,7 +220,7 @@ update_status ModulePlayer::Update()
 	{
 		joystick_down = 1;
 	}
-	else if (App->input->controller_1.left_joystick.y < -0.25)
+	if (App->input->controller_1.left_joystick.y < -0.25)
 	{
 		joystick_up = 1;
 	}
@@ -258,27 +258,7 @@ update_status ModulePlayer::Update()
 
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
-	{
-		position.y -= speed;
-	}
 
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && camera_y + SCREEN_HEIGHT - 5 > position.y + 32)
-	{
-		position.y += speed;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&
-		App->render->camera.x + SCREEN_WIDTH > position.x + 19)
-	{
-		position.x += speed;
-		if (current_animation != &right)
-		{
-			right.Reset();
-			current_animation = &right;
-		}
-
-	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->render->camera.x < position.x)
 	{

@@ -34,14 +34,17 @@ bool ModuleInput::Init()
 	}
 	else
 	{
-		Controller = SDL_GameControllerOpen(0);
-		if (Controller == nullptr)
+		if (SDL_NumJoysticks() > 0)
 		{
-			LOG("Controller couldn't be initialized SDL_Error: %s\n", SDL_GetError());
-		}
-		else
-		{
-			controller_connected == true;
+			Controller = SDL_GameControllerOpen(0);
+			if (Controller == nullptr)
+			{
+				LOG("Controller couldn't be initialized SDL_Error: %s\n", SDL_GetError());
+			}
+			else
+			{
+				controller_connected == true;
+			}
 		}
 	};
 
