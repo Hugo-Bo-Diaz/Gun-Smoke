@@ -264,17 +264,17 @@ update_status ModulePlayer::Update()
 	}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_DOWN || App->input->controller_1.z_button)
 	{
 		time_z = 5;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN|| App->input->controller_1.x_button)
 	{
 		time_x = 5;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN|| App->input->controller_1.c_button)
 	{
 		time_c = 5;
 	}

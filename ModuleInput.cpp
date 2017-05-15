@@ -25,7 +25,25 @@ bool ModuleInput::Init()
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
+	};
+
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("SDL_GAMEPAD could not initialize! SDL_Error: %s\n", SDL_GetError());
+		ret = false;
 	}
+	else
+	{
+		Controller = SDL_GameControllerOpen(0);
+		if (Controller == nullptr)
+		{
+			LOG("Controller couldn't be initialized SDL_Error: %s\n", SDL_GetError());
+		}
+		else
+		{
+			controller_connected == true;
+		}
+	};
 
 	return ret;
 }
@@ -58,6 +76,11 @@ update_status ModuleInput::PreUpdate()
 	if(keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
+	controller_1.left_joystick.x = ((float)SDL_GameControllerGetAxis(Controller, SDL_CONTROLLER_AXIS_LEFTX) / 32767.0f);
+	controller_1.left_joystick.y = ((float)SDL_GameControllerGetAxis(Controller, SDL_CONTROLLER_AXIS_LEFTY) / 32767.0f);
+	controller_1.x_button = ((bool)SDL_GameControllerGetButton(Controller, SDL_CONTROLLER_BUTTON_A));
+	controller_1.z_button = ((bool)SDL_GameControllerGetButton(Controller, SDL_CONTROLLER_BUTTON_X));
+	controller_1.c_button = ((bool)SDL_GameControllerGetButton(Controller, SDL_CONTROLLER_BUTTON_B));
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -66,5 +89,6 @@ bool ModuleInput::CleanUp()
 {
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 	return true;
 }
