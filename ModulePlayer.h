@@ -67,6 +67,13 @@ public:
 	char scores[8];
 
 	int lifes = 3;
+
+	bool joystick_up;
+	bool joystick_down;
+	bool joystick_left;
+	bool joystick_right;
+
+	int god_mode = 0;
 };
 
 #endif

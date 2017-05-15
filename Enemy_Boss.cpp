@@ -179,7 +179,7 @@ void Enemy_Boss::Move()
 			position.y = path_from.y + (path_dest.y - path_from.y) * (int)elapsed / PATH_DURATION;
 
 			collider->SetPos(position.x, position.y);
-			col->SetPos(position.x, position.y + 17);
+			
 
 
 		}
@@ -263,12 +263,13 @@ void Enemy_Boss::Move()
 			position.y = path_from.y + (path_dest.y - path_from.y) * (int)elapsed / PATH_DURATION;
 
 			collider->SetPos(position.x, position.y+1000);
-			col->SetPos(position.x, position.y + 17 +1000);
+			
 
 		}
 		break;
 	}
 	//move collider
+	col->SetPos(position.x, position.y + 17);
 
 }
 Enemy_Boss::~Enemy_Boss()

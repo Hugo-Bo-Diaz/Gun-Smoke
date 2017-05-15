@@ -199,7 +199,64 @@ update_status ModulePlayer::Update()
 		itstime = false;
 	}
 
-	int speed = 1 + powerup[0]*0.50;
+	float speed = 1 + powerup[0]*0.50;
+
+	joystick_left = 0;
+	joystick_right = 0;
+
+	if (App->input->controller_1.left_joystick.x > 0.25)
+	{
+		joystick_right = 1;
+	}
+	else if (App->input->controller_1.left_joystick.x < -0.25)
+	{
+		joystick_left = 1;
+	}
+
+	joystick_down = 0;
+	joystick_up = 0;
+
+	if (App->input->controller_1.left_joystick.y > 0.25)
+	{
+		joystick_down = 1;
+	}
+	else if (App->input->controller_1.left_joystick.y < -0.25)
+	{
+		joystick_up = 1;
+	}
+
+
+	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || joystick_up || App->input->controller_1.w_button) && camera_y < position.y)
+	{
+		position.y -= speed;
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || joystick_down || App->input->controller_1.s_button) && camera_y + SCREEN_HEIGHT - 5 > position.y + 32)
+	{
+		position.y += speed;
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || joystick_right || App->input->controller_1.d_button) && App->render->camera.x + SCREEN_WIDTH > position.x + 19)
+	{
+		position.x += speed;
+		if (current_animation != &right)
+		{
+			right.Reset();
+			current_animation = &right;
+		}
+
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || joystick_left || App->input->controller_1.a_button) && App->render->camera.x < position.x)
+	{
+		position.x -= speed;
+		if (current_animation != &left)
+		{
+			left.Reset();
+			current_animation = &left;
+		}
+
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && camera_y < position.y)
 	{
@@ -269,7 +326,7 @@ update_status ModulePlayer::Update()
 		time_z = 5;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN|| App->input->controller_1.x_button)
+	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN|| App->input->controller_1.x_button || App->input->controller_1.x2_button)
 	{
 		time_x = 5;
 	}
@@ -356,7 +413,7 @@ update_status ModulePlayer::Update()
 	}
 
 	//simple shots
-	if (press_z && time_z != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_J])
+	if (press_z && time_z != 0 && cooldown == 0 && (App->input->keyboard[SDL_SCANCODE_J] || App->input->controller_1.z_button))
 	{
 		App->particles->AddParticle(App->particles->shot_l, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_l, position.x + 2, position.y + 10, COLLIDER_PLAYER_SHOT);
@@ -365,7 +422,7 @@ update_status ModulePlayer::Update()
 		setanim = 30;
 		lastkey = 0;
 	}
-	if (press_x && time_x != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_K])
+	if (press_x && time_x != 0 && cooldown == 0 && (App->input->keyboard[SDL_SCANCODE_K] || App->input->controller_1.x_button || App->input->controller_1.x2_button))
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 12, position.y, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->laser, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
@@ -374,7 +431,7 @@ update_status ModulePlayer::Update()
 		setanim = 30;
 		lastkey = 1;
 	}
-	if (press_c && time_c != 0 && cooldown == 0 && App->input->keyboard[SDL_SCANCODE_L])
+	if (press_c && time_c != 0 && cooldown == 0 && (App->input->keyboard[SDL_SCANCODE_L] || App->input->controller_1.c_button))
 	{
 		App->particles->AddParticle(App->particles->shot_r, position.x + 12, position.y + 10, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->shot_r, position.x + 2, position.y, COLLIDER_PLAYER_SHOT);
@@ -409,8 +466,8 @@ update_status ModulePlayer::Update()
 
 	}
 	
-	col->SetPos(position.x+250, position.y);
-	col_base->SetPos(position.x+1+250, position.y+18);
+	col->SetPos(position.x + god_mode * 250, position.y);
+	col_base->SetPos(position.x+1 + god_mode * 250, position.y+18);
 
 	// Draw everything --------------------------------------
 	
@@ -438,6 +495,23 @@ update_status ModulePlayer::Update()
 	{
 		SDL_Rect rect = { 172, 35, 8, 8 };
 		App->render->Blit(sprites, i * 8 + 8 * 12, 256 - 8 + camera_y, &rect);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN)
+	{
+		switch (god_mode)
+		{
+		case 0:
+		{god_mode = 1;
+		break;
+		}
+
+		case 1:
+		{
+			god_mode = 0;
+			break;
+		}
+		}
 	}
 
 	return UPDATE_CONTINUE;

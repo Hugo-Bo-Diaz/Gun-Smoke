@@ -21,8 +21,15 @@ struct GamePad {
 	p2Point<float> left_joystick;
 	p2Point<float> right_joystick;
 	bool z_button;
+	bool x2_button;
 	bool x_button;
 	bool c_button;
+	bool esc_button;
+	bool space_button;
+	bool w_button;
+	bool a_button;
+	bool s_button;
+	bool d_button;
 
 };
 
