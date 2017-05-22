@@ -29,6 +29,7 @@ private:
 	SDL_Texture* hp_bar = nullptr;
 	SDL_Rect section;
 	uint timer_spawn= 0 ;
+	uint hit_audio;
 
 public:
 	Enemy_Boss(int x, int y);

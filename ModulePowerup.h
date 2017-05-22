@@ -33,6 +33,7 @@ private:
 
 	Powerup* powerups[MAX_POWERUPS];
 	SDL_Texture* sprites;
+	uint audio_pickup;
 };
 
 #endif // __ModuleEnemies_H__

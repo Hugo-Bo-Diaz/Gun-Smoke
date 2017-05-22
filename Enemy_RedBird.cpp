@@ -2,6 +2,7 @@
 #include "Enemy_RedBird.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
@@ -33,6 +34,18 @@ Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 	original_y = y;
 	
 	hp = 1;
+	if (position.x == 8 && position.y == 29 - 2806)
+	{
+		App->enemies->position_1 = false;
+	}
+	if (position.x == 200 && position.y == 60 - 2806)
+	{
+		App->enemies->position_2 = false;
+	}
+	if (position.x == 200 && position.y == 160 - 2806)
+	{
+		App->enemies->position_3 = false;
+	}
 }
 
 void Enemy_RedBird::Move()
@@ -48,6 +61,22 @@ void Enemy_RedBird::Move()
 }
 Enemy_RedBird::~Enemy_RedBird()
 {
+	if (App->enemies->boss_alive)
+	{
+		if (position.x == 8 && position.y == 29 - 2806)
+		{
+			App->enemies->position_1 = true;
+		}
+		if (position.x == 200 && position.y == 60 - 2806)
+		{
+			App->enemies->position_2 = true;
+		}
+		if (position.x == 200 && position.y == 160 - 2806)
+		{
+			App->enemies->position_3 = true;
+		}
+	}
+
 	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 500;

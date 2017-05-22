@@ -117,8 +117,6 @@ bool ModulePlayer::Start()
 		break;
 	}
 
-
-
 	if (powerup[0]>0)
 	{powerup[0] -= 1;}
 	if (powerup[1] > 0)
@@ -260,24 +258,13 @@ update_status ModulePlayer::Update()
 
 
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->render->camera.x < position.x)
-	{
-		position.x -= speed;
-		if (current_animation != &left)
-		{
-			left.Reset();
-			current_animation = &left;
-		}
-
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+		&& (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && joystick_left == false && joystick_right == false)
 	{
 		current_animation = &idle;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && joystick_left == false && joystick_right == false)
 	{
 		current_animation = &idle;
 	}

@@ -13,6 +13,7 @@
 #include "Enemy_Mech.h"
 #include "Enemy_Rifle.h"
 #include "Enemy_Boss.h"
+#include "Enemy_Stabby.h"
 
 #define SPAWN_MARGIN 650
 
@@ -102,7 +103,7 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if(enemies[i]->position.y * SCREEN_SIZE > (App->render->camera.y) + 495)
+			if (enemies[i]->position.y * SCREEN_SIZE >(App->render->camera.y) + 495 || enemies[i]->position.y < -3000)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
 				delete enemies[i];
@@ -205,6 +206,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_MechBoss(info.x, info.y);
 			break;
 
+			case ENEMY_TYPES::STABBY:
+			enemies[i] = new Enemy_Stabby(info.x, info.y);
+			break;
 
 		}
 	}

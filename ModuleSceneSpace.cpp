@@ -24,7 +24,7 @@ bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
 
-	App->audio->PlayMusic("gunsmoke/Gunsmoke_06.ogg");
+	App->audio->PlayMusic("gunsmoke/Gunsmoke_03.ogg");
 
 	background = App->textures->Load("gunsmoke/map1.png");
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
@@ -174,6 +174,7 @@ bool ModuleSceneSpace::Start()
 	//SPAWN THE BOSS
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 100, -2800);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::STABBY, 220, -2610);
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 120, -80);
 	App->barrel->AddBarrel(155, 537 - 2815, POWERUP_BOOTS);

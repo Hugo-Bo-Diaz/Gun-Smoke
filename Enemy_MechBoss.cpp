@@ -85,7 +85,7 @@ void Enemy_MechBoss::Move()
 
 
 		if (SDL_GetTicks() > bombdelay) {
-			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 70, COLLIDER_ENEMY_BASE, 0, 0, 0);
+			App->particles->AddParticle(App->particles->explosion, position.x, position.y + 70, COLLIDER_ENEMY_BASE, 0, 0, 0,true);
 			bombdelay += 100000;
 
 		}

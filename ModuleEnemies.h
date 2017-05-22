@@ -23,6 +23,7 @@ enum ENEMY_TYPES
 	MECHBOSS,
 	MECH,
 	RIFLE,
+	STABBY,
 	BOSS
 };
 
@@ -55,7 +56,9 @@ public:
 
 	SDL_Rect section;
 
-
+	bool position_1 = true;
+	bool position_2 = true;
+	bool position_3 = true;
 
 private:
 

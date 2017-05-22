@@ -24,6 +24,7 @@ public:
 	SDL_Texture* sprites;
 	void AddBarrel(int x, int y, POWERUP_TYPE type);
 	Barrel* barrels[MAX_BARRELS];
+	uint hurt_sound;
 };
 
 #endif // __ModuleEnemies_H__

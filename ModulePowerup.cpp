@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "ModulePlayer.h"
+#include "ModuleAudio.h"
 #include "Powerup.h"
 #include "Powerup_Boots.h"
 #include "Powerup_Rifle.h"
@@ -25,6 +26,7 @@ bool ModulePowerup::Start()
 {
 
 	sprites = App->textures->Load("gunsmoke/powerups.png");
+	audio_pickup = App->audio->LoadFx("gunsmoke/powerup.wav");
 
 	return true;
 }
@@ -60,7 +62,7 @@ bool ModulePowerup::CleanUp()
 	LOG("Freeing all enemies");
 
 	App->textures->Unload(sprites);
-
+	App->audio->UnLoadFx(audio_pickup);
 	for (uint i = 0; i < MAX_POWERUPS; ++i)
 	{
 		if (powerups[i] != nullptr)
@@ -113,6 +115,7 @@ void ModulePowerup::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == COLLIDER_PLAYER)
 			{
 				powerups[i]->OnCollision();
+				App->audio->PlayFx(audio_pickup);
 				delete powerups[i];
 				powerups[i] = nullptr;
 			}

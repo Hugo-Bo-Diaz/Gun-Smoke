@@ -4,6 +4,7 @@
 #include "ModuleBarrel.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "Barrel.h"
 
 
@@ -22,6 +23,7 @@ bool ModuleBarrel::Start()
 {
 
 	sprites = App->textures->Load("gunsmoke/barrels.png");
+	hurt_sound = App->audio->LoadFx("gunsmoke/barrel_hit.wav");
 
 	return true;
 }
@@ -45,6 +47,7 @@ bool ModuleBarrel::CleanUp()
 	LOG("Freeing all barrels");
 
 	App->textures->Unload(sprites);
+	App->audio->UnLoadFx(hurt_sound);
 
 	for (uint i = 0; i < MAX_BARRELS; ++i)
 	{
@@ -68,6 +71,7 @@ void ModuleBarrel::OnCollision(Collider* c1, Collider* c2)
 			{
 				if (barrels[i]->hp > 0)
 				{
+					App->audio->PlayFx(hurt_sound);
 					barrels[i]->hp -= 1;
 				}
 				else

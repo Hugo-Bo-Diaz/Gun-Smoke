@@ -176,7 +176,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("gunsmoke/particles.png");
-
+	tnt_sound = App->audio->LoadFx("gunsmoke/tnt_explosion.wav");
 	// Load particles fx particle
 
 	return true;
@@ -185,7 +185,7 @@ bool ModuleParticles::Start()
 // Unload assets
 bool ModuleParticles::CleanUp()
 {
-	LOG("Unloading particles");
+	LOG("Unloading particles /n");
 	App->textures->Unload(graphics);
 
 	// Unload fx
@@ -228,7 +228,7 @@ update_status ModuleParticles::Update()
 		if(p->Update() == false)
 		{
 			delete p;
-			p = nullptr;    //WE CHANGED THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//p = nullptr;    //WE CHANGED THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			active[i] = nullptr;
 		}
 		else if(SDL_GetTicks() >= p->born)
@@ -244,7 +244,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, int xspeed, int yspeed)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, int xspeed, int yspeed, bool explosion_sound)
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -261,10 +261,16 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			if (yspeed != 100)
 			{
 				p->speed.y = yspeed;
+			}			
+			
+			if (explosion_sound)
+			{
+				App->audio->PlayFx(tnt_sound);
 			}
 			if(collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
+
 			break;
 		}
 	}

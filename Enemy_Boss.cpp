@@ -11,6 +11,7 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleAudio.h"
 
 #define PATH_DURATION 1000
 #define BULLET_INTERVAL 500
@@ -55,7 +56,9 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 
 	hp_bar = App->textures->Load("gunsmoke/boss_hp_bar.png");
 
-
+	App->audio->StopMusic();
+	App->audio->PlayMusic("gunsmoke/Gunsmoke_04.ogg");
+	hit_audio = App->audio->LoadFx("gunsmoke/boss_hit.wav");
 
 	original_pos.y = y;
 	path_dest.y = position.y;
@@ -93,23 +96,25 @@ void Enemy_Boss::Move()
 	{
 		state = BOSS_CROUCHED;
 		timer_crouch = SDL_GetTicks() + value_between(3000, 6000);
+		App->audio->PlayFx(hit_audio);
 	}
 
-	if (App->enemies->OnScreenEnemies() < 10)
+	if (App->enemies->OnScreenEnemies() < 7)
 	{
 		int pos_x;
 		int pos_y;
+
 		ENEMY_TYPES type;
 		int random_loc = value_between(0, 1);
-		int random_enemy = value_between(0,1);
+		int random_enemy = value_between(0,2);
 		if (random_loc == 0)
 		{
 			pos_x = -10;
-			pos_y = 140 - 2776;
+			pos_y = value_between(110,160) - 2776; //140
 		}
 		else if (random_loc == 1)
 		{
-			pos_x = 100;
+			pos_x = value_between(80,120);//100
 			pos_y = -2850;
 		}
 		if (random_enemy == 0)
@@ -126,7 +131,70 @@ void Enemy_Boss::Move()
 			else
 			{type = MECH;}
 		}
-		if (SDL_GetTicks() > timer_spawn || App->enemies->OnScreenEnemies() < 5)
+		else if (random_enemy == 2)
+		{
+			bool exit = false;
+			int random;
+			int counter= 0;
+			while (!exit && counter < 20)
+			{
+				random = value_between(1, 3);
+
+						switch (random)
+						{
+						case 1:
+						{
+							if (App->enemies->position_1)
+							{
+								exit = true;
+							};
+						}break;
+						case 2:
+						{
+							if (App->enemies->position_2)
+							{
+								exit = true;
+							};
+						}break;
+						case 3:
+						{
+							if (App->enemies->position_3)
+							{
+								exit = true;
+							};
+						}break;
+						default:
+							break;
+						}
+					counter++;
+
+			}
+			switch (random)
+			{
+			case 1:
+			{
+				pos_x = 8;
+				pos_y = 29 - 2806;
+				App->enemies->position_1 = false;
+			}break;
+			case 2:
+			{
+				pos_x = 200;
+				pos_y = 60 - 2806;
+				App->enemies->position_2 = false;
+			}break;
+			case 3:
+			{
+				pos_x = 200;
+				pos_y = 160 - 2806;
+				App->enemies->position_3 = false;
+			}break;
+			default:
+				break;
+			}
+			type = REDBIRD;
+		}
+		if (SDL_GetTicks() > timer_spawn || App->enemies->OnScreenEnemies() < 4)
 		{
 			App->enemies->AddEnemy(type, pos_x, pos_y);
 			timer_spawn = SDL_GetTicks() + SPAWN_INTERVAL;
