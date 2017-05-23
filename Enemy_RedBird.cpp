@@ -80,5 +80,6 @@ Enemy_RedBird::~Enemy_RedBird()
 	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 500;
+		App->enemies->Playsound(1);
 	}
 }

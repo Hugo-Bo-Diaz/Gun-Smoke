@@ -22,6 +22,7 @@ public:
 	*/
 
 	int powerup[3];
+	int horse;
 
 	int checkpoint = 0;
 
@@ -63,6 +64,10 @@ public:
 
 	int font_score = -1;
 	uint audio_shot;
+	uint audio_horse;
+	
+	uint alarm_horse_sound = -1;
+
 	int score;
 	char scores[8];
 

@@ -59,6 +59,8 @@ public:
 	bool position_1 = true;
 	bool position_2 = true;
 	bool position_3 = true;
+	void Playsound(int sound);
+	uint sounds[2];
 
 private:
 

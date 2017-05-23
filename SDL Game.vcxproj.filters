@@ -132,7 +132,13 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Stabby.h">
-      <Filter>Modules</Filter>
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerup_Score.h">
+      <Filter>Modules\Powerups</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerup_Horse.h">
+      <Filter>Modules\Powerups</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,7 +242,13 @@
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Stabby.cpp">
-      <Filter>Core</Filter>
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Powerup_Score.cpp">
+      <Filter>Modules\Powerups</Filter>
+    </ClCompile>
+    <ClCompile Include="Powerup_Horse.cpp">
+      <Filter>Modules\Powerups</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -27,8 +27,10 @@ public:
 	bool UnLoadFx(uint id);
 
 	// Play a previously loaded WAV
-	bool PlayFx(unsigned int fx, int repeat = 0);
+	bool PlayFx(unsigned int fx, int repeat = 0, int pchannel = 0);
+	void StopFx(unsigned int fx);
 
+	void Stop_horse_sound();
 private:
 
 	Mix_Music*	music = nullptr;

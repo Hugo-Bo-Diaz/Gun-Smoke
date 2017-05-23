@@ -107,7 +107,9 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="powerup.h" />
     <ClInclude Include="Powerup_Boots.h" />
+    <ClInclude Include="Powerup_Horse.h" />
     <ClInclude Include="Powerup_Rifle.h" />
+    <ClInclude Include="Powerup_Score.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -143,7 +145,9 @@
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="powerup.cpp" />
     <ClCompile Include="Powerup_Boots.cpp" />
+    <ClCompile Include="Powerup_Horse.cpp" />
     <ClCompile Include="Powerup_Rifle.cpp" />
+    <ClCompile Include="Powerup_Score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Downloads\player.png" />

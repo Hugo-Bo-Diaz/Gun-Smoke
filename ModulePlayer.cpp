@@ -15,6 +15,8 @@
 #include<stdio.h>
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
+#define HORSE_AUDIO_DURATION 13000
+
 ModulePlayer::ModulePlayer()
 {
 	powerup[0] = 0;
@@ -82,6 +84,9 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("gunsmoke/player.png");
 	sprites = App->textures->Load("gunsmoke/powerups.png");
 
+	alarm_horse_sound = 0;
+	horse = 0;
+
 	destroyed = false;
 	switch (checkpoint)
 	{
@@ -127,6 +132,9 @@ bool ModulePlayer::Start()
 	App->particles->powerup_activated = true;
 
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
+	audio_horse = App->audio->LoadFx("gunsmoke/horse_ride.wav");
+
+	
 
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
 	col = App->collision->AddCollider({(int)position.x, (int)position.y, 19, 28}, COLLIDER_PLAYER, this);
@@ -142,6 +150,7 @@ bool ModulePlayer::CleanUp()
 	App->audio->UnLoadFx(audio_shot);
 	App->textures->Unload(graphics);
 	App->fonts->UnLoad(font_score);
+
 	if (col != nullptr)
 		col->to_delete = true;
 
@@ -529,19 +538,26 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == col && c2->type == COLLIDER_ENEMY_SHOT
 		&& destroyed == false && App->fade->IsFading() == false)
 	{
-		lifes -= 1;
-		if (lifes != 0)
+		if (horse == 0)
 		{
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit,0.3f);
+			lifes -= 1;
+			if (lifes != 0)
+			{
+				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit, 0.3f);
+			}
+			else
+			{
+				lifes = 3;
+				LOG("OUT OF LIFES");
+
+				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+			}
+			destroyed = true;
 		}
 		else
 		{
-			lifes = 3;
-			LOG("OUT OF LIFES");
-
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+			horse -= 1;
 		}
-			destroyed = true;
 
 	}
 	if (c1 == col_base && c2->type == COLLIDER_ENEMY_BASE 

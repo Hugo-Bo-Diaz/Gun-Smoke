@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_Rifle.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
@@ -66,5 +67,6 @@ Enemy_Rifle::~Enemy_Rifle()
 	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 500;
+		App->enemies->Playsound(0);
 	}
 }

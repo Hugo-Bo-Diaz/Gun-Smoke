@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownCookie.h"
@@ -37,6 +38,8 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("gunsmoke/enemies.png");
+	sounds[0] = App->audio->LoadFx("gunsmoke/bomber_rifleman_death.wav");
+	sounds[1] = App->audio->LoadFx("gunsmoke/bandit_sniper_death.wav");
 	boss_alive = false;
 	section.x = 425;
 	section.y = 2032;
@@ -247,4 +250,9 @@ int ModuleEnemies::OnScreenEnemies()
 		}
 	}
 	return ret;
+}
+
+void ModuleEnemies::Playsound(int sound)
+{
+	App->audio->PlayFx(sounds[sound]);
 }

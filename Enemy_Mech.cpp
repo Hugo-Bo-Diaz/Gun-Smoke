@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_Mech.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
@@ -115,6 +116,7 @@ Enemy_Mech::~Enemy_Mech()
 	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 300;
+		App->enemies->Playsound(0);
 	}
 
 	App->particles->AddParticle(App->particles->mechdeath, position.x, position.y, COLLIDER_NONE);

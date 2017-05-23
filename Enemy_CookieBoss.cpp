@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_CookieBoss.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
@@ -153,6 +154,7 @@ Enemy_CookieBoss::~Enemy_CookieBoss()
 	if (App->player->destroyed == false && hit == true)
 	{
 		App->player->score += 200;
+		App->enemies->Playsound(1);
 	}
 
 	App->particles->AddParticle(App->particles->cookiedeath, position.x, position.y, COLLIDER_NONE);

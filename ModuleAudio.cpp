@@ -154,23 +154,37 @@ bool ModuleAudio::UnLoadFx(uint id)
 }
 
 // Play WAV
-bool ModuleAudio::PlayFx(uint id, int repeat)
+bool ModuleAudio::PlayFx(uint id, int repeat, int pchannel)
 {
 	bool ret = false;
-	
-	if(fx[id] != nullptr)
+	if (pchannel != 0)
 	{
-		Mix_PlayChannel(channel, fx[id], repeat);
-		ret = true;
+		if (fx[id] != nullptr)
+		{
+			Mix_PlayChannel(pchannel, fx[id], repeat);
+			ret = true;
+		}
 	}
-	channel++;
-	if (channel > 5)
+	else
 	{
-		channel = 0;
+		if (fx[id] != nullptr)
+		{
+			Mix_PlayChannel(channel, fx[id], repeat);
+			ret = true;
+		}
+		channel++;
+		if (channel > 5)
+		{
+			channel = 0;
+		}
 	}
 	return ret;
 }
 void ModuleAudio::StopMusic()
 {
 	Mix_HaltMusic();
+}
+void ModuleAudio::Stop_horse_sound()
+{
+	Mix_Pause(6);
 }

@@ -9,6 +9,8 @@
 #include "Powerup.h"
 #include "Powerup_Boots.h"
 #include "Powerup_Rifle.h"
+#include "Powerup_Score.h"
+#include "Powerup_Horse.h"
 
 
 ModulePowerup::ModulePowerup()
@@ -95,8 +97,13 @@ bool ModulePowerup::AddPowerup(int x, int y, POWERUP_TYPE type)
 				ret = true;
 				break;
 
-			case POWERUP_TYPE::POWERUP_BULLETS:
-				//powerups[i] = new Powerup_Bullets(x, y);
+			case POWERUP_TYPE::POWERUP_SCORE:
+				powerups[i] = new Powerup_Score(x, y);
+				ret = true;
+				break;
+
+			case POWERUP_TYPE::POWERUP_HORSE:
+				powerups[i] = new Powerup_Horse(x, y);
 				ret = true;
 				break;
 
