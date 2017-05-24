@@ -48,6 +48,8 @@ public:
 	Animation idle_shot;
 	Animation right_shot;
 
+	Animation horse_walk;
+
 	fPoint position;
 	fPoint previous;
 	Collider* col;

@@ -71,6 +71,11 @@ ModulePlayer::ModulePlayer()
 	right_shot.PushBack({ 382, 56, 22, 32 });
 	right_shot.speed = 0.2f;
 
+	//horse walk
+	horse_walk.PushBack({ 182, 143, 24, 36 });
+	horse_walk.PushBack({ 222, 142, 24, 36 });
+	horse_walk.PushBack({ 262, 144, 24, 36 });
+	horse_walk.speed = 0.2f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -441,10 +446,21 @@ update_status ModulePlayer::Update()
 		}
 
 	}
-	
-	col->SetPos(position.x + god_mode * 250, position.y);
-	col_base->SetPos(position.x+1 + god_mode * 250, position.y+18);
+	if (horse == 0)
+	{
+		col->rect = { (int)position.x + god_mode*250, (int)position.y, 19, 28 };
+		col_base->rect = { (int)position.x+1 + god_mode*250 , (int)position.y + 18, 17, 9 };
 
+//		col->SetPos(position.x + god_mode * 250, position.y);
+	//	col_base->SetPos(position.x + 1 + god_mode * 250, position.y + 18);
+	}
+	else
+	{
+		col->rect = { (int)position.x, (int)position.y, 20, 36 };
+		col_base->rect = { (int)position.x+1, (int)position.y + 16, 18, 20 };
+		current_animation = &horse_walk;
+
+	}
 	// Draw everything --------------------------------------
 	
 	sprintf_s(scores, 8, "%7d", score);

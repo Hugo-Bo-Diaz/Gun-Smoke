@@ -1,41 +1,26 @@
-﻿Build started 23/05/2017 18:48:53.
+﻿Build started 24/05/2017 19:45:41.
      1>Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Application.cpp Enemy_Boss.cpp ModuleAudio.cpp ModuleBarrel.cpp ModuleEnemies.cpp ModuleGameOver.cpp ModuleParticles.cpp ModulePlayer.cpp ModulePowerup.cpp ModuleSceneIntro.cpp ModuleSceneSpace.cpp ModuleSceneTransition.cpp
-         ModuleSceneSpace.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ModulePlayer.cpp
          ModulePlayer.cpp
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(209): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(359): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(360): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(371): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(372): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(382): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(383): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(394): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(395): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(403): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(404): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(412): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(413): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(445): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(446): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(458): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(464): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(470): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(531): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(534): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-         ModuleAudio.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         ModuleSceneTransition.cpp
-         ModuleSceneIntro.cpp
-         ModulePowerup.cpp
-         ModuleParticles.cpp
-         ModuleGameOver.cpp
-         ModuleEnemies.cpp
-         ModuleBarrel.cpp
-         Enemy_Boss.cpp
-         Application.cpp
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(214): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(364): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(365): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(376): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(377): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(387): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(388): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(399): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(400): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(408): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(409): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(417): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(418): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(474): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(480): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(486): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(547): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(550): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Barrel.obj
@@ -78,4 +63,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.95
+Time Elapsed 00:00:00.61
