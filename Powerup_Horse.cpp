@@ -6,7 +6,8 @@
 #include "Powerup.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
-
+#include "ModuleAudio.h"
+#include "SDL/include/SDL_timer.h"
 Powerup_Horse::Powerup_Horse(int x, int y)
 {
 	position.x = x;
@@ -34,6 +35,8 @@ void Powerup_Horse::OnCollision()
 	if (App->player->horse == 0)
 	{
 	App->player->horse = 2;
+	App->player->alarm_horse_sound = 7000+ SDL_GetTicks();
+	App->audio->PlayFx(App->player->audio_horse);
 	}
 }
 

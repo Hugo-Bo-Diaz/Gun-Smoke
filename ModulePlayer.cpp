@@ -15,7 +15,7 @@
 #include<stdio.h>
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-#define HORSE_AUDIO_DURATION 13000
+#define HORSE_AUDIO_DURATION 7000
 
 ModulePlayer::ModulePlayer()
 {
@@ -138,8 +138,6 @@ bool ModulePlayer::Start()
 
 	audio_shot = App->audio->LoadFx("gunsmoke/shotfx.wav");
 	audio_horse = App->audio->LoadFx("gunsmoke/horse_ride.wav");
-
-	
 
 	font_score = App->fonts->Load("fonts/font.png", "0123456789abcdefghijklmnopqrstuvwxyz", 1);
 	col = App->collision->AddCollider({(int)position.x, (int)position.y, 19, 28}, COLLIDER_PLAYER, this);
@@ -456,8 +454,8 @@ update_status ModulePlayer::Update()
 	}
 	else
 	{
-		col->rect = { (int)position.x, (int)position.y, 20, 36 };
-		col_base->rect = { (int)position.x+1, (int)position.y + 16, 18, 20 };
+		col->rect = { (int)position.x-1 +god_mode*250, (int)position.y, 20, 36 };
+		col_base->rect = { (int)position.x+god_mode*250, (int)position.y + 16, 18, 20 };
 		current_animation = &horse_walk;
 
 	}
@@ -504,6 +502,18 @@ update_status ModulePlayer::Update()
 			break;
 		}
 		}
+	}
+
+	if (horse > 0 && SDL_GetTicks() > alarm_horse_sound && alarm_horse_sound != -1)
+	{
+		App->audio->PlayFx(audio_horse, 0, 6);
+		alarm_horse_sound = SDL_GetTicks() + 5000;
+	}
+
+	if (horse == 0)
+	{
+		App->audio->Stop_horse_sound();
+		alarm_horse_sound = -1;
 	}
 
 	return UPDATE_CONTINUE;
