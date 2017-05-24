@@ -151,8 +151,10 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 	App->audio->UnLoadFx(audio_shot);
+	App->audio->UnLoadFx(audio_horse);
 	App->textures->Unload(graphics);
 	App->fonts->UnLoad(font_score);
+	App->audio->Stop_horse_sound();
 
 	if (col != nullptr)
 		col->to_delete = true;
@@ -184,7 +186,7 @@ update_status ModulePlayer::Update()
 	if (App->render->camera.y == (-2814 * SCREEN_SIZE))
 		position.y;// Automatic movement
 
-	else if (itstime)
+	else if (itstime && destroyed == false)
 	{
 		position.y -= 1;
 		camera_y -= 1;
@@ -516,12 +518,35 @@ update_status ModulePlayer::Update()
 		alarm_horse_sound = -1;
 	}
 
+	if (SDL_GetTicks() > death_time && death_time != -1)
+	{
+	//	death_time = SDL_GetTicks();
+
+		if (lifes != 0)
+		{
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit, 0.3f);
+			death_time = -1;
+			death = false;
+		}
+		else
+		{
+			lifes = 3;
+			LOG("OUT OF LIFES");
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+			death_time = -1;
+			death = false;
+		}
+	}
+
 	return UPDATE_CONTINUE;
 }
 
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+
+	//death_time = SDL_GetTicks();
+
 	if(c1 == col_base && c1->type == COLLIDER_PLAYER_BASE && c2->type == COLLIDER_WALL && destroyed == false && App->fade->IsFading() == false)
 	{
 		/*if ((c1->rect.x + c1->rect.w) - c2->rect.x < abs(2))
@@ -567,17 +592,31 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (horse == 0)
 		{
 			lifes -= 1;
-			if (lifes != 0)
+
+
+			if (destroyed == false)
 			{
-				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit, 0.3f);
+				death_time = SDL_GetTicks() + 3000;
+				//death_time = -1;
+			}
+
+			else death = false;
+			/*if (lifes != 0)
+			{
+				if (SDL_GetTicks() > death_time + 3000)
+				{
+					App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit, 0.3f);
+				}
 			}
 			else
 			{
 				lifes = 3;
 				LOG("OUT OF LIFES");
-
-				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
-			}
+				if (SDL_GetTicks() > death_time + 3000)
+				{
+					App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+				}
+			}*/
 			destroyed = true;
 		}
 		else
@@ -590,23 +629,32 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		&& destroyed == false && App->fade->IsFading() == false)
 	{
 		lifes -= 1;
-		if (lifes != 0)
+
+		if (destroyed == false)
 		{
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit,0.3f);
+			death_time = SDL_GetTicks() + 3000;
+		}
 
+		else death = false;
+		/*if (lifes != 0)
+		{
 
+			if (SDL_GetTicks() > death_time + 3000)
+			{
+				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_transit, 0.3f);
+			}
 		}
 		else
 		{
 			lifes = 3;
 			LOG("OUT OF LIFES");
+			if (SDL_GetTicks() > death_time + 3000)
+			{
+				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+			}
+		}*/
 
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
-
-		}
 			destroyed = true;
-
 	}
-
 
 }

@@ -26,6 +26,7 @@ Barrel::~Barrel()
 	if (hp == 0)
 	{
 		App->powerup->AddPowerup(position.x, position.y, type);
+		App->particles->AddParticle(App->particles->barrel_broken,position.x,position.y);
 	}
 	if (collider != nullptr)
 	{

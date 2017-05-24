@@ -30,6 +30,7 @@ private:
 	SDL_Rect section;
 	uint timer_spawn= 0 ;
 	uint hit_audio;
+	uint audio_boss_death;
 
 public:
 	Enemy_Boss(int x, int y);

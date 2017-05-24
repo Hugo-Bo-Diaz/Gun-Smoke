@@ -9,8 +9,17 @@ private:
 	float wave = -1.0f;
 	bool going_up = true;
 	int original_y = 0;
+	Animation right_up_up;
+	Animation right_up_down;
 	Animation building_right;
+	Animation right_down_up;
+	Animation right_down_down;
+
+	Animation left_up_up;
+	Animation left_up_down;
 	Animation building_left;
+	Animation left_down_up;
+	Animation left_down_down;
 
 public:
 

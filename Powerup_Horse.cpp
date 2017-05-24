@@ -36,7 +36,7 @@ void Powerup_Horse::OnCollision()
 	{
 	App->player->horse = 2;
 	App->player->alarm_horse_sound = 7000+ SDL_GetTicks();
-	App->audio->PlayFx(App->player->audio_horse);
+	App->audio->PlayFx(App->player->audio_horse, 0, 6);
 	}
 }
 

@@ -20,7 +20,7 @@ bool ModuleSceneTransition::Start()
 {
 	LOG("Loading space intro");
 
-	background = App->textures->Load("gunsmoke/intro.png");
+	background = App->textures->Load("gunsmoke/map1.png");
 
 	App->render->camera.x = App->render->camera.y = 0;
 

@@ -154,5 +154,5 @@ Enemy_Stabby::~Enemy_Stabby()
 		App->player->score += 200;
 	}
 
-	App->particles->AddParticle(App->particles->cookiedeath, position.x, position.y, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->stabbydeath, position.x, position.y, COLLIDER_NONE);
 }

@@ -59,6 +59,7 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 	App->audio->StopMusic();
 	App->audio->PlayMusic("gunsmoke/Gunsmoke_04.ogg");
 	hit_audio = App->audio->LoadFx("gunsmoke/boss_hit.wav");
+	audio_boss_death = App->audio->LoadFx("gunsmoke/boss_death.wav");
 
 	original_pos.y = y;
 	path_dest.y = position.y;
@@ -342,10 +343,15 @@ void Enemy_Boss::Move()
 }
 Enemy_Boss::~Enemy_Boss()
 {
+	App->audio->PlayFx(audio_boss_death);
+
 	if (App->player->destroyed == false)
 	{
 		App->player->score += App->player->lifes * 10000;
 	}
 	App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+
+	App->audio->UnLoadFx(audio_boss_death);
+	App->audio->UnLoadFx(hit_audio);
 }
 

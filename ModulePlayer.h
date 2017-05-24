@@ -67,6 +67,7 @@ public:
 	int font_score = -1;
 	uint audio_shot;
 	uint audio_horse;
+	uint death_time = -1;
 	
 	uint alarm_horse_sound = -1;
 
@@ -79,6 +80,8 @@ public:
 	bool joystick_down;
 	bool joystick_left;
 	bool joystick_right;
+
+	bool death = false;
 
 	int god_mode = 0;
 };

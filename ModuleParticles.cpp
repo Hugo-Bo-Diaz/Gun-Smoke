@@ -165,7 +165,39 @@ ModuleParticles::ModuleParticles()
 	boss_shot_r.speed.x = 3;
 	boss_shot_r.anim.loop = false;
 
+	barrel_broken.anim.PushBack({ 23, 53, 16, 16 });
+	barrel_broken.anim.PushBack({ 47, 53, 16, 16 });
+	barrel_broken.anim.PushBack({ 70, 53, 16, 16 });
+	barrel_broken.anim.PushBack({ 95, 53, 16, 16 });
+	barrel_broken.anim.PushBack({ 119, 53, 16, 16 });
+	barrel_broken.anim.PushBack({ 143, 53, 15, 16 });
+	barrel_broken.anim.PushBack({ 169, 53, 14, 16 });
+	barrel_broken.life = 800;
+	barrel_broken.anim.speed = 0.15f;
+	barrel_broken.anim.loop = false;
 
+	sniperdeath_l.anim.PushBack({ 19, 242, 16, 12 });
+	sniperdeath_l.anim.PushBack({ 59, 242, 16, 13 });
+	sniperdeath_l.anim.PushBack({ 99, 244, 12, 13 });
+	sniperdeath_l.anim.PushBack( { 139, 245, 16, 12 });
+	
+	sniperdeath_l.anim.loop = false;
+	sniperdeath_l.anim.speed = 0.1f;
+
+	sniperdeath_r.anim.PushBack({ 181, 244, 16, 12 });
+	sniperdeath_r.anim.PushBack({ 225, 243, 12, 13 });
+	sniperdeath_r.anim.PushBack({ 262, 241, 16, 13 });
+	sniperdeath_r.anim.PushBack({ 301, 241, 16, 12 });
+
+	sniperdeath_r.anim.loop = false;
+	sniperdeath_r.anim.speed = 0.1f;
+
+	stabbydeath.anim.PushBack({ 344, 193, 20, 23 });
+	stabbydeath.anim.PushBack({ 377, 199, 23, 22 });
+	stabbydeath.anim.PushBack({ 416, 205, 32, 14 });
+
+	stabbydeath.anim.loop = false;
+	stabbydeath.anim.speed = 0.1f;
 }
 
 ModuleParticles::~ModuleParticles()
