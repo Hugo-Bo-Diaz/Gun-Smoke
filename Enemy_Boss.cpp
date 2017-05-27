@@ -71,6 +71,8 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 	App->enemies->boss_alive = true;
 
 	hp = 12;
+
+
 }
 
 int Enemy_Boss::value_between(int min, int max)
@@ -348,8 +350,11 @@ Enemy_Boss::~Enemy_Boss()
 	if (App->player->destroyed == false)
 	{
 		App->player->score += App->player->lifes * 10000;
+
+		App->particles->AddParticle(App->particles->boss_death, position.x, position.y, COLLIDER_NONE);
+		App->player->death_time = SDL_GetTicks() + 3000;
 	}
-	App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+	//App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 
 	App->audio->UnLoadFx(audio_boss_death);
 	App->audio->UnLoadFx(hit_audio);

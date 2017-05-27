@@ -34,6 +34,8 @@ void Powerup_Horse::OnCollision()
 	//INCREASE PLAYER HORSEPOWER
 	if (App->player->horse == 0)
 	{
+		App->player->horse_jump = SDL_GetTicks() + 4000;
+		App->particles->AddParticle(App->particles->horse_appearance, SCREEN_WIDTH / 2, App->player->position.y + 200, COLLIDER_NONE);
 	App->player->horse = 2;
 	App->player->alarm_horse_sound = 7000+ SDL_GetTicks();
 	App->audio->PlayFx(App->player->audio_horse, 0, 6);

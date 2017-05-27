@@ -221,7 +221,7 @@ update_status ModuleSceneSpace::Update()
 		App->render->camera.y -= 0 * SCREEN_SIZE;
 
 
-	else if(itstime && App->player->destroyed == false)
+	else if(itstime && App->player->destroyed == false && App->player->horse_jump == -1)
 	{
 		App->render->camera.y -= 1 * SCREEN_SIZE;
 		itstime = false;

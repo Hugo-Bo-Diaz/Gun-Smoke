@@ -144,7 +144,7 @@ void Enemy_BrownCookie::Move()
 	}
 
 	//shoot next bullet
-	if (SDL_GetTicks() > next_shot )
+	if (SDL_GetTicks() > next_shot && App->player->horse_jump == -1)
 	{
 		float bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
 		App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 2 * cos(bullet_angle), 2 * sin(bullet_angle));

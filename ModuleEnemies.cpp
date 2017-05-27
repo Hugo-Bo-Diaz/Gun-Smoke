@@ -5,6 +5,8 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownCookie.h"
@@ -89,12 +91,17 @@ update_status ModuleEnemies::Update()
 				int squares = enemies[i]->squares;
 				for (int i = 0; i < squares; ++i)
 				{
-					App->render->Blit(sprites, 5 + 25*i, -2795, &section);
+					App->render->Blit(sprites, 5 + 25 * i, -2795, &section);
 				}
 			}
 		}
 	}
 
+	if (SDL_GetTicks() > App->player->death_time && App->player->death_time != -1 && App->player->destroyed == false)
+	{ 
+		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+		App->player->death_time = -1;
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -106,7 +113,8 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if (enemies[i]->position.y * SCREEN_SIZE >(App->render->camera.y) + 495 || enemies[i]->position.y < -3000)
+			if (enemies[i]->position.y * SCREEN_SIZE >(App->render->camera.y) + 495 || enemies[i]->position.y < -3000 
+				|| (App->player->destroyed == false && App->player->death_time != -1))
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
 				delete enemies[i];

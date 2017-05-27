@@ -49,6 +49,7 @@ public:
 	Animation right_shot;
 
 	Animation horse_walk;
+	Animation horse_transition;
 
 	fPoint position;
 	fPoint previous;
@@ -68,6 +69,9 @@ public:
 	uint audio_shot;
 	uint audio_horse;
 	uint death_time = -1;
+	uint horse_jump = -1;
+
+	uint horse_y = camera_y + SCREEN_HEIGHT;
 	
 	uint alarm_horse_sound = -1;
 

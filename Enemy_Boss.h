@@ -31,6 +31,7 @@ private:
 	uint timer_spawn= 0 ;
 	uint hit_audio;
 	uint audio_boss_death;
+	uint boss_death_time = -1;
 
 public:
 	Enemy_Boss(int x, int y);

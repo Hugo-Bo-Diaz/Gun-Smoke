@@ -41,7 +41,7 @@ void Enemy_Rifle::Move()
 	else if (SDL_GetTicks()>timer + PATH_2)
 	{
 		timer_2 =timer +  1000 * shots_fired;
-		if (SDL_GetTicks() > timer_2)
+		if (SDL_GetTicks() > timer_2 && App->player->horse_jump == -1)
 		{
 			float bullet_angle = M_PI / 4 * trunc((M_PI / 8) + atan2(App->player->position.y - position.y, App->player->position.x - position.x) / (M_PI / 4));
 			App->particles->AddParticle(App->particles->enemy_bullet, position.x, position.y, COLLIDER_ENEMY_SHOT, 0, 4 * cos(bullet_angle), 4 * sin(bullet_angle));

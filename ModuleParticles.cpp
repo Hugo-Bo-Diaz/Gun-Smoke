@@ -198,6 +198,34 @@ ModuleParticles::ModuleParticles()
 
 	stabbydeath.anim.loop = false;
 	stabbydeath.anim.speed = 0.1f;
+
+	player_death.anim.PushBack({ 19, 263, 14, 29 });
+	player_death.anim.PushBack({ 58, 263, 16, 29 });
+	player_death.anim.PushBack({ 95, 263, 21, 29 });
+	player_death.anim.PushBack({ 135, 263, 23, 29 });
+	player_death.anim.PushBack({ 172, 263, 27, 29 });
+	player_death.anim.PushBack({ 212, 263, 31, 29 });
+	player_death.anim.PushBack({ 252, 263, 31, 29 });
+
+	player_death.anim.loop = false;
+	player_death.anim.speed = 0.11f;
+	player_death.life = 3500;
+
+	boss_death.anim.PushBack({ 300, 263, 24, 29 });
+	boss_death.anim.PushBack({ 335, 263, 24, 29 });
+	
+	boss_death.anim.loop = false;
+	boss_death.anim.speed = 0.05f;
+	boss_death.life = 4000;
+
+
+	horse_appearance.anim.PushBack({ 19, 304, 15, 32 });
+	horse_appearance.anim.PushBack({ 59, 304, 15, 31 });
+	horse_appearance.anim.PushBack({ 99, 304, 15, 32 });
+
+	horse_appearance.anim.speed = 0.2f;
+	horse_appearance.speed.y = -1;
+	horse_appearance.life = 4000;
 }
 
 ModuleParticles::~ModuleParticles()
