@@ -36,5 +36,8 @@ void Powerup_Score::OnCollision()
 
 SDL_Rect Powerup_Score::Draw()
 {
-	return{ 337, 30, 18, 18 };
+	if (frame == 0 || frame == 1)
+	{
+		return{ 337, 30, 18, 18 };
+	}
 }

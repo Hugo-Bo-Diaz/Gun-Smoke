@@ -47,6 +47,22 @@ update_status ModulePowerup::Update()
 		{
 			SDL_Rect section = powerups[i]->Draw();
 			App->render->Blit(sprites, powerups[i]->position.x, powerups[i]->position.y, &section);
+			switch (powerups[i]->frame)
+			{
+			case 0:
+			{
+			powerups[i]->plus = 1;
+			break;
+			}
+			case 3:
+			{
+				powerups[i]->plus = -1;
+				break;
+			}
+			default:
+				break;
+			}
+			powerups[i]->frame += powerups[i]->plus;
 		}
 
 	return UPDATE_CONTINUE;

@@ -1,23 +1,68 @@
-﻿  ModulePlayer.cpp
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(225): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(378): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(379): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(390): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(391): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(401): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(402): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(413): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(414): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(422): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(423): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(431): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(432): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(522): warning C4018: '<': signed/unsigned mismatch
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(528): warning C4018: '<': signed/unsigned mismatch
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(534): warning C4018: '<': signed/unsigned mismatch
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(632): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(635): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(649): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\óscar\desktop\hugo-github\gun-smoke\moduleplayer.cpp(687): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Hugo-GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
-  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Hugo-GitHub\Gun-Smoke\Debug\SDL8 Handout.pdb (Full PDB)
+﻿Build started 03/06/2017 20:21:54.
+     1>Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ModulePlayer.cpp
+         ModulePlayer.cpp
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(225): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(378): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(379): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(390): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(391): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(401): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(402): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(413): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(414): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(422): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(423): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(431): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(432): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(521): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(527): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(533): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(631): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(634): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(648): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\hugo\documents\github\gun-smoke\moduleplayer.cpp(686): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.lib" /MACHINE:X86 Debug\Application.obj
+         Debug\Barrel.obj
+         Debug\Enemy.obj
+         Debug\Enemy_CookieBoss.obj
+         Debug\Enemy_Boss.obj
+         Debug\Enemy_BrownCookie.obj
+         Debug\Enemy_CookieNinja.obj
+         Debug\Enemy_Mech.obj
+         Debug\Enemy_MechBoss.obj
+         Debug\Enemy_RedBird.obj
+         Debug\Enemy_Rifle.obj
+         Debug\Enemy_Stabby.obj
+         Debug\Globals.obj
+         Debug\Main.obj
+         Debug\ModuleAudio.obj
+         Debug\ModuleBarrel.obj
+         Debug\ModuleCollision.obj
+         Debug\ModuleEnemies.obj
+         Debug\ModuleFadeToBlack.obj
+         Debug\ModuleGameOver.obj
+         Debug\ModuleInput.obj
+         Debug\ModuleParticles.obj
+         Debug\ModulePlayer.obj
+         Debug\ModulePowerup.obj
+         Debug\ModuleRender.obj
+         Debug\ModuleSceneIntro.obj
+         Debug\ModuleSceneSpace.obj
+         Debug\ModuleSceneTransition.obj
+         Debug\ModuleTextures.obj
+         Debug\ModuleWindow.obj
+         Debug\ModuleFonts.obj
+         Debug\powerup.obj
+         Debug\Powerup_Boots.obj
+         Debug\Powerup_Horse.obj
+         Debug\Powerup_Rifle.obj
+         Debug\Powerup_Score.obj
+         SDL Game.vcxproj -> C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Debug\SDL8 Handout.exe
+     1>Done Building Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.63

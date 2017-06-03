@@ -37,5 +37,8 @@ void Powerup_Rifle::OnCollision()
 
 SDL_Rect Powerup_Rifle::Draw()
 {
-	return{ 48,6,18,18 };
+	if (frame == 0 || frame == 1)
+	{
+		return{ 48, 6, 18, 18 };
+	}
 }

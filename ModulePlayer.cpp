@@ -25,66 +25,66 @@ ModulePlayer::ModulePlayer()
 	powerup[2] = 0;
 
 	// idle animation (just the ship)
-	idle.PushBack({ 23, 15, 20, 32 });
-	idle.PushBack({ 63, 15, 20, 32 });
-	idle.PushBack({ 103, 15, 20, 32 });
-	idle.PushBack({ 142, 15, 20, 32 });
-	idle.PushBack({ 183, 15, 20, 32 });
+	idle.PushBack({ 4, 8, 19, 29 });
+	idle.PushBack({ 25, 8, 20, 29 });
+	idle.PushBack({ 48, 8, 19, 29 });
+	idle.PushBack({ 70, 8, 20, 29 });
+	idle.PushBack({ 91, 8, 21, 29 });
 	idle.speed = 0.2f;
 
 	// move left
-	left.PushBack({ 25, 95, 22, 32 });
-	left.PushBack({ 65, 95, 22, 32 });
-	left.PushBack({ 105, 95, 22, 32 });
-	left.PushBack({ 145, 95, 22, 32 });
-	left.PushBack({ 185, 95, 22, 32 });
+	left.PushBack({ 24, 73, 16, 26 });
+	left.PushBack({ 4, 74, 17, 29 });
+	left.PushBack({ 242, 72, 17, 30 });
+	left.PushBack({ 219, 72, 17, 30 });
+	left.PushBack({ 194, 72, 21, 30 });
 	left.speed = 0.2f;
 
 	// Move right
-	right.PushBack({ 25, 56, 22, 32 });
-	right.PushBack({ 65, 56, 22, 32 });
-	right.PushBack({ 105, 56, 22, 32 });
-	right.PushBack({ 145, 56, 22, 32 });
-	right.PushBack({ 185, 56, 22, 32 });
+	right.PushBack({ 218, 7, 16, 26 });
+	right.PushBack({ 237, 8, 17, 29 });
+	right.PushBack({ 1, 39, 17, 30 });
+	right.PushBack({ 23, 39, 17, 30 });
+	right.PushBack({ 45, 39, 21, 30 });
 	right.speed = 0.2f;
 
-	// idle animation (just the ship)
-	idle_shot.PushBack({ 223, 15, 20, 32 });
-	idle_shot.PushBack({ 262, 16, 20, 32 });
-	idle_shot.PushBack({ 303, 15, 20, 32 });
-	idle_shot.PushBack({ 341, 15, 20, 32 });
-	idle_shot.PushBack({ 382, 15, 20, 32 });
+	// shoot idle animation (just the ship)
+	idle_shot.PushBack({ 114, 8, 19, 29 });
+	idle_shot.PushBack({ 135, 8, 19, 29 });
+	idle_shot.PushBack({ 155, 8, 19, 29 });
+	idle_shot.PushBack({ 176, 8, 19, 29, });
+	idle_shot.PushBack({ 197, 8, 19, 29 });
 	idle_shot.speed = 0.2f;
 
-	// move left
-	left_shot.PushBack({ 223, 95, 22, 32 });
-	left_shot.PushBack({ 262, 95, 22, 32 });
-	left_shot.PushBack({ 303, 95, 22, 32 });
-	left_shot.PushBack({ 341, 95, 22, 32 });
-	left_shot.PushBack({ 382, 95, 22, 32 });
-	left_shot.speed = 0.2f;
-
-	// Move right
-	right_shot.PushBack({ 223, 56, 22, 32 });
-	right_shot.PushBack({ 262, 56, 22, 32 });
-	right_shot.PushBack({ 303, 56, 22, 32 });
-	right_shot.PushBack({ 341, 56, 22, 32 });
-	right_shot.PushBack({ 382, 56, 22, 32 });
+	// shoot left
+	right_shot.PushBack({ 172, 72, 19, 30 });
+	right_shot.PushBack({ 150, 72, 17, 29 });
+	right_shot.PushBack({ 130, 72, 17, 30 });
+	right_shot.PushBack({ 109, 72, 17, 30 });
+	right_shot.PushBack({ 88, 72, 17, 30 });
 	right_shot.speed = 0.2f;
 
+	// shoot right
+	left_shot.PushBack({ 69, 39, 19, 30 });
+	left_shot.PushBack({ 93, 39, 17, 29 });
+	left_shot.PushBack({ 113, 39, 17, 30 });
+	left_shot.PushBack({ 134, 39, 17, 30 });
+	left_shot.PushBack({ 155, 39, 17, 30 });
+	left_shot.speed = 0.2f;
+
 	//horse walk
-	horse_walk.PushBack({ 182, 143, 24, 36 });
-	horse_walk.PushBack({ 222, 142, 24, 36 });
-	horse_walk.PushBack({ 262, 144, 24, 36 });
+	horse_walk.PushBack({ 0, 0, 0, 0 });
+	horse_walk.PushBack({ 0, 0, 0, 0 });
+	horse_walk.PushBack({ 0, 0, 0, 0 });
 	horse_walk.speed = 0.2f;
 
 	//horse jump
-	horse_transition.PushBack({ 228, 195, 16, 26 });
-	horse_transition.PushBack({ 186, 195, 18, 25 });
-	horse_transition.PushBack({ 147, 195, 17, 25 });
-	horse_transition.PushBack({ 108, 195, 17, 28 });
-	horse_transition.PushBack({ 73, 195, 16, 22 });
-	horse_transition.PushBack({ 30, 195, 22, 22 });
+	horse_transition.PushBack({ 242, 261, 17, 30 });
+	horse_transition.PushBack({ 233, 261, 17, 30 });
+	horse_transition.PushBack({ 206, 261, 16, 30 });
+	horse_transition.PushBack({ 187, 261, 17, 30 });
+	horse_transition.PushBack({ 168, 261, 17, 26 });
+	horse_transition.PushBack({ 144, 261, 23, 18 });
 	horse_transition.loop = false;
 	horse_transition.speed = 0.2f;
 }
@@ -461,13 +461,13 @@ update_status ModulePlayer::Update()
 
 		}
 	}
-	if (horse_jump != -1)
+	if (horse_jump != -1 && position.x > SCREEN_WIDTH / 2)
 	{
 		god_mode = 1;
 		col->rect = { (int)position.x + god_mode * 250, (int)position.y, 19, 28 };
 		col_base->rect = { (int)position.x + 1 + god_mode * 250 , (int)position.y + 18, 17, 9 };
 		//App->particles->AddParticle(App->particles->horse_appearance, SCREEN_WIDTH / 2, position.y, COLLIDER_NONE);
-		if (SDL_GetTicks() + 1000 > horse_jump)
+		if (SDL_GetTicks() + 1000 > horse_jump && position.x > SCREEN_WIDTH / 2)
 		{
 		position.x -= 1;
 		position.y -= 1;

@@ -35,6 +35,9 @@ public:
 
 	virtual SDL_Rect Draw() {return section;};
 	virtual void OnCollision() {};
+
+	int frame = 0;
+	int plus;
 };
 
 

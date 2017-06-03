@@ -36,5 +36,8 @@ void Powerup_Boots::OnCollision()
 
 SDL_Rect Powerup_Boots::Draw()
 {
-	return{24,6,18,18};
+	if (frame == 0 || frame == 1)
+	{
+		return{ 24, 6, 18, 18 };
+	}
 }
