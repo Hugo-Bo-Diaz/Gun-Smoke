@@ -473,8 +473,11 @@ update_status ModulePlayer::Update()
 		position.y -= 1;
 		current_animation = &horse_transition;
 		}
+		if (SDL_GetTicks() + 3000 > horse_jump)
+		{
+			god_mode = 0;
+		}
 	}
-	else god_mode = 0;
 
 	if (horse == 0)
 	{
