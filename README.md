@@ -11,12 +11,60 @@ This is the gameplay video.
 
 ## R.R.R. Pizza Mozzarella's Team
 
-![](https://drive.google.com/open?id=0B63dEc_j0GyCV0stS3FLc1B3cVk)
+![](https://cdn.discordapp.com/attachments/289062633259401216/321021882826489869/WhatsApp_Image_2017-06-04_at_21.50.04.jpeg)
 
-[Hugo Bó Díaz: ](https://github.com/Hugo-Bo-Diaz) Management
+[Oscar Izquierdo Cabezas: ](https://github.com/oscarizqui11) QA
 
 [Raul Morente Elvira: ](https://github.com/raulmorente) Programmer
 
 [Esther Martín López: ](https://github.com/Esthara) Artist
 
-[Oscar Izquierdo Cabezas: ](https://github.com/oscarizqui11) QA
+[Hugo Bó Díaz: ](https://github.com/Hugo-Bo-Diaz) Management
+
+## Game Controls
+
+**Keyboard**
+
+  WASD: Move the player.
+
+  K: Shoot idle.
+
+  J: Shoot left.
+
+  L: Shoot right.
+
+  (You can combine two of the directions to shot in mixed angles)
+
+  SPACE: Scene switch.
+
+  ESCAPE: Quit the game.
+
+  F1: Colliders visible.
+
+  G: God mode.
+
+  N: Instant win.
+
+  M: Instant death.
+
+**Controller (Xbox)**
+
+  Left stick: Move the player.
+
+  A: Shoot idle.
+
+  X: Shoot left.
+
+  B: Shoot right.
+
+  (You can combine two of the directions to shot in mixed angles)
+  
+  START: Scene switch.
+
+  BACK: Quit the game.
+
+## Download the latest version of the game [here](https://github.com/Hugo-Bo-Diaz/Gun-Smoke/releases).
+
+## Check the project's [repositorie](https://github.com/Hugo-Bo-Diaz/Gun-Smoke).
+
+## Visit our game's [wiki](https://github.com/Hugo-Bo-Diaz/Gun-Smoke/wiki) to see more information.
