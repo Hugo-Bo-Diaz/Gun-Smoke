@@ -520,20 +520,20 @@ update_status ModulePlayer::Update()
 
 	for (uint i = 0; i < lifes; i++)
 	{
-		SDL_Rect rect = { 150, 11, 8, 8 };
-		App->render->Blit(sprites, i * 8, 256-8 +camera_y, &rect);
+		SDL_Rect rect = { 96, 132, 8, 8 };
+		App->render->Blit(graphics, i * 8, 256-8 +camera_y, &rect);
 	}
 
 	for (uint i = 0; i < powerup[0]; i++)
 	{
-		SDL_Rect rect = { 150, 36, 8, 8 };
-		App->render->Blit(sprites, i * 8+ 8*6, 256 - 8 + camera_y, &rect);
+		SDL_Rect rect = { 107, 132, 8, 8 };
+		App->render->Blit(graphics, i * 8+ 8*6, 256 - 8 + camera_y, &rect);
 	}
 
 	for (uint i = 0; i < powerup[1]; i++)
 	{
-		SDL_Rect rect = { 172, 35, 8, 8 };
-		App->render->Blit(sprites, i * 8 + 8 * 12, 256 - 8 + camera_y, &rect);
+		SDL_Rect rect = { 119, 132, 5, 8 };
+		App->render->Blit(graphics, i * 8 + 8 * 12, 256 - 8 + camera_y, &rect);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN)

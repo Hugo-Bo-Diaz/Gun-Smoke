@@ -189,7 +189,7 @@ bool ModuleSceneSpace::Start()
 	App->barrel->AddBarrel(172, 1820 - 2815, POWERUP_SCORE); //Aquí hay una botella que te da +1000 puntos al pillarlo (Las coordenadas de la botella son x = 347, y =1883 , w =11 , h =13 )
 	App->barrel->AddBarrel(172, 1836 - 2815, POWERUP_NULL);
 	App->barrel->AddBarrel(155, 2424 - 2815, POWERUP_BOOTS);
-	App->barrel->AddBarrel(155, 2752 -2815, POWERUP_HORSE);// HERE ARE BOOTS NO HORSE
+	App->barrel->AddBarrel(155, 2752 -2815, POWERUP_BOOTS);// HERE ARE BOOTS NO HORSE
 
 	return true;
 }
