@@ -98,7 +98,6 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 
 	graphics = App->textures->Load("gunsmoke/player.png");
-	sprites = App->textures->Load("gunsmoke/powerups.png");
 
 	alarm_horse_sound = 0;
 	horse = 0;
@@ -586,11 +585,11 @@ update_status ModulePlayer::Update()
 			//death = false;
 		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_N]== KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_N] == KEY_STATE::KEY_REPEAT&& App->fade->IsFading() == false)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 	}
-	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT && destroyed == false && App->fade->IsFading() == false)
 	{
 		lifes -= 1;
 		App->particles->AddParticle(App->particles->player_death, position.x, position.y, COLLIDER_NONE);

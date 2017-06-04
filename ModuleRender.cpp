@@ -70,7 +70,7 @@ update_status ModuleRender::PostUpdate()
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 
-	//SDL_RenderSetLogicalSize(renderer, 224,256);// THIS IS FOR THE FULL SCREEN <<<<-------------
+	SDL_RenderSetLogicalSize(renderer, 224,256);// THIS IS FOR THE FULL SCREEN <<<<-------------
 
 	SDL_RenderPresent(renderer);
 	return update_status::UPDATE_CONTINUE;

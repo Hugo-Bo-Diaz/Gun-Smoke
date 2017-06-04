@@ -43,8 +43,8 @@ bool ModuleEnemies::Start()
 	sounds[0] = App->audio->LoadFx("gunsmoke/bomber_rifleman_death.wav");
 	sounds[1] = App->audio->LoadFx("gunsmoke/bandit_sniper_death.wav");
 	boss_alive = false;
-	section.x = 425;
-	section.y = 2032;
+	section.x = 181;
+	section.y = 165;
 	section.w = 22;
 	section.h = 8;
 

@@ -54,8 +54,6 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 18, 27 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	col = App->collision->AddCollider({ 0, 0, 18, 10 }, COLLIDER_TYPE::COLLIDER_ENEMY_BASE, (Module*)App->enemies);
 
-	hp_bar = App->textures->Load("gunsmoke/boss_hp_bar.png");
-
 	App->audio->StopMusic();
 	App->audio->PlayMusic("gunsmoke/Gunsmoke_04.ogg");
 	hit_audio = App->audio->LoadFx("gunsmoke/boss_hit.wav");
