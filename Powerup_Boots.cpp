@@ -38,6 +38,10 @@ SDL_Rect Powerup_Boots::Draw()
 {
 	if (frame == 0 || frame == 1)
 	{
-		return{ 24, 6, 18, 18 };
+		return{ 0, 0, 21, 18 };
+	}
+	else
+	{
+		return{ 0, 21, 21, 18 };
 	}
 }

@@ -39,6 +39,10 @@ SDL_Rect Powerup_Rifle::Draw()
 {
 	if (frame == 0 || frame == 1)
 	{
-		return{ 48, 6, 18, 18 };
+		return{ 44, 3, 18, 18 };
+	}
+	else
+	{
+		return{ 44, 21, 18, 18 };
 	}
 }

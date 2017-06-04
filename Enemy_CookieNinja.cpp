@@ -60,7 +60,7 @@ Enemy_CookieNinja::Enemy_CookieNinja(int x, int y) : Enemy(x, y)
 	animations[3].PushBack({ 120, 83, 24, 28 });
 	animations[3].speed = 0.1f;
 
-	jumping.PushBack({ 103, 114, 25, 27, });
+	jumping.PushBack({ 218, 160, 23, 27 });
 
 	animation = &jumping;
 	srand(time(NULL));

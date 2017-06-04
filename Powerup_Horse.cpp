@@ -44,5 +44,5 @@ void Powerup_Horse::OnCollision()
 
 SDL_Rect Powerup_Horse::Draw()
 {
-		return{ 408, 5, 18, 18 };
+		return{ 109, 0, 18, 18 };
 }

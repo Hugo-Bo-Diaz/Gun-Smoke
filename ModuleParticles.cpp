@@ -189,16 +189,24 @@ ModuleParticles::ModuleParticles()
 	sniperdeath_l.anim.PushBack({ 52, 138, 17, 16 });
 	sniperdeath_l.anim.PushBack({ 80, 138, 11, 13 });
 	sniperdeath_l.anim.PushBack({ 101, 141, 13, 10 });
-	
+	sniperdeath_l.anim.PushBack({ 0, 0, 0, 0 });
+	sniperdeath_l.anim.PushBack({ 101, 141, 13, 10 });
+	sniperdeath_l.anim.PushBack({ 0, 0, 0, 0 });
+	sniperdeath_l.anim.PushBack({ 101, 141, 13, 10 });
 	sniperdeath_l.anim.loop = false;
-	sniperdeath_l.anim.speed = 0.1f;
+	sniperdeath_l.anim.speed = 0.2f;
 
 	sniperdeath_r.anim.PushBack({ 190, 141, 17, 14 });
 	sniperdeath_r.anim.PushBack({ 165, 138, 17, 16 });
 	sniperdeath_r.anim.PushBack({ 143, 138, 11, 13 });
 	sniperdeath_r.anim.PushBack({ 120, 141, 13, 10 });
+	sniperdeath_r.anim.PushBack({ 0, 0, 0, 0 });
+	sniperdeath_r.anim.PushBack({ 120, 141, 13, 10 });
+	sniperdeath_r.anim.PushBack({ 0, 0, 0, 0 });
+	sniperdeath_r.anim.PushBack({ 120, 141, 13, 10 });
+
 	sniperdeath_r.anim.loop = false;
-	sniperdeath_r.anim.speed = 0.1f;
+	sniperdeath_r.anim.speed = 0.2f;
 
 	stabbydeath.anim.PushBack({ 351, 95, 21, 21 });
 	stabbydeath.anim.PushBack({ 380, 98, 21, 24 });
@@ -207,14 +215,13 @@ ModuleParticles::ModuleParticles()
 	stabbydeath.anim.loop = false;
 	stabbydeath.anim.speed = 0.1f;
 
-	player_death.anim.PushBack({ 19, 263, 14, 29 });
-	player_death.anim.PushBack({ 58, 263, 16, 29 });
-	player_death.anim.PushBack({ 95, 263, 21, 29 });
-	player_death.anim.PushBack({ 135, 263, 23, 29 });
-	player_death.anim.PushBack({ 172, 263, 27, 29 });
-	player_death.anim.PushBack({ 212, 263, 31, 29 });
-	player_death.anim.PushBack({ 252, 263, 31, 29 });
-
+	player_death.anim.PushBack({ 190, 172, 18, 30 });
+	player_death.anim.PushBack({ 213, 172, 18, 30 });
+	player_death.anim.PushBack({ 235, 172, 20, 30 });
+	player_death.anim.PushBack({ 256, 179, 22, 23 });
+	player_death.anim.PushBack({ 279, 178, 28, 24 });
+	player_death.anim.PushBack({ 310, 179, 32, 25 });
+	player_death.anim.PushBack({ 344, 181, 36, 21 });
 	player_death.anim.loop = false;
 	player_death.anim.speed = 0.11f;
 	player_death.life = 3500;

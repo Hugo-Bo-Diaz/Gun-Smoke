@@ -15,11 +15,11 @@
 
 Enemy_Rifle::Enemy_Rifle(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 175, 628, 16, 27});
-	fly.PushBack({ 215, 629, 16, 27});
-	fly.PushBack({ 255, 628, 17, 27});
-	fly.PushBack({ 294, 629, 17, 27});
-	fly.PushBack({ 334, 629, 18, 27});	
+	fly.PushBack({ 139, 10, 16, 30 });
+	fly.PushBack({ 156, 10, 16, 29 });
+	fly.PushBack({ 173, 11, 16, 28 });
+	fly.PushBack({ 191, 10, 16, 27 });
+	fly.PushBack({ 209, 10, 18, 29 });
 	fly.speed = 0.1f;
 	fly.loop = true;
 	animation = &fly;
