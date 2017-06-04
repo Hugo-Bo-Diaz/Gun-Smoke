@@ -10,8 +10,8 @@
 #include "SDL/include/SDL_timer.h"
 
 #define PATH_DURATION 500
-#define BULLET_INT_MIN 700
-#define BULLET_INT_MAX 1000
+#define BULLET_INT_MIN 2000
+#define BULLET_INT_MAX 3000
 
 int Enemy_RedBird::value_between(int min, int max)
 {

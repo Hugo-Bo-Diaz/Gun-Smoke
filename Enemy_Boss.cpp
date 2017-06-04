@@ -109,7 +109,7 @@ void Enemy_Boss::Move()
 
 		ENEMY_TYPES type;
 		int random_loc = value_between(0, 1);
-		int random_enemy = value_between(0,2);
+		int random_enemy = value_between(0,1);
 		if (random_loc == 0)
 		{
 			pos_x = -10;
@@ -117,8 +117,8 @@ void Enemy_Boss::Move()
 		}
 		else if (random_loc == 1)
 		{
-			pos_x = value_between(80,120);//100
-			pos_y = -2850;
+			pos_x = value_between(100,110);//100
+			pos_y = -2825;
 		}
 		if (random_enemy == 0)
 		{
@@ -134,69 +134,7 @@ void Enemy_Boss::Move()
 			else
 			{type = MECH;}
 		}
-		else if (random_enemy == 2)
-		{
-			bool exit = false;
-			int random;
-			int counter= 0;
-			while (!exit && counter < 20)
-			{
-				random = value_between(1, 3);
 
-						switch (random)
-						{
-						case 1:
-						{
-							if (App->enemies->position_1)
-							{
-								exit = true;
-							};
-						}break;
-						case 2:
-						{
-							if (App->enemies->position_2)
-							{
-								exit = true;
-							};
-						}break;
-						case 3:
-						{
-							if (App->enemies->position_3)
-							{
-								exit = true;
-							};
-						}break;
-						default:
-							break;
-						}
-					counter++;
-
-			}
-			switch (random)
-			{
-			case 1:
-			{
-				pos_x = 8;
-				pos_y = 29 - 2806;
-				App->enemies->position_1 = false;
-			}break;
-			case 2:
-			{
-				pos_x = 200;
-				pos_y = 60 - 2806;
-				App->enemies->position_2 = false;
-			}break;
-			case 3:
-			{
-				pos_x = 200;
-				pos_y = 160 - 2806;
-				App->enemies->position_3 = false;
-			}break;
-			default:
-				break;
-			}
-			type = REDBIRD;
-		}
 		if (SDL_GetTicks() > timer_spawn || App->enemies->OnScreenEnemies() < 4)
 		{
 			App->enemies->AddEnemy(type, pos_x, pos_y);

@@ -10,8 +10,8 @@
 #include "ModuleParticles.h"
 
 #define PATH_DURATION 500
-#define BULLET_INT_MIN 700
-#define BULLET_INT_MAX 1000
+#define BULLET_INT_MIN 1300
+#define BULLET_INT_MAX 2000
 
 #define PATH_1 1500
 #define PATH_2 2000

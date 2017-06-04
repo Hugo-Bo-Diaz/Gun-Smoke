@@ -1,2 +1,9 @@
-﻿  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Gun-Smoke\Release\SDL8 Handout.exe
-  SDL Game.vcxproj -> C:\Users\Óscar\Desktop\Gun-Smoke\Release\SDL8 Handout.pdb (Full PDB)
+﻿Build started 04/06/2017 12:03:02.
+     1>Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         SDL Game.vcxproj -> C:\Users\Hugo\Documents\GitHub\Gun-Smoke\Release\SDL8 Handout.exe
+     1>Done Building Project "C:\Users\Hugo\Documents\GitHub\Gun-Smoke\SDL Game.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.09
