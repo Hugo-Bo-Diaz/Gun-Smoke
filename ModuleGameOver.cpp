@@ -33,6 +33,7 @@ bool ModuleGameOver::Start()
 	App->player->powerup[0] = 0;
 	App->player->powerup[1] = 0;
 	App->player->powerup[2] = 0;
+	App->player->lifes = 3;
 
 	background = App->textures->Load("gunsmoke/start.png");
 

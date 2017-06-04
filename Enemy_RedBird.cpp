@@ -20,17 +20,18 @@ int Enemy_RedBird::value_between(int min, int max)
 
 Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 {
-	right_up_up.PushBack({ 341, 987, 11, 12 });
-	right_up_down.PushBack({ 298, 988, 14, 11 });
-	building_left.PushBack({216,972,16,9});
-	right_down_up.PushBack({ 218, 991, 14, 10 });
-	right_down_down.PushBack({ 179, 988, 16, 12 });
-
-	left_up_up.PushBack({ 136, 968, 11, 12 });
-	left_up_down.PushBack({ 176, 969, 14, 11 });
-	building_right.PushBack({ 256,990,16,9 });
-	left_down_up.PushBack({ 256, 972, 14, 10 });
-	left_down_down.PushBack({ 296, 969, 13, 12 });
+	//sniper derecha
+	right_up_up.PushBack({ 238, 124, 9, 10 });
+	right_up_down.PushBack({ 235, 141, 12, 10 });
+	building_right.PushBack({ 131, 126, 16, 8 });
+	right_down_up.PushBack({ 206, 125, 15, 9 });
+	right_down_down.PushBack({ 168, 126, 13, 8 });
+	//sniper izquierda
+	left_up_up.PushBack({ 226, 124, 9, 10 });
+	left_up_down.PushBack({ 218, 141, 12, 10 });
+	building_left.PushBack({ 111, 126, 16, 8 });
+	left_down_up.PushBack({ 184, 125, 15, 9 });
+	left_down_down.PushBack({ 151, 126, 13, 8 });
 
 	if(position.x > SCREEN_WIDTH / 2)
 		animation = &building_right;

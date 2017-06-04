@@ -144,16 +144,16 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 100, -2620);
 	
 	// Enemies Sniper ---
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, - 132);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -420);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -580);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -1090);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, -1250);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, -1440);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 8, -1700);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2175);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2365);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 200, -2560);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 2, - 138);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 208, -426);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 208, -586);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 208, -1096);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 2, -1256);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 2, -1446);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 2, -1706);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 208, -2181);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 208, -2371);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 208, -2565);
 	
 	// Enemies BomberMen ---
 	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 100, 30);

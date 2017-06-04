@@ -25,11 +25,10 @@
 Enemy_Stabby::Enemy_Stabby(int x, int y) : Enemy(x, y)
 {
 
-	horizontal.PushBack({ 450, 586, 22, 24, });
-	up.PushBack({ 411, 584, 22, 26, });
-	down.PushBack({ 372, 587, 19, 25, });
-	floor.PushBack({ 336, 589, 20, 24, });
-
+	horizontal.PushBack({ 6, 10, 21, 26 });
+	up.PushBack({ 32, 11, 20, 26 });
+	down.PushBack({ 59, 12, 21, 26 });
+	floor.PushBack({ 91, 12, 23, 26 });
 
 	animation = &horizontal;
 	srand(time(NULL));

@@ -20,48 +20,47 @@
 
 Enemy_CookieNinja::Enemy_CookieNinja(int x, int y) : Enemy(x, y)
 {
-
-	animations[4].PushBack({ 330, 467, 21, 26 });
-	animations[4].PushBack({ 10, 509, 22, 27 });
-	animations[4].PushBack({ 51, 507, 24, 27 });
+	animations[4].PushBack({ 145, 83, 16, 28 });
+	animations[4].PushBack({ 164, 83, 18, 28 });
+	animations[4].PushBack({ 185, 83, 20, 28 });
 	animations[4].speed = 0.1f;
 
-	animations[5].PushBack({ 214, 507, 17, 27 });
-	animations[5].PushBack({ 257, 509, 14, 27 });
-	animations[5].PushBack({ 297, 507, 14, 27 });
+	animations[5].PushBack({ 208, 83, 17, 28 });
+	animations[5].PushBack({ 227, 83, 13, 28 });
+	animations[5].PushBack({ 241, 83, 13, 28 });
 	animations[5].speed = 0.1f;
 
-	animations[6].PushBack({ 135, 427, 20, 27 });
-	animations[6].PushBack({ 257, 427, 17, 27 });
-	animations[6].PushBack({ 296, 427, 19, 27 });
+	animations[6].PushBack({ 10, 113, 17, 30 });
+	animations[6].PushBack({ 34, 113, 17, 30 });
+	animations[6].PushBack({ 56, 113, 17, 30 });
 	animations[6].speed = 0.1f;
 
-	animations[7].PushBack({ 135, 427, 20, 27 });
-	animations[7].PushBack({ 257, 427, 17, 27 });
-	animations[7].PushBack({ 296, 427, 19, 27 });
+	animations[7].PushBack({ 7, 51, 21, 30 });
+	animations[7].PushBack({ 30, 51, 20, 30 });
+	animations[7].PushBack({ 81, 114, 19, 30 });
 	animations[7].speed = 0.1f;
 
-	animations[0].PushBack({ 18,468,15,25 });
-	animations[0].PushBack({ 175, 427, 16, 26 });
-	animations[0].PushBack({ 336, 428, 15, 26 });
+	animations[0].PushBack({ 143, 51, 15, 30 });
+	animations[0].PushBack({ 164, 51, 13, 30 });
+	animations[0].PushBack({ 185, 51, 16, 30 });
 	animations[0].speed = 0.1f;
 
-	animations[1].PushBack({ 93, 467, 19, 27 });
-	animations[1].PushBack({ 130, 468, 17, 26 });
-	animations[1].PushBack({ 175, 467, 17, 25 });
+	animations[1].PushBack({ 206, 51, 19, 29 });
+	animations[1].PushBack({ 227, 51, 17, 30 });
+	animations[1].PushBack({ 245, 51, 16, 30 });
 	animations[1].speed = 0.1f;
 
-	animations[2].PushBack({ 214, 467, 18, 26 });
-	animations[2].PushBack({ 255, 468, 18, 26 });
-	animations[2].PushBack({ 294, 467, 18, 26 });
+	animations[2].PushBack({ 7, 83, 21, 28 });
+	animations[2].PushBack({ 30, 83, 21, 28 });
+	animations[2].PushBack({ 53, 83, 21, 29 });
 	animations[2].speed = 0.1f;
 
-	animations[3].PushBack({ 330, 467, 21, 26 });
-	animations[3].PushBack({ 10, 509, 22, 27 });
-	animations[3].PushBack({ 51, 507, 24, 27 });
+	animations[3].PushBack({ 75, 83, 21, 28 });
+	animations[3].PushBack({ 97, 83, 22, 28 });
+	animations[3].PushBack({ 120, 83, 24, 28 });
 	animations[3].speed = 0.1f;
 
-	jumping.PushBack({ 377, 468, 23, 25, });
+	jumping.PushBack({ 103, 114, 25, 27, });
 
 	animation = &jumping;
 	srand(time(NULL));

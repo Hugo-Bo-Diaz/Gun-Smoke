@@ -89,6 +89,7 @@ public:
 	Particle player_death;
 	Particle boss_death;
 	Particle horse_appearance;
+	Particle horse_death;
 };
 
 #endif // __MODULEPARTICLES_H__

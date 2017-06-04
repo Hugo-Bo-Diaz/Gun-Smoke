@@ -19,33 +19,33 @@
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 {
-	walking.PushBack({ 14, 1011, 19, 28 });
-	walking.PushBack({ 54, 1010, 19, 29 });
-	walking.PushBack({ 94, 1011, 19, 29 });
+	walking.PushBack({ 3, 196, 19, 32 });
+	walking.PushBack({ 23, 196, 19, 32 });
+	walking.PushBack({ 43, 196, 19, 32 });
 	walking.speed = 0.1f;
 
-	crouch_moving.PushBack({ 131, 1013, 23, 25 });
-	crouch_moving.PushBack({ 173, 1012, 21, 27 });
-	crouch_moving.PushBack({ 214, 1012, 20, 26 });
+	crouch_moving.PushBack({ 63, 196, 21, 29 });
+	crouch_moving.PushBack({ 87, 196, 21, 30 });
+	crouch_moving.PushBack({ 109, 196, 20, 29 });
 	crouch_moving.speed = 0.1f;
 
-	to_crouch.PushBack({ 254, 1012, 18, 25 });
-	to_crouch.PushBack({ 293, 1019, 21, 20 });
+	to_crouch.PushBack({ 131, 196, 18, 29 });
+	to_crouch.PushBack({ 150, 196, 21, 21 });
 	to_crouch.speed = 0.1f;
 
-	shooting_front.PushBack({413, 1010, 20, 29});
+	shooting_front.PushBack({ 174, 196, 18, 35 });
 	shooting_front.loop = false;
 
-	shooting_left.PushBack({ 371, 1010, 21, 29 });
+	shooting_left.PushBack({ 195, 196, 17, 34 });
 	shooting_left.loop = false;
 
-	shooting_down_left.PushBack({ 333, 1010, 20, 29 });
+	shooting_down_left.PushBack({ 109, 196, 20, 29 });
 	shooting_down_left.loop = false;
 	 
-	shooting_down_right.PushBack({ 335, 1052, 18, 29});
+	shooting_down_right.PushBack({ 63, 196, 21, 29 });
 	shooting_down_right.loop = false;
 
-	shooting_right.PushBack({ 377, 1053, 20, 28 });
+	shooting_right.PushBack({ 216, 196, 17, 33 });
 	shooting_right.loop = false;
 
 	animation = &walking;

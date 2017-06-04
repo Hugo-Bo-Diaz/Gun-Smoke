@@ -73,18 +73,18 @@ ModulePlayer::ModulePlayer()
 	left_shot.speed = 0.2f;
 
 	//horse walk
-	horse_walk.PushBack({ 0, 0, 0, 0 });
-	horse_walk.PushBack({ 0, 0, 0, 0 });
-	horse_walk.PushBack({ 0, 0, 0, 0 });
+	horse_walk.PushBack({ 1, 106, 24, 35 });
+	horse_walk.PushBack({ 26, 106, 24, 35 });
+	horse_walk.PushBack({ 52, 106, 24, 37 });
 	horse_walk.speed = 0.2f;
 
 	//horse jump
-	horse_transition.PushBack({ 242, 261, 17, 30 });
-	horse_transition.PushBack({ 233, 261, 17, 30 });
-	horse_transition.PushBack({ 206, 261, 16, 30 });
-	horse_transition.PushBack({ 187, 261, 17, 30 });
-	horse_transition.PushBack({ 168, 261, 17, 26 });
-	horse_transition.PushBack({ 144, 261, 23, 18 });
+	horse_transition.PushBack({ 242, 110, 16, 30 });
+	horse_transition.PushBack({ 233, 110, 18, 30 });
+	horse_transition.PushBack({ 206, 110, 16, 30 });
+	horse_transition.PushBack({ 187, 110, 17, 30 });
+	horse_transition.PushBack({ 168, 110, 18, 26 });
+	horse_transition.PushBack({ 144, 110, 23, 18 });
 	horse_transition.loop = false;
 	horse_transition.speed = 0.2f;
 }
@@ -586,6 +586,18 @@ update_status ModulePlayer::Update()
 			//death = false;
 		}
 	}
+	if (App->input->keyboard[SDL_SCANCODE_N]== KEY_STATE::KEY_REPEAT)
+	{
+		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+	{
+		lifes -= 1;
+		App->particles->AddParticle(App->particles->player_death, position.x, position.y, COLLIDER_NONE);
+		death_time = SDL_GetTicks() + 3000;
+		destroyed = true;
+
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -673,6 +685,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		else
 		{
 			horse -= 1;
+			if (horse == 0)
+			{
+				App->particles->AddParticle(App->particles->horse_death, position.x-20, position.y, COLLIDER_NONE);
+
+			}
 		}
 
 	}

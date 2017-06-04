@@ -17,10 +17,10 @@
 
 Enemy_MechBoss::Enemy_MechBoss(int x, int y) : Enemy(x, y)
 {
-	walk.PushBack({ 333, 546, 23, 28 });
-	walk.PushBack({ 374, 545, 20, 30 });
-	walk.PushBack({ 412, 546, 22, 28 });
-	walk.PushBack({ 456, 545, 19, 30 });
+	walk.PushBack({ 2, 154, 22, 32 });
+	walk.PushBack({ 25, 154, 20, 32 });
+	walk.PushBack({ 46, 154, 22, 32 });
+	walk.PushBack({ 69, 154, 19, 32 });
 	walk.speed = 0.1f;
 	animation = &walk;
 
