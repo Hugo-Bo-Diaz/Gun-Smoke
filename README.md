@@ -9,7 +9,7 @@ Our team R.R.R. Pizza Mozzarela has created the first level of the game, with al
 
 Here it is a gameplay video in debug mode.
 
-https://www.youtube.com/watch?v=UNtaVYnU1c8
+[Gun.Smoke (from Rella Rella Rella Pizza Mozzarella)](https://www.youtube.com/watch?v=UNtaVYnU1c8)
 
 ## R.R.R. Pizza Mozzarella's Team
 
