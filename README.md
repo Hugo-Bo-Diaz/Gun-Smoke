@@ -7,7 +7,9 @@ The game consist in overcome all the levels beating down as many enemies as you 
 
 Our team R.R.R. Pizza Mozzarela has created the first level of the game, with all the art redisigned. We hope you enjoy it!
 
-This is the gameplay video.
+Here it is a gameplay video in debug mode.
+
+https://www.youtube.com/watch?v=UNtaVYnU1c8
 
 ## R.R.R. Pizza Mozzarella's Team
 
